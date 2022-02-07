@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(PlayerContext))]
-    partial class PlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20220207171530_UpdateDbPlayerFullName2")]
+    partial class UpdateDbPlayerFullName2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,8 +30,11 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("DateOfBirth")
+                    b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PlayerFirstName")
                         .HasColumnType("nvarchar(max)");
@@ -40,14 +45,11 @@ namespace Infrastructure.Migrations
                     b.Property<string>("PlayerPosition")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PlayerStats")
+                    b.Property<int>("PlayerStats")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("TeamID")
+                    b.Property<Guid>("TeamID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TeamName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PlayerID");
 
@@ -62,19 +64,19 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("Draws")
+                    b.Property<int>("Draws")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GoalsAgainst")
+                    b.Property<int>("GoalsAgainst")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GoalsForward")
+                    b.Property<int>("GoalsForward")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Lost")
+                    b.Property<int>("Lost")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Points")
+                    b.Property<int>("Points")
                         .HasColumnType("int");
 
                     b.Property<string>("Stadium")
@@ -83,7 +85,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("TeamName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Wins")
+                    b.Property<int>("Wins")
                         .HasColumnType("int");
 
                     b.HasKey("TeamID");
@@ -95,7 +97,9 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Entities.Team", null)
                         .WithMany("Players")
-                        .HasForeignKey("TeamID");
+                        .HasForeignKey("TeamID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.Team", b =>
