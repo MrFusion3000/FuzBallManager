@@ -1,0 +1,25 @@
+﻿using Application.Responses;
+using Domain.Entities;
+using Mapster;
+using System.Reflection;
+
+namespace Application;
+public class MapsterMapster
+{
+    public static void MapsterSetter()
+    {
+        TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetEntryAssembly());
+
+        TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = false;
+
+        TypeAdapterConfig<Player, PlayerResponse>
+            .NewConfig()
+            .PreserveReference(true);
+
+        
+        //If ignore ID here but leave ID property in DTO then ID = 00000000-0000-0000-0000-000000000000
+        //.Ignore("ID")
+
+        TypeAdapterConfig.GlobalSettings.Compile();
+    }
+}
