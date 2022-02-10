@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(FBMContext))]
-    [Migration("20220205135529_InitMigration")]
-    partial class InitMigration
+    [Migration("20220209083657_AddToTableManagerDateOfBirth")]
+    partial class AddToTableManagerDateOfBirth
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,13 +24,45 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Domain.Entities.Manager", b =>
+                {
+                    b.Property<Guid>("ManagerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Bank")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ManagingTeamID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ManagingTeamName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.HasKey("ManagerID");
+
+                    b.ToTable("Managers");
+                });
+
             modelBuilder.Entity("Domain.Entities.Player", b =>
                 {
                     b.Property<Guid>("PlayerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PlayerFirstName")
@@ -39,14 +71,17 @@ namespace Infrastructure.Migrations
                     b.Property<string>("PlayerLastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PlayerPosition")
-                        .HasColumnType("int");
+                    b.Property<string>("PlayerPosition")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PlayerStats")
+                    b.Property<int?>("PlayerStats")
                         .HasColumnType("int");
 
                     b.Property<Guid?>("TeamID")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TeamName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PlayerID");
 
@@ -61,11 +96,29 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Points")
+                    b.Property<int?>("Draws")
                         .HasColumnType("int");
+
+                    b.Property<int?>("GoalsAgainst")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GoalsForward")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Lost")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Stadium")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TeamName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Wins")
+                        .HasColumnType("int");
 
                     b.HasKey("TeamID");
 

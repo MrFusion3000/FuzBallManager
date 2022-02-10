@@ -4,9 +4,9 @@ namespace Infrastructure.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(PlayerContext playerContext)
+        public static void Initialize(FBMContext FBMContext)
         {
-            if (playerContext.Players.Any())
+            if (FBMContext.Players.Any())
             {
                 return; //Db has been seeded
             }
@@ -24,8 +24,8 @@ namespace Infrastructure.Data
                 Stadium = "Old Trafford"
             };
 
-            playerContext.Teams.Add(team);
-            playerContext.SaveChanges();
+            FBMContext.Teams.Add(team);
+            FBMContext.SaveChanges();
 
             var players = new Player[]
             {
@@ -69,9 +69,9 @@ namespace Infrastructure.Data
 
             for (int i = 0; i > players.Length; i++)
             {
-                playerContext.Players.Add(players[i]);
+                FBMContext.Players.Add(players[i]);
             }
-            playerContext.SaveChanges();
+            FBMContext.SaveChanges();
         }
     }
 }

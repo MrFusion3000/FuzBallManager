@@ -8,7 +8,7 @@ public class MapsterMapster
 {
     public static void MapsterSetter()
     {
-        TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetEntryAssembly());
+        //TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetEntryAssembly());
 
         TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = false;
 

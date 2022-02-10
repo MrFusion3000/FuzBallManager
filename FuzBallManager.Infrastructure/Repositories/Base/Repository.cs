@@ -6,29 +6,29 @@ namespace Infrastructure.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T: class
     {
-        protected readonly PlayerContext _playerContext;
-        public Repository(PlayerContext playerContext)
+        protected readonly FBMContext _FBMContext;
+        public Repository(FBMContext FBMContext)
         {
-            _playerContext = playerContext;
+            _FBMContext = FBMContext;
         }
         public async Task<T> AddAsync(T entity)
         {
-            await _playerContext.Set<T>().AddAsync(entity);
-            await _playerContext.SaveChangesAsync();
+            await _FBMContext.Set<T>().AddAsync(entity);
+            await _FBMContext.SaveChangesAsync();
             return entity;
         }
         public async Task DeleteAsync(T entity)
         {
-            _playerContext.Set<T>().Remove(entity);
-            await _playerContext.SaveChangesAsync();
+            _FBMContext.Set<T>().Remove(entity);
+            await _FBMContext.SaveChangesAsync();
         }
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
-            return await _playerContext.Set<T>().ToListAsync();
+            return await _FBMContext.Set<T>().ToListAsync();
         }
         public async Task<T> GetByIdAsync(Guid id)
         {
-            return await _playerContext.Set<T>().FindAsync(id);
+            return await _FBMContext.Set<T>().FindAsync(id);
         }
         public Task UpdateAsync(T entity)
         {

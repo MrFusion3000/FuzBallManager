@@ -9,16 +9,16 @@ namespace Infrastructure.Repositories
 {
     public class PlayerRepository : Repository<Player>, IPlayerRepository
     {
-        public PlayerRepository(PlayerContext playerContext) : base(playerContext) { }
+        public PlayerRepository(FBMContext FBMContext) : base(FBMContext) { }
         public async Task<IEnumerable<Player>> GetPlayerByLastName(string lastname)
         {
-            return await _playerContext.Players
+            return await _FBMContext.Players
                 .Where(m => m.PlayerLastName == lastname)
                 .ToListAsync();
         }
         //public async Task<List<Player>> GetAllPlayersAsync(GetAllPlayersQuery query, CancellationToken cancellationToken)
         //{
-        //    return await _playerContext.Players.ToListAsync();
+        //    return await _FBMContext.Players.ToListAsync();
         //}
     }
 }

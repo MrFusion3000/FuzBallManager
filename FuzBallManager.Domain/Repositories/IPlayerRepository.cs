@@ -10,7 +10,7 @@ namespace Domain.Repositories
 {
     public interface IPlayerRepository : IRepository<Player>
     {
-        Task <IEnumerable <Player>> GetPlayerByLastName (string lastName);
+        Task <IEnumerable<Player>> GetPlayerByLastName (string lastName);
         //Task <List<Player>> GetAllPlayersAsync(GetAllPlayersQuery query, CancellationToken cancellationToken);
     }
 }

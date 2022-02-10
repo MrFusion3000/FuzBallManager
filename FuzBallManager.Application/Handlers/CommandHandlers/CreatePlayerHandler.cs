@@ -17,10 +17,11 @@ namespace Application.Handlers.CommandHandlers
         public async Task <PlayerResponse> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {
             var playerEntity = PlayerMapper.Mapper.Map<Player> (request);
-            if(playerEntity is null)
-            {
-                throw new ApplicationException("issue with mapper");
-            }
+            //if(playerEntity is null)
+            //{
+            //    throw new ApplicationException("issue with mapper");
+            //}
+            ArgumentNullException.ThrowIfNull(playerEntity);
 
             var newPlayer = await _playerRepo.AddAsync(playerEntity);
             var playerResponse = PlayerMapper.Mapper.Map<PlayerResponse>(newPlayer);

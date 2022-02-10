@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(PlayerContext))]
+    [DbContext(typeof(FBMContext))]
     [Migration("20220207172058_UpdateDbPlayerTeamName")]
     partial class UpdateDbPlayerTeamName
     {

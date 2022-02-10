@@ -23,5 +23,5 @@ public class Team
     public string Stadium { get; set; }
 
 
-    public ICollection<Player>? Players { get; set; }
+    public ICollection<Player> Players { get; set; }
 }

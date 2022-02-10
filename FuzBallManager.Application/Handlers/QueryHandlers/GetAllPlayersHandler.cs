@@ -3,7 +3,7 @@ using Domain.Entities;
 using MediatR;
 using Application.Queries;
 
-namespace Application.Handlers.CommandHandlers
+namespace Application.Handlers.QueryHandlers
 {
     public class GetAllPlayersHandler : IRequestHandler<GetAllPlayersQuery, List<Player>>
     {
