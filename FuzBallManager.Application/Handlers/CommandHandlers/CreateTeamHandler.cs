@@ -1,8 +1,8 @@
 ﻿using Application.Commands;
 using Application.Mappers;
 using Application.Responses;
-using Domain.Entities;
 using Domain.Repositories;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Handlers.CommandHandlers
@@ -16,7 +16,9 @@ namespace Application.Handlers.CommandHandlers
         }
         public async Task<TeamResponse> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
         {
-            var teamEntity = TeamMapper.Mapper.Map<Team>(request);
+            var teamEntity = TeamMapper.Mapper.Map<Team> (request);
+
+            //var teamEntity = request.Team.Adapt<TeamResponse>() ;
 
             ArgumentNullException.ThrowIfNull(teamEntity);
 

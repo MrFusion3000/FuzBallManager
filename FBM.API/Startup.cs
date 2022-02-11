@@ -31,11 +31,11 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FBM.API", Version = "v1" });
             });
 
-            //MapsterMapster.MapsterSetter();
+            MapsterMapster.MapsterSetter();
             services.AddAutoMapper(typeof(Startup));
-            services.AddMediatR(typeof(CreatePlayerHandler).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(CreateManagerHandler).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(CreateTeamHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(CreatePlayerHandler).GetTypeInfo().Assembly, typeof(CreateManagerHandler).GetTypeInfo().Assembly, typeof(CreateTeamHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(CreateManagerHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(CreateTeamHandler).GetTypeInfo().Assembly);
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddTransient<IManagerRepository, ManagerRepository>();

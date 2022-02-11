@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Responses
+﻿namespace Application.Responses
 {
     public class TeamResponse
     {
@@ -16,6 +10,6 @@ namespace Application.Responses
         public int? Lost { get; set; }
         public int? GoalsForward { get; set; }
         public int? GoalsAgainst { get; set; }
-        public string Stadium { get; set; }
+        public string? Stadium { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using Application.Responses;
-using Domain.Entities;
+﻿using Application.Commands;
 using Application.Mappers;
-using Application.Commands;
-using MediatR;
+using Application.Responses;
 using Domain.Repositories;
+using Domain.Entities;
+using MediatR;
 
 namespace Application.Handlers.CommandHandlers
 {

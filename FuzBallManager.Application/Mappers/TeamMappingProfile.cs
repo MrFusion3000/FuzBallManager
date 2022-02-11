@@ -9,7 +9,7 @@ namespace Application.Mappers
     {
         public TeamMappingProfile()
         {
-            CreateMap<Team, TeamResponse> ().ReverseMap();
+            CreateMap<Team, TeamResponse>().ReverseMap();
             CreateMap<Team, CreateTeamCommand>().ReverseMap();
         }
     }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 
 namespace Application.Mappers
-
 {
     public class PlayerMapper
     {
