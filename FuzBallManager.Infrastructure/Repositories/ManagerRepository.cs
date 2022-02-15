@@ -2,23 +2,24 @@
 using Domain.Repositories;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Base;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
     public class ManagerRepository : Repository<Manager>, IManagerRepository
     {
         public ManagerRepository(FBMContext FBMContext) : base(FBMContext) { }
-        public async Task<IEnumerable<Manager>> GetManagerByLastName(string lastname)
+        public async Task<Manager> GetManagerByLastName(string lastname, CancellationToken cancellationToken)
         {
-            return await _FBMContext.Managers
-                .Where(m => m.LastName == lastname)
-                .ToListAsync();
+            var manager = await _FBMContext.Managers
+                .FirstOrDefaultAsync(m => m.LastName == lastname, cancellationToken);
+
+            if (manager == null) return default;
+
+            var managerResponse = manager.Adapt<Manager>();
+
+            return managerResponse;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Application.Responses;
+using Domain.Entities;
 using MediatR;
+using Mapster;
 
 namespace Application.Commands
 {

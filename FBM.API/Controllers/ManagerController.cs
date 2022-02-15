@@ -24,7 +24,19 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _mediator.Send(new GetManagerQuery()));
+            return Ok(await _mediator.Send(new GetAllManagersQuery()));
+        }
+
+        /// <summary>
+        /// Gets Manager data.
+        /// </summary>
+        /// <param name="lastname"></param>
+        /// <returns></returns>
+        [HttpGet("GetManager/{lastname}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetManager(string lastname )
+        {
+            return Ok(await _mediator.Send(new GetManagerQuery { LastName = lastname }));
         }
 
         /// <summary>

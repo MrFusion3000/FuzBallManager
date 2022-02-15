@@ -1,20 +1,26 @@
-﻿using Domain.Repositories;
+﻿using Application.Queries;
 using Domain.Entities;
+using Domain.Repositories;
 using MediatR;
-using Application.Queries;
 
 namespace Application.Handlers.QueryHandlers
 {
-    public class GetManagerHandler : IRequestHandler<GetManagerQuery, List<Manager>>
+    public class GetManagerHandler : IRequestHandler<GetManagerQuery, Manager>
     {
         private readonly IManagerRepository _managerRepository;
         public GetManagerHandler(IManagerRepository managerRepository)
         {
             _managerRepository = managerRepository;
         }
-        public async Task<List<Manager>> Handle(GetManagerQuery request, CancellationToken cancellationToken)
+        public async Task<Manager> Handle(GetManagerQuery request, CancellationToken cancellationToken)
         {
-            return (List<Manager>) await _managerRepository.GetAllAsync();
+            var lastname = request.LastName;
+
+            var manager = await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
+            //var managerResponse = manager.Adapt<Manager>();
+
+            return manager;
+            //return (Manager)await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
         }
     }
 }

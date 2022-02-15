@@ -18,8 +18,6 @@ namespace Application.Handlers.CommandHandlers
         {
             var teamEntity = TeamMapper.Mapper.Map<Team> (request);
 
-            //var teamEntity = request.Team.Adapt<TeamResponse>() ;
-
             ArgumentNullException.ThrowIfNull(teamEntity);
 
             var newTeam = await _teamRepo.AddAsync(teamEntity);

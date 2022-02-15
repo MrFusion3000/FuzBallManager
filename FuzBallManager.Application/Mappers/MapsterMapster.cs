@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Mapster;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
 public class MapsterMapster
