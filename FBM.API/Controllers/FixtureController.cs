@@ -8,45 +8,45 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeamController : ControllerBase
+    public class FixtureController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public TeamController(IMediator mediator)
+        public FixtureController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         /// <summary>
-        /// Get Team data.
-        /// </summary>
-        /// <param name="teamname"></param>
-        /// <returns></returns>
-        [HttpGet("GetByTeamName/{teamname}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByTeamName(string teamname)
-        {
-            return Ok(await _mediator.Send(new GetTeamQuery { TeamName = teamname }));
-        }
-
-        /// <summary>
-        /// Get All Teams data.
+        /// Gets Manager data.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAllTeams()
+        public async Task<IActionResult> Get()
         {
-            return Ok(await _mediator.Send(new GetAllTeamsQuery()));
+            return Ok(await _mediator.Send(new GetAllFixturesQuery()));
         }
 
         /// <summary>
-        /// Creates a New Team.
+        /// Gets Manager data.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("GetFixture/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetFixture(Guid id)
+        {
+            return Ok(await _mediator.Send(new GetFixtureQuery { FixtureID = id }));
+        }
+
+        /// <summary>
+        /// Creates a New Manager.
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<TeamResponse>> CreateTeam([FromBody] CreateTeamCommand command)
+        public async Task<ActionResult<ManagerResponse>> CreateFixture([FromBody] CreateFixtureCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

@@ -1,13 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Domain.Entities
+﻿namespace Application.Responses
 {
-    public class Fixture
+    public class FixtureResponse
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid FixtureID { get; set; }
+        public int FixtureID { get; set; }
         public Guid HomeTeamId { get; set; }
         public Guid AwayTeamId { get; set; }
         public int HomeTeamScore { get; set; }

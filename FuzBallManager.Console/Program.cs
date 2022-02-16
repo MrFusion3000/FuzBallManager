@@ -1,43 +1,34 @@
-﻿using System.Net.Http.Headers;
-using System.Text.Json;
-using UIConsole;
-
-namespace ConsoleClient;
+﻿namespace UIConsole;
 class Program
 {
-    static readonly HttpClient client = new();
+    //static readonly HttpClient client = new();
     static async Task Main(string[] args)
     {
-        var teams = await ProcessRepositories();
+        var manager = await Manager.GetManager();
 
-        if (teams != null)
+        if (manager != null)
         {
-            Console.WriteLine(teams.FirstName + " " + teams.LastName + " " + teams.ManagingTeamName);
+            Console.WriteLine(manager.FirstName + " " + manager.LastName);
+            Console.SetCursorPosition(40, 0);
+            Console.WriteLine(manager.ManagingTeamName);
+            Console.WriteLine("---------------------------------------------------------------------------------");
         }
         else
         {
 
         }
-    }
 
-    private static async Task<ManagerRepository?> ProcessRepositories()
-    {
-        //client.BaseAddress = new Uri("Https://localhost:5001/api");
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+        var teams = await Teams.GetAllTeams();
 
-        //var streamTaskGetTeams = client.GetStreamAsync("https://localhost:5001/api/Team");
-        var streamTaskGetManager = client.GetStreamAsync("https://localhost:5001/api/Manager/GetManager/Bumpa");
-
-        //var teams = await JsonSerializer.DeserializeAsync<List<TeamRepository>>(await streamTaskGetTeams);
-        var managedTeam = await JsonSerializer.DeserializeAsync<ManagerRepository>(await streamTaskGetManager);
-
-        if (managedTeam == null)
+        int i = 2;
+        foreach (var team in teams)
         {
-            return default;
+            if (!team.TeamName.Contains(manager.ManagingTeamName))
+            {
+                Console.WriteLine(team.TeamName);
+                Console.SetCursorPosition(40, i++);
+                Console.WriteLine(team.Stadium);
+            }
         }
-
-        return managedTeam;
     }
 }

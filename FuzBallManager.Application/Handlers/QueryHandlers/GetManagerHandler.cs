@@ -16,11 +16,11 @@ namespace Application.Handlers.QueryHandlers
         {
             var lastname = request.LastName;
 
-            var manager = await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
+            //var manager = await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
             //var managerResponse = manager.Adapt<Manager>();
 
-            return manager;
-            //return (Manager)await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
+            //return manager;
+            return (Manager)await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
         }
     }
 }

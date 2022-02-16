@@ -26,7 +26,7 @@ namespace Infrastructure.Repositories.Base
         {
             return await _FBMContext.Set<T>().ToListAsync();
         }
-        public async Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(Guid? id)
         {
             return await _FBMContext.Set<T>().FindAsync(id);
         }

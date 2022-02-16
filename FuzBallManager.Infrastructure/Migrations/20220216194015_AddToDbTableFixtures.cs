@@ -13,8 +13,7 @@ namespace Infrastructure.Migrations
                 name: "Fixtures",
                 columns: table => new
                 {
-                    FixtureID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FixtureID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     HomeTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AwayTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     HomeTeamScore = table.Column<int>(type: "int", nullable: false),
@@ -27,6 +26,8 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Fixtures", x => x.FixtureID);
                 });
+
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

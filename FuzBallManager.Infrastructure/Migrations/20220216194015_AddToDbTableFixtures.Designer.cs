@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(FBMContext))]
-    partial class PlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20220216194015_AddToDbTableFixtures")]
+    partial class AddToDbTableFixtures
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +26,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Fixture", b =>
                 {
-                    b.Property<int>("FixtureID")
+                    b.Property<Guid>("FixtureID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FixtureID"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Attendance")
                         .HasColumnType("int");

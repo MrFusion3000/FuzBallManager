@@ -28,6 +28,18 @@ namespace API.Controllers
         }
 
         /// <summary>
+        /// Gets all Players.
+        /// </summary>
+        /// <param name="teamname"></param>
+        /// <returns></returns>
+        [HttpGet("GetByTeamName/{teamname}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPlayersByTeamName(string teamname)
+        {
+            return Ok(await _mediator.Send(new GetPlayersByTeamNameQuery { TeamName = teamname}));
+        }
+
+        /// <summary>
         /// Creates a New Player.
         /// </summary>
         /// <param name="command"></param>

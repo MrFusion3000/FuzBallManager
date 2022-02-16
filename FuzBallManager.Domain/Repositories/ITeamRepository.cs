@@ -5,6 +5,6 @@ namespace Domain.Repositories
 {
     public interface ITeamRepository : IRepository<Team>
     {
-        Task<IEnumerable<Team>> GetTeamByTeamName(string teamName);
+        Task<Team> GetTeamByTeamName(string teamName, CancellationToken cancellationToken);
     }
 }

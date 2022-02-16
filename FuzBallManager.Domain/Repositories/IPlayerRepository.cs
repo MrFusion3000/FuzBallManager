@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
 using Domain.Repositories.Base;
-using Domain.Entities;
 
 namespace Domain.Repositories
 {
     public interface IPlayerRepository : IRepository<Player>
     {
-        Task <IEnumerable<Player>> GetPlayerByLastName (string lastName);
-        //Task <List<Player>> GetAllPlayersAsync(GetAllPlayersQuery query, CancellationToken cancellationToken);
+        Task<Player> GetPlayerByFirstNameLastName(string firstName, string lastName, CancellationToken cancellationToken);
+        Task<List<Player>> GetPlayersByTeamNameAsync(string teamName, CancellationToken cancellationToken);
     }
 }

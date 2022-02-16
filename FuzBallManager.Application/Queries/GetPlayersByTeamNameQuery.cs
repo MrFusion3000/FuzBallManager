@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Queries
 {
-    public class GetTeamQuery : IRequest<Team>
+    public class GetPlayersByTeamNameQuery : IRequest<List<Player>>
     {
         public string? TeamName { get; set; }
     }

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Handlers.QueryHandlers
 {
-    public class GetTeamHandler : IRequestHandler<GetTeamQuery, List<Team>>
+    public class GetTeamHandler : IRequestHandler<GetTeamQuery, Team>
     {
         private readonly ITeamRepository _teamRepository;
 
@@ -13,9 +13,11 @@ namespace Application.Handlers.QueryHandlers
         {
             _teamRepository = teamRepository;
         }
-        public async Task<List<Team>> Handle(GetTeamQuery request, CancellationToken cancellationToken)
+        public async Task<Team> Handle(GetTeamQuery request, CancellationToken cancellationToken)
         {
-            return (List<Team>)await _teamRepository.GetAllAsync();
+            var teamname = request.TeamName;
+
+            return (Team)await _teamRepository.GetTeamByTeamName(teamname, cancellationToken);
         }
     }
 }
