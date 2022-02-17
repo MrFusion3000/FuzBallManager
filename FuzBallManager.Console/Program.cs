@@ -4,12 +4,17 @@ class Program
     //static readonly HttpClient client = new();
     static async Task Main(string[] args)
     {
-        var manager = await Manager.GetManager();
+        Manager NewManager = new();
+
+        Console.WriteLine("Enter Manager Lastname:\n");
+        string lastname = Console.ReadLine();
+
+        var manager = await NewManager.GetManager(lastname);
 
         if (manager != null)
         {
             Console.WriteLine(manager.FirstName + " " + manager.LastName);
-            Console.SetCursorPosition(40, 0);
+            Console.SetCursorPosition(40, 4);
             Console.WriteLine(manager.ManagingTeamName);
             Console.WriteLine("---------------------------------------------------------------------------------");
         }

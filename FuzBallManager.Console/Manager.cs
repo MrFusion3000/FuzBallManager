@@ -12,14 +12,16 @@ namespace UIConsole
 {
         static readonly HttpClient client = new();
 
-        public static async Task<ManagerRepository?> GetManager()
+        public  async Task<ManagerRepository?> GetManager(string lastname)
         {
-            //client.BaseAddress = new Uri("Https://localhost:5001/api");
+
+            client.BaseAddress = new Uri("Https://localhost:5001/api");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var streamTaskGetManager = client.GetStreamAsync("https://localhost:5001/api/Manager/GetManager/Bumpa");
+            string clientBaseAddress = client.BaseAddress.ToString() + "/Manager/GetManager/" + lastname;
+            var streamTaskGetManager = client.GetStreamAsync(clientBaseAddress);
 
             var manager = await JsonSerializer.DeserializeAsync<ManagerRepository>(await streamTaskGetManager);
 
