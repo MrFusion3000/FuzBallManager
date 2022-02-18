@@ -5,12 +5,14 @@ namespace xUnitTest
 {
     public class UnitTests
     {
+        ShowManager manager = new();
+
         [Fact]
         public async void GetManagingTeamShouldWork()
         {
             //Arrange
-            Manager? manager = new();
-            ManagerRepository? teamManager = await manager.GetManager("Bumpa");
+            //Manager? manager = new();
+            ManagerRepository teamManager = await manager.GetManager("Bumpa");
 
             //Act
             string expected = "";
@@ -24,7 +26,7 @@ namespace xUnitTest
         public async void GetManagingTeamShouldFail()
         {
             //Arrange
-            Manager? manager = new();
+            //Manager? manager = new();
             ManagerRepository? teamManager = await manager.GetManager("Bumpa");
 
             //Act
