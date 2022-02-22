@@ -2,7 +2,7 @@
 
 namespace UIConsole
 {
-    public class PlayerRepository
+    public class PlayerDto
     {
         [JsonPropertyName("firstName")]
         public string? FirstName { get; set; }

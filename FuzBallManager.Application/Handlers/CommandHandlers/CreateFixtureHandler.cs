@@ -17,6 +17,7 @@ namespace Application.Handlers.CommandHandlers
         public async Task<FixtureResponse> Handle(CreateFixtureCommand request, CancellationToken cancellationToken)
         {
             var FixtureEntity = FixtureMapper.Mapper.Map<Fixture>(request);
+            
             //if (FixtureEntity is null)
             //{
             //    throw new ApplicationException("issue with mapper");

@@ -1,7 +1,6 @@
 ﻿namespace UIConsole;
 class Program
 {
-    //static readonly HttpClient client = new();
     static async Task Main(string[] args)
     {
         ShowManager NewManager = new();

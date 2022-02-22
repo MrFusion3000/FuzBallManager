@@ -2,15 +2,15 @@
 
 namespace UIConsole
 {
-    public class ManagerRepository
+    public class ManagerDto
     {
         [JsonPropertyName("firstName")]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; }
 
         [JsonPropertyName("lastName")]
-        public string? LastName { get; set; }
+        public string LastName { get; set; }
 
         [JsonPropertyName("managingTeamName")]
-        public string? ManagingTeamName { get; set; }
+        public string ManagingTeamName { get; set; }
     }
 }

@@ -3,16 +3,16 @@ using Xunit;
 
 namespace xUnitTest
 {
-    public class UnitTests
+    public class UnitTests_Manager
     {
-        ShowManager manager = new();
+        readonly ShowManager manager = new();
 
         [Fact]
         public async void GetManagingTeamShouldWork()
         {
             //Arrange
             //Manager? manager = new();
-            ManagerRepository teamManager = await manager.GetManager("Bumpa");
+            ManagerDto teamManager = await manager.GetManager("Bumpa");
 
             //Act
             string expected = "";
@@ -27,7 +27,7 @@ namespace xUnitTest
         {
             //Arrange
             //Manager? manager = new();
-            ManagerRepository? teamManager = await manager.GetManager("Bumpa");
+            ManagerDto? teamManager = await manager.GetManager("Bumpa");
 
             //Act
             string expected = "Manchester United";
@@ -36,8 +36,5 @@ namespace xUnitTest
             //Assert
             Assert.NotEqual(expected, actual);
         }
-
-
-
     }
 }

@@ -8,7 +8,7 @@ namespace UIConsole
     {
         static readonly HttpClient client = new();
 
-        public static async Task<List<TeamRepository>?> GetAllTeams()
+        public static async Task<List<TeamDto>?> GetAllTeams()
         {
             //client.BaseAddress = new Uri("Https://localhost:5001/api");
             client.DefaultRequestHeaders.Accept.Clear();
@@ -17,7 +17,7 @@ namespace UIConsole
 
             var streamTaskGetTeams = client.GetStreamAsync("https://localhost:5001/api/Team");
 
-            var teams = await JsonSerializer.DeserializeAsync<List<TeamRepository>>(await streamTaskGetTeams);
+            var teams = await JsonSerializer.DeserializeAsync<List<TeamDto>>(await streamTaskGetTeams);
 
             if (teams == null)
             {

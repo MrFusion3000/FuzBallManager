@@ -2,7 +2,7 @@
 
 namespace UIConsole
 {
-    public class TeamRepository
+    public class TeamDto
     {
         [JsonPropertyName("teamName")]
         public string? TeamName { get; set; }

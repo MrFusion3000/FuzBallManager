@@ -25,6 +25,10 @@ public class MapsterMapster
             .NewConfig()
             .PreserveReference(true);
 
+        //TypeAdapterConfig<Fixture, FixtureResponse>
+        //    .NewConfig()
+        //    .PreserveReference(true);
+
 
         //If ignore ID here but leave ID property in DTO then ID = 00000000-0000-0000-0000-000000000000
         //.Ignore("ID")
