@@ -1,35 +1,34 @@
 ﻿using Application;
-using Domain.Entities;
 using System;
-using UIConsole;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace xUnitTest
 {
     public class UnitTests_Fixtures
     {
-        [Fact]
-        public void CalculateMatchGivesHomeTeamWin()
+        private readonly ITestOutputHelper output;
+
+        public UnitTests_Fixtures(ITestOutputHelper output)
         {
+            this.output = output;
+        }
+
+
+        [Fact]
+        public void CalculateMatchTeamScore()
+        {
+            //Function to determine the scored goals by a team in a given match
+            //
             //Arr
 
             //Act
-            var result = CalcMatchResults.CalcHomeTeamScore();
+            var result = CalcMatchResults.CalcTeamScore();
             System.Console.WriteLine(result);
 
             //Ass
-            Assert.InRange((int)result,0,10);
-        }
-
-        [Fact]
-        public void CalculateMatchGivesAwayTeamWin()
-        {
-            //Arr
-
-            //Act
-
-            //Ass
-
+            output.WriteLine("Goals by HomeTeam : {0}", result);
+            Assert.InRange((int)result, 0, 10);
         }
 
         [Fact]
@@ -38,7 +37,7 @@ namespace xUnitTest
             //Arr
             //Fixture match = new();
             //Act
-           var result = CalcMatchResults.MatchResult();
+            var result = CalcMatchResults.MatchResult();
 
             //Ass
             Assert.Equal((0, 0), result);
@@ -53,7 +52,7 @@ namespace xUnitTest
             //Act
 
             //Ass
-            Assert.Throws<NotImplementedException> (() => calcFixtures.CalcSeasonFixtures());
+            Assert.Throws<NotImplementedException>(() => calcFixtures.CalcSeasonFixtures());
         }
 
     }

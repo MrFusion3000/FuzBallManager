@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities;
-
+//TODO Add props for Energy, Morale, Defence, Midfield, Attack
 public class Team
 {
     [Key]
