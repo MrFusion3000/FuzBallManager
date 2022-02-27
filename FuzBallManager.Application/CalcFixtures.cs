@@ -9,11 +9,11 @@ namespace Application
 {
     public class CalcFixtures
     {
-        public List<Fixture> CalcSeasonFixtures()
+        public List<Fixture>? CalcSeasonFixtures()
         {
             NotImplementedException("CalcFixtures not yet implemented");
 
-            return null;
+            return default ;
         }
 
         private void NotImplementedException(string v)

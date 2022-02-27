@@ -20,19 +20,11 @@ namespace Application
             return TeamScore;
         }
 
-        //public static int CalcAwayTeamScores()
-        //{
-        //    Random score = new();
-        //    int TeamScore = score.Next(0,10);
-
-        //    return TeamScore;
-        //}
-
         public static (int,int) MatchResult ()
         {
-            (int, int)? FinalMatchResult = (0, 0);
+            (int, int) FinalMatchResult = (CalcTeamScore(), CalcTeamScore());
 
-            return ((int, int))FinalMatchResult;
+            return FinalMatchResult;
         }
     }
 }

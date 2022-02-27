@@ -1,5 +1,8 @@
 ﻿using Application;
+using Domain.Entities;
 using System;
+using System.Collections.Generic;
+using UIConsole;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -40,19 +43,43 @@ namespace xUnitTest
             var result = CalcMatchResults.MatchResult();
 
             //Ass
-            Assert.Equal((0, 0), result);
+            Assert.InRange(result.Item1, 0, 10);
+            output.WriteLine("Team 1 Score: {0}", result.Item1);
+            Assert.InRange(result.Item2, 0, 10);
+            output.WriteLine("Team 2 Score: {0}", result.Item2);
+
+        }
+
+        readonly ShowTeam team = new();
+        [Fact]
+        public async void CalculateFixtures()
+        {
+            //Arr
+            CalcFixtures calcFixtures = new();
+            //var teams = await team.GetTeams();
+
+            //Act
+
+
+            //Ass
+            Assert.Throws<NotImplementedException>(() => calcFixtures.CalcSeasonFixtures());
+            output.WriteLine("Fixtures calculated.");
 
         }
 
         [Fact]
-        public void CalculateFixtures()
+        public async void GetAllTeams()
         {
             //Arr
-            CalcFixtures calcFixtures = new();
+            var teams = await team.GetTeams();
+
             //Act
 
+
             //Ass
-            Assert.Throws<NotImplementedException>(() => calcFixtures.CalcSeasonFixtures());
+            Assert.NotNull(teams);
+            output.WriteLine("List of teams fetched. {0}", teams.TeamName);
+
         }
 
     }

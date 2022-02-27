@@ -9,5 +9,10 @@ namespace UIConsole
 
         [JsonPropertyName("stadium")]
         public string? Stadium { get; set; }
+
+        public static implicit operator List<object>(TeamDto v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

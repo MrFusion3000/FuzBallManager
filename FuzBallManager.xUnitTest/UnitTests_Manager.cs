@@ -5,7 +5,9 @@ namespace xUnitTest
 {
     public class UnitTests_Manager
     {
-        readonly ShowManager manager = new();
+        readonly ShowManager manager1 = new();
+        readonly ShowManager manager2 = new();
+
 
         [Fact]
         public async void GetManagingTeamShouldWork()
@@ -13,8 +15,8 @@ namespace xUnitTest
             //Fetch the Managers Teamname
 
             //Arrange
-            //Manager? manager = new();
-            ManagerDto teamManager = await manager.GetManager("Bumpa");
+            string managerLastName = "Bumpa";
+            ManagerDto? teamManager = await manager1.GetManager(managerLastName);
 
             //Act
             string expected = "";
@@ -22,14 +24,17 @@ namespace xUnitTest
 
             //Assert
             Assert.Equal(expected, actual);
+            actual = "";
         }
 
         [Fact]
         public async void GetManagingTeamShouldFail()
         {
             //Arrange
+            string managerLastName = "Bumpa";
+
             //Manager? manager = new();
-            ManagerDto? teamManager = await manager.GetManager("Bumpa");
+            ManagerDto? teamManager = await manager2.GetManager(managerLastName);
 
             //Act
             string expected = "Manchester United";
