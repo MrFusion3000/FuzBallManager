@@ -5,34 +5,31 @@ class Program
     {
         ShowManager NewManager = new();
 
-        Console.WriteLine("Enter Manager Lastname:\n");
+        Console.Write("Enter Manager Firstname: ");
+        string firstname = Console.ReadLine();
+        Console.Write("Enter Manager Lastname: ");
         string lastname = Console.ReadLine();
 
         var manager = await NewManager.GetManager(lastname);
 
         if (manager != null)
         {
-            Console.WriteLine(manager.FirstName + " " + manager.LastName);
-            Console.SetCursorPosition(40, 3);
+            Console.Write("Manager exists: " + manager.FirstName + " " + manager.LastName);
+            Console.SetCursorPosition(40, Console.CursorTop);
             Console.WriteLine(manager.ManagingTeamName);
             Console.WriteLine("---------------------------------------------------------------------------------");
+
         }
         else
         {
-
+            PrintTeams printTeams = new ();
+            await PrintTeams.PrintTeamsToConsole(manager);
+            //Console.Write("Choose team:");
+            //string choosenTeam = Console.ReadLine();
         }
 
-        var teams = await Teams.GetAllTeams();
+        
 
-        int i = 6;
-        foreach (var team in teams)
-        {
-            if (!team.TeamName.Contains(manager.ManagingTeamName))
-            {
-                Console.WriteLine(team.TeamName);
-                Console.SetCursorPosition(40, i++);
-                Console.WriteLine(team.Stadium);
-            }
-        }
+
     }
 }

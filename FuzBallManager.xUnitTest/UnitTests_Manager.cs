@@ -1,4 +1,5 @@
-﻿using UIConsole;
+﻿using Application;
+using UIConsole;
 using Xunit;
 
 namespace xUnitTest
@@ -16,7 +17,7 @@ namespace xUnitTest
 
             //Arrange
             string managerLastName = "Bumpa";
-            ManagerDto? teamManager = await manager1.GetManager(managerLastName);
+            ManagerJsonDto? teamManager = await manager1.GetManager(managerLastName);
 
             //Act
             string expected = "";
@@ -34,7 +35,7 @@ namespace xUnitTest
             string managerLastName = "Bumpa";
 
             //Manager? manager = new();
-            ManagerDto? teamManager = await manager2.GetManager(managerLastName);
+            ManagerJsonDto? teamManager = await manager2.GetManager(managerLastName);
 
             //Act
             string expected = "Manchester United";

@@ -1,4 +1,5 @@
 ﻿using ApiClient;
+using Application;
 using Domain.Entities;
 using Mapster;
 
@@ -8,10 +9,8 @@ public class ShowTeam
 {
     private List<Team> allteams = new();
 
-    public async Task<TeamDto> GetTeams()
+    public async Task<TeamJsonDto> GetTeams()
     {
-
-
         allteams = await TeamClient.GetAllTeams();
 
         if (allteams == null)
@@ -19,8 +18,8 @@ public class ShowTeam
             return default;
         }
 
-        var allteamsDto = allteams.Adapt<TeamDto>();
+        var allteamsDto = allteams.Adapt<TeamJsonDto>();
 
-        return (TeamDto)allteamsDto;
+        return (TeamJsonDto)allteamsDto;
     }
 }

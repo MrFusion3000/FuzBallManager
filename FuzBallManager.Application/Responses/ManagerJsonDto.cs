@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace UIConsole
+namespace Application
 {
-    public class ManagerDto
+    public class ManagerJsonDto
     {
         [JsonPropertyName("firstName")]
         public string FirstName { get; set; }

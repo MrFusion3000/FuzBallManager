@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace UIConsole
+namespace Application
 {
     public class PlayerDto
     {

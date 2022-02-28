@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.API", "4.API", "{C322043E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.UIConsole", "5.UIConsole", "{59DFF82E-1F55-433C-9357-C39A7808396F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClient", "ApiClient\ApiClient.csproj", "{8A280B7C-E7B3-4B90-9BEA-527BD9532104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClient", "ApiClient\ApiClient.csproj", "{8A280B7C-E7B3-4B90-9BEA-527BD9532104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

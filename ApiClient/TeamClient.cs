@@ -11,7 +11,6 @@ public class TeamClient : BaseClient
 
     public static async Task<List<Team>> GetAllTeams()
     {
-        //return await GetRoomClient().AppendPathSegment("GetByIdAndDateTime").SetQueryParams(new { id, queryDatee }).GetJsonAsync<RoomDto>();
         return await GetTeamClient().GetJsonAsync<List<Team>>();
     }
 

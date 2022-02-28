@@ -11,14 +11,8 @@ namespace Application
     {
         public List<Fixture>? CalcSeasonFixtures()
         {
-            NotImplementedException("CalcFixtures not yet implemented");
 
             return default ;
-        }
-
-        private void NotImplementedException(string v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

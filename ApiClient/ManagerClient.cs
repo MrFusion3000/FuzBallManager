@@ -1,4 +1,5 @@
 ﻿using ApiClient;
+using Application;
 using Application.Responses;
 using Domain.Entities;
 using Flurl;
@@ -9,14 +10,13 @@ public class ManagerClient : BaseClient
 {
     private static Url GetManagerClient() => GetClient().AppendPathSegment("Manager");
 
-    public static async Task<Manager> GetManagerByLastName(string lastname)
+    public static async Task<ManagerJsonDto> GetManagerByLastName(string lastname)
     {
-        //return await GetRoomClient().AppendPathSegment("GetByIdAndDateTime").SetQueryParams(new { id, queryDatee }).GetJsonAsync<RoomDto>();
-        return await GetManagerClient().AppendPathSegment("GetManager").AppendPathSegment(lastname).GetJsonAsync<Manager>();
+        return await GetManagerClient().AppendPathSegment("GetManager").AppendPathSegment(lastname).GetJsonAsync<ManagerJsonDto>();
+    }
+    public static async void Create(Manager manager)
+    {
+        await GetManagerClient().AppendPathSegment("Manager").PostJsonAsync(manager);
     }
 
-    //public async Task<Manager> GetManagerAsync()
-    //{
-    //    return await GetManagerClient().GetJsonAsync<Manager>();
-    //}
 }
