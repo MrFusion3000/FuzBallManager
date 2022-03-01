@@ -12,5 +12,9 @@ namespace Application
 
         [JsonPropertyName("managingTeamName")]
         public string ManagingTeamName { get; set; }
+
+        //public override string ToString() => FirstName + LastName;
+        public override string ToString() => ManagingTeamName;
+
     }
 }

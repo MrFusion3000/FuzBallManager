@@ -14,9 +14,10 @@ public class ManagerClient : BaseClient
     {
         return await GetManagerClient().AppendPathSegment("GetManager").AppendPathSegment(lastname).GetJsonAsync<ManagerJsonDto>();
     }
-    public static async void Create(Manager manager)
+    public static async     Task
+Create(Manager manager)
     {
-        await GetManagerClient().AppendPathSegment("Manager").PostJsonAsync(manager);
+        await GetManagerClient().PostJsonAsync(manager);
     }
 
 }

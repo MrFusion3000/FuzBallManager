@@ -1,13 +1,12 @@
 ﻿using ApiClient;
 using Application;
 using Domain.Entities;
-using System.Linq;
 
 namespace UIConsole
 {
     public class PrintTeams
     {
-        public static async Task PrintTeamsToConsole(ManagerJsonDto manager)
+        public static async Task<TeamJsonDto> PrintTeamsToConsole()
         {
             var teams = await TeamClient.GetAllTeams();
 
@@ -25,9 +24,11 @@ namespace UIConsole
             int chosenTeam = Int32.Parse(Console.ReadLine());
 
 
-            var managedTeam = teams.ElementAtOrDefault(chosenTeam);
-            Console.WriteLine("You chose : {0} {1}", chosenTeam, managedTeam);
+            var managedTeam = teams.ElementAtOrDefault(chosenTeam - 1);
+            Console.WriteLine("You chose : {0} {1}, {2}", chosenTeam, managedTeam, managedTeam.TeamID);
             Console.ReadKey();
-            }
+
+            return managedTeam;
+        }
     }
 }

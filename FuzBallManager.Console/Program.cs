@@ -22,10 +22,12 @@ class Program
         }
         else
         {
+            manager = new() { FirstName = firstname, LastName = lastname };
             PrintTeams printTeams = new ();
-            await PrintTeams.PrintTeamsToConsole(manager);
-            //Console.Write("Choose team:");
-            //string choosenTeam = Console.ReadLine();
+            var managedTeam = await PrintTeams.PrintTeamsToConsole();
+
+            ShowManager showManager = new ();
+            await showManager.Create(manager, managedTeam);
         }
 
         

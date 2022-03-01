@@ -3,6 +3,7 @@ using Application.Mappers;
 using Application.Responses;
 using Domain.Entities;
 using Domain.Repositories;
+using Mapster;
 using MediatR;
 
 namespace Application.Handlers.CommandHandlers
@@ -16,7 +17,9 @@ namespace Application.Handlers.CommandHandlers
         }
         public async Task<ManagerResponse> Handle(CreateManagerCommand request, CancellationToken cancellationToken)
         {
-            var managerEntity = ManagerMapper.Mapper.Map<Manager>(request);
+            //var managerEntity = ManagerMapper.Mapper.Map<Manager>(request);
+            var managerEntity = request.Adapt<Manager>();
+
             //if (managerEntity is null)
             //{
             //    throw new ApplicationException("issue with mapper");
@@ -25,7 +28,9 @@ namespace Application.Handlers.CommandHandlers
             ArgumentNullException.ThrowIfNull(managerEntity);
 
             var newManager = await _managerRepo.AddAsync(managerEntity);
-            var managerResponse = ManagerMapper.Mapper.Map<ManagerResponse>(newManager);
+            //var managerResponse = ManagerMapper.Mapper.Map<ManagerResponse>(newManager);
+            var managerResponse = request.Adapt<ManagerResponse>();
+
 
             return managerResponse;
         }

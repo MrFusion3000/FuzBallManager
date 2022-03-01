@@ -1,6 +1,8 @@
 ﻿using Application.Queries;
+using Application.Responses;
 using Domain.Entities;
 using Domain.Repositories;
+using Mapster;
 using MediatR;
 
 namespace Application.Handlers.QueryHandlers
@@ -15,9 +17,10 @@ namespace Application.Handlers.QueryHandlers
         }
         public async Task<Team> Handle(GetTeamQuery request, CancellationToken cancellationToken)
         {
-            var teamname = request.TeamName;
+            var getreq = request.Adapt<TeamResponse>();
+            var teamname = getreq.TeamName;
 
-            return (Team)await _teamRepository.GetTeamByTeamName(teamname, cancellationToken);
+            return await _teamRepository.GetTeamByTeamName(teamname, cancellationToken);
         }
     }
 }

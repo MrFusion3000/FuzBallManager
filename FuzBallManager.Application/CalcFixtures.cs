@@ -1,18 +1,12 @@
 ﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application
+namespace Application;
+
+public class CalcFixtures
 {
-    public class CalcFixtures
+    public List<Fixture>? CalcSeasonFixtures()
     {
-        public List<Fixture>? CalcSeasonFixtures()
-        {
 
-            return default ;
-        }
+        return default;
     }
 }

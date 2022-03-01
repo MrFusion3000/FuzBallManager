@@ -3,6 +3,7 @@ using Application.Mappers;
 using Application.Responses;
 using Domain.Entities;
 using Domain.Repositories;
+using Mapster;
 using MediatR;
 
 namespace Application.Handlers.CommandHandlers
@@ -16,7 +17,8 @@ namespace Application.Handlers.CommandHandlers
         }
         public async Task<FixtureResponse> Handle(CreateFixtureCommand request, CancellationToken cancellationToken)
         {
-            var FixtureEntity = FixtureMapper.Mapper.Map<Fixture>(request);
+            //var FixtureEntity = FixtureMapper.Mapper.Map<Fixture>(request);
+            var FixtureEntity = request.Adapt<Fixture>();
             
             //if (FixtureEntity is null)
             //{
@@ -26,7 +28,8 @@ namespace Application.Handlers.CommandHandlers
             ArgumentNullException.ThrowIfNull(FixtureEntity);
 
             var newFixture = await _FixtureRepo.AddAsync(FixtureEntity);
-            var FixtureResponse = FixtureMapper.Mapper.Map<FixtureResponse>(newFixture);
+            //var FixtureResponse = FixtureMapper.Mapper.Map<FixtureResponse>(newFixture);
+            var FixtureResponse = newFixture.Adapt<FixtureResponse>();
 
             return FixtureResponse;
         }

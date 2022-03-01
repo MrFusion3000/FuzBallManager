@@ -4,6 +4,7 @@ using Application.Responses;
 using Domain.Repositories;
 using Domain.Entities;
 using MediatR;
+using Mapster;
 
 namespace Application.Handlers.CommandHandlers
 {
@@ -16,12 +17,14 @@ namespace Application.Handlers.CommandHandlers
         }
         public async Task<TeamResponse> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
         {
-            var teamEntity = TeamMapper.Mapper.Map<Team> (request);
+            //var teamEntity = TeamMapper.Mapper.Map<Team> (request);
+            var teamEntity = request.Adapt<Team>();
 
             ArgumentNullException.ThrowIfNull(teamEntity);
 
             var newTeam = await _teamRepo.AddAsync(teamEntity);
-            var teamResponse = TeamMapper.Mapper.Map<TeamResponse>(newTeam);
+            //var teamResponse = TeamMapper.Mapper.Map<TeamResponse>(newTeam);
+            var teamResponse = newTeam.Adapt<TeamResponse>();
 
             return teamResponse;
         }

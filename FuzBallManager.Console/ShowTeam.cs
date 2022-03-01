@@ -7,7 +7,7 @@ namespace UIConsole;
 
 public class ShowTeam
 {
-    private List<Team> allteams = new();
+    private List<TeamJsonDto> allteams = new();
 
     public async Task<TeamJsonDto> GetTeams()
     {

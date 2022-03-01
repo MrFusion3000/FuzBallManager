@@ -1,4 +1,5 @@
 ﻿using ApiClient;
+using Application;
 using Application.Responses;
 using Domain.Entities;
 using Flurl;
@@ -9,9 +10,9 @@ public class TeamClient : BaseClient
 {
     private static Url GetTeamClient() => GetClient().AppendPathSegment("Team");
 
-    public static async Task<List<Team>> GetAllTeams()
+    public static async Task<List<TeamJsonDto>> GetAllTeams()
     {
-        return await GetTeamClient().GetJsonAsync<List<Team>>();
+        return await GetTeamClient().GetJsonAsync<List<TeamJsonDto>>();
     }
 
 }

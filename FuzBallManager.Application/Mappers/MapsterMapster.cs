@@ -23,7 +23,8 @@ public class MapsterMapster
 
         TypeAdapterConfig<Team, TeamResponse>
             .NewConfig()
-            .PreserveReference(true);
+            .PreserveReference(true)
+            .TwoWays();
 
         //TypeAdapterConfig<Fixture, FixtureResponse>
         //    .NewConfig()

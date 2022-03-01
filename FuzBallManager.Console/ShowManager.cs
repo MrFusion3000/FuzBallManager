@@ -22,4 +22,19 @@ public class ShowManager
 
         return playermanagerDto;
     }
+
+    public async Task Create(ManagerJsonDto newmanager, TeamJsonDto managingTeam)
+    {
+        var newPlayerManager = new Manager()
+        {
+            FirstName = newmanager.FirstName,
+            LastName = newmanager.LastName,
+            DateOfBirth = DateTime.UtcNow,
+            Score = 0,
+            Bank = 50000,
+            ManagingTeamID = managingTeam.TeamID
+        };
+
+        await ManagerClient.Create(newPlayerManager);
+    }
 }
