@@ -30,9 +30,11 @@ namespace Infrastructure.Repositories.Base
         {
             return await _FBMContext.Set<T>().FindAsync(id);
         }
-        public Task UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
+        public async Task UpdateAsync(T entity, CancellationToken cancellationToken)
+        {           
+           _FBMContext.Set<T>().Update(entity);
+
+           await _FBMContext.SaveChangesAsync(cancellationToken);
         }
 
     }

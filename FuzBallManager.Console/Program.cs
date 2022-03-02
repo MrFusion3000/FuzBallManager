@@ -23,11 +23,12 @@ class Program
         else
         {
             manager = new() { FirstName = firstname, LastName = lastname };
-            PrintTeams printTeams = new ();
+            //PrintTeams printTeams = new ();
             var managedTeam = await PrintTeams.PrintTeamsToConsole();
 
-            ShowManager showManager = new ();
-            await showManager.Create(manager, managedTeam);
+            //Save new Manager with chosen Name and Team from the team-list to DB
+            //ShowManager showManager = new ();
+            await ShowManager.Create(manager, managedTeam);
         }
 
         

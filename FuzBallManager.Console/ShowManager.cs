@@ -23,7 +23,7 @@ public class ShowManager
         return playermanagerDto;
     }
 
-    public async Task Create(ManagerJsonDto newmanager, TeamJsonDto managingTeam)
+    public static async Task Create(ManagerJsonDto newmanager, TeamJsonDto managingTeam)
     {
         var newPlayerManager = new Manager()
         {
@@ -33,6 +33,7 @@ public class ShowManager
             Score = 0,
             Bank = 50000,
             ManagingTeamID = managingTeam.TeamID
+            //ManagingTeamName = managingTeam.TeamName
         };
 
         await ManagerClient.Create(newPlayerManager);

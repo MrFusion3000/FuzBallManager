@@ -17,7 +17,7 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Gets Manager data.
+        /// Gets all Managers data.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -47,6 +47,18 @@ namespace API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<ManagerResponse>> CreateManager([FromBody] CreateManagerCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        /// <summary>
+        /// Creates a New Manager.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateManager/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<ManagerResponse>> UpdateManager([FromBody] UpdateManagerCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

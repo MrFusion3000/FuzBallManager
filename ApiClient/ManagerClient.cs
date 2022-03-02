@@ -1,6 +1,4 @@
-﻿using ApiClient;
-using Application;
-using Application.Responses;
+﻿using Application;
 using Domain.Entities;
 using Flurl;
 using Flurl.Http;
@@ -14,10 +12,14 @@ public class ManagerClient : BaseClient
     {
         return await GetManagerClient().AppendPathSegment("GetManager").AppendPathSegment(lastname).GetJsonAsync<ManagerJsonDto>();
     }
-    public static async     Task
-Create(Manager manager)
+    public static async Task Create(Manager manager)
     {
         await GetManagerClient().PostJsonAsync(manager);
+    }
+
+    public static async Task Update(Manager manager)
+    {
+        await GetManagerClient().PutJsonAsync(manager);
     }
 
 }
