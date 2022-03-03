@@ -28,11 +28,11 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Gets Manager data.
+        /// Gets a Fixtures data.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetFixture/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFixture(Guid id)
         {
