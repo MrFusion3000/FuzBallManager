@@ -5,7 +5,7 @@ using Mapster;
 
 namespace UIConsole;
 
-public class ShowManager
+public class ManagerRepo
 {
     private ManagerJsonDto playermanager = new();
 
@@ -33,7 +33,6 @@ public class ShowManager
             Score = 0,
             Bank = 50000,
             ManagingTeamID = managingTeam.TeamID
-            //ManagingTeamName = managingTeam.TeamName
         };
 
         await ManagerClient.Create(newPlayerManager);

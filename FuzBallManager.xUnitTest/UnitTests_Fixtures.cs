@@ -54,14 +54,15 @@ namespace xUnitTest
         public void CalculateFixtures()
         {
             //Arr
-            CalcFixtures calcFixtures = new();
+            //CalcFixtures calcFixtures = new();
+            //Manager manager = new();
             //var teams = await team.GetTeams();
 
             //Act
-
+            //manager = 
 
             //Ass
-            Assert.Throws<NotImplementedException>(() => calcFixtures.CalcSeasonFixtures());
+            //Assert.Throws<NotImplementedException>(() => calcFixtures.CalcSeasonFixturesAsync(manager));
             output.WriteLine("Fixtures calculated.");
 
         }

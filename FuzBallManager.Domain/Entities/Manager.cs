@@ -14,6 +14,6 @@ namespace Domain.Entities
         public int Score { get; set; }
         public int Bank { get; set; }
         public Guid ManagingTeamID { get; set; }
-        public string ManagingTeamName { get; set; }
+        //public string ManagingTeamName { get; set; }
     }
 }

@@ -6,8 +6,8 @@ namespace xUnitTest
 {
     public class UnitTests_Manager
     {
-        readonly ShowManager manager1 = new();
-        readonly ShowManager manager2 = new();
+        readonly ManagerRepo manager1 = new();
+        readonly ManagerRepo manager2 = new();
 
 
         [Fact]

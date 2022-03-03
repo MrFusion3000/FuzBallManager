@@ -1,37 +1,16 @@
-﻿namespace UIConsole;
+﻿using ApiClient;
+using Application;
+
+namespace UIConsole;
 class Program
 {
     static async Task Main(string[] args)
     {
-        ShowManager NewManager = new();
+        // Player Init Manager: FirstName, LastName, Managing Team (Default values: ManagerID: New Guid, DateOfBirth: Today, Score:0, Bank:50000)  
+        ManagerJsonDto showManager = await CreateManager.CreatePlayerManagerAsync();
 
-        Console.Write("Enter Manager Firstname: ");
-        string firstname = Console.ReadLine();
-        Console.Write("Enter Manager Lastname: ");
-        string lastname = Console.ReadLine();
-
-        var manager = await NewManager.GetManager(lastname);
-
-        if (manager != null)
-        {
-            Console.Write("Manager exists: " + manager.FirstName + " " + manager.LastName);
-            Console.SetCursorPosition(40, Console.CursorTop);
-            Console.WriteLine(manager.ManagingTeamName);
-            Console.WriteLine("---------------------------------------------------------------------------------");
-
-        }
-        else
-        {
-            manager = new() { FirstName = firstname, LastName = lastname };
-            //PrintTeams printTeams = new ();
-            var managedTeam = await PrintTeams.PrintTeamsToConsole();
-
-            //Save new Manager with chosen Name and Team from the team-list to DB
-            //ShowManager showManager = new ();
-            await ShowManager.Create(manager, managedTeam);
-        }
-
-        
+        //Init 
+        await CalcFixtures.CalcSeasonFixturesAsync(showManager);
 
 
     }
