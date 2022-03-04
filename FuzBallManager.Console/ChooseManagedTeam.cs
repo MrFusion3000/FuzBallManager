@@ -1,12 +1,13 @@
 ﻿using ApiClient;
 using Application;
+using Application.Responses;
 using Domain.Entities;
 
 namespace UIConsole
 {
     public class ChooseManagedTeam
     {
-        public static TeamJsonDto ChooseTeam(List<TeamJsonDto> teams)
+        public static TeamResponse ChooseTeam(List<TeamResponse> teams)
         {
             Console.WriteLine("Type team number of the team you want to manage\n");
             int chosenTeam = Int32.Parse(Console.ReadLine());

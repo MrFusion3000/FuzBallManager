@@ -28,10 +28,9 @@ namespace Application.Handlers.CommandHandlers
             ArgumentNullException.ThrowIfNull(FixtureEntity);
 
             var newFixture = await _FixtureRepo.AddAsync(FixtureEntity);
-            //var FixtureResponse = FixtureMapper.Mapper.Map<FixtureResponse>(newFixture);
-            var FixtureResponse = newFixture.Adapt<FixtureResponse>();
+            var fixtureDto = newFixture.Adapt<FixtureResponse>();
 
-            return FixtureResponse;
+            return fixtureDto;
         }
     }
 }

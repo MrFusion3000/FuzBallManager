@@ -26,6 +26,10 @@ public class MapsterMapster
             .PreserveReference(true)
             .TwoWays();
 
+        TypeAdapterConfig<Fixture, FixtureResponse>
+            .NewConfig()
+            .PreserveReference(true);
+
         //TypeAdapterConfig<Fixture, FixtureResponse>
         //    .NewConfig()
         //    .PreserveReference(true);

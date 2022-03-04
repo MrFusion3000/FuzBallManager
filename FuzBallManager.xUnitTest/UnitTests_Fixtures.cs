@@ -78,7 +78,7 @@ namespace xUnitTest
 
             //Ass
             Assert.NotNull(teams);
-            output.WriteLine("List of teams fetched. {0}", teams.TeamName);
+            //output.WriteLine("List of teams fetched. {0}", teams.TeamName);
 
         }
 

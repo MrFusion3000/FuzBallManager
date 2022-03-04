@@ -10,9 +10,9 @@ public class TeamClient : BaseClient
 {
     private static Url GetTeamClient() => GetClient().AppendPathSegment("Team");
 
-    public static async Task<List<TeamJsonDto>> GetAllTeams()
+    public static async Task<List<TeamResponse>> GetAllTeams()
     {
-        return await GetTeamClient().GetJsonAsync<List<TeamJsonDto>>();
+        return await GetTeamClient().GetJsonAsync<List<TeamResponse>>();
     }
 
 }

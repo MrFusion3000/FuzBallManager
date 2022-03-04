@@ -1,43 +1,49 @@
-﻿using ApiClient;
-using Application;
-using Application.Responses;
-using Domain.Entities;
-using Mapster;
+﻿//using ApiClient;
+//using Application.Responses;
+//using Domain.Entities;
+//using Mapster;
 
-namespace UIConsole;
+//namespace UIConsole;
 
-public class FixtureRepo
-{
-    private FixtureJsonDto fixture = new();
+//public class FixtureRepo
+//{
+//    private FixtureJsonDto fixture = new();
 
-    public async Task<FixtureJsonDto> GetFixture(Guid id)
-    {
-        fixture = await FixtureClient.GetFixtureById(id);
+//    public async Task<FixtureJsonDto> GetFixture(Guid id)
+//    {
+//        fixture = await FixtureClient.GetFixtureById(id);
 
-        if (fixture == null)
-        {
-            return default;
-        }
+//        if (fixture == null)
+//        {
+//            return default;
+//        }
 
-        var fixtureDto = fixture.Adapt<FixtureJsonDto>();
+//        var fixtureDto = fixture.Adapt<FixtureJsonDto>();
 
-        return fixtureDto;
-    }
+//        return fixtureDto;
+//    }
 
-    public static async Task Create(FixtureJsonDto newfixture, TeamJsonDto managingTeam, TeamJsonDto opponentTeam)
-    {
-        var newFixture = new Fixture()
-        {
-            FixtureID = newfixture.FixtureID,
-            HomeTeamId = newfixture.HomeTeamId,
-            AwayTeamId = newfixture.AwayTeamId,
-            HomeTeamScore = newfixture.HomeTeamScore,
-            AwayTeamScore = newfixture.AwayTeamScore,
-            Attendance = newfixture.Attendance,
-            FixtureDate = DateTime.UtcNow,
-            Played = newfixture.Played         
-        };
+//    internal static async Task GetAllFixtures()
+//    {
+//        await FixtureClient.GetAllFixtures();
+//    }
 
-        await FixtureClient.Create(newFixture);
-    }
-}
+//    public static async Task Create(FixtureResponse fixture)
+//    {
+//        var newFixture = fixture.Adapt<Fixture>();
+
+//         newFixture = new Fixture()
+//        {
+//            //FixtureID = newfixture.FixtureID,
+//            HomeTeamId = newFixture.HomeTeamId,
+//            AwayTeamId = newFixture.AwayTeamId,
+//            HomeTeamScore = newFixture.HomeTeamScore,
+//            AwayTeamScore = newFixture.AwayTeamScore,
+//            Attendance = newFixture.Attendance,
+//            FixtureDate = newFixture.FixtureDate,
+//            Played = newFixture.Played
+//        };
+
+//        await FixtureClient.Create(newFixture);
+//    }
+//}

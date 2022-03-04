@@ -11,5 +11,8 @@
         public int? GoalsForward { get; set; }
         public int? GoalsAgainst { get; set; }
         public string? Stadium { get; set; }
+
+        public override string? ToString() => TeamName;
+
     }
 }

@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Flurl;
 using Flurl.Http;
+using Mapster;
 
 namespace ApiClient;
 public class FixtureClient : BaseClient
@@ -15,11 +16,13 @@ public class FixtureClient : BaseClient
 
     public static async Task<FixtureJsonDto> GetFixtureById(Guid fixtureId)
     {
-        return await GetClient().GetJsonAsync<FixtureJsonDto>();
+        return await GetFixtureClient().AppendPathSegment(fixtureId).GetJsonAsync<FixtureJsonDto>();
     }
 
-    public static async Task Create(Fixture newFixture)
+    public static async Task Create(FixtureResponse newFixture)
     {
+        var fixture = newFixture.Adapt<Fixture>();
+
         await GetFixtureClient().PostJsonAsync(newFixture);
     }
 }

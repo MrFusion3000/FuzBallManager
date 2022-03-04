@@ -1,5 +1,6 @@
 ﻿using ApiClient;
 using Application;
+using Application.Responses;
 using Domain.Entities;
 using Mapster;
 
@@ -7,9 +8,9 @@ namespace UIConsole;
 
 public class ShowTeam
 {
-    private List<TeamJsonDto> allteams = new();
+    private List<TeamResponse> allteams = new();
 
-    public async Task<TeamJsonDto> GetTeams()
+    public async Task<List<TeamResponse>> GetTeams()
     {
         allteams = await TeamClient.GetAllTeams();
 
@@ -18,8 +19,6 @@ public class ShowTeam
             return default;
         }
 
-        var allteamsDto = allteams.Adapt<TeamJsonDto>();
-
-        return (TeamJsonDto)allteamsDto;
+        return allteams;
     }
 }

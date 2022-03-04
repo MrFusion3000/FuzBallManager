@@ -1,12 +1,10 @@
-﻿using ApiClient;
-using Application;
-using Domain.Entities;
+﻿using Application.Responses;
 
 namespace UIConsole
 {
     public class PrintTeams
     {
-        public static void PrintTeamsToConsole(List<TeamJsonDto> teams)
+        public static void PrintTeamsToConsole(List<TeamResponse> teams)
         {
             //TODO Teams prints twice
             int i = 1;

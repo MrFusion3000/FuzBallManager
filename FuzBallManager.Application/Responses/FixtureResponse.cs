@@ -2,7 +2,7 @@
 {
     public class FixtureResponse
     {
-        public int FixtureID { get; set; }
+        //public int FixtureID { get; set; }
         public Guid? HomeTeamId { get; set; }
         public Guid? AwayTeamId { get; set; }
         public int? HomeTeamScore { get; set; }

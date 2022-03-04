@@ -4,8 +4,8 @@ namespace Application.Responses
 {
     public class FixtureJsonDto
     {
-        [JsonPropertyName("fixtureId")]
-        public Guid FixtureID { get; set; }
+        //[JsonPropertyName("fixtureId")]
+        //public Guid FixtureID { get; set; }
 
         [JsonPropertyName("homeTeamId")]
         public Guid HomeTeamId { get; set; }
