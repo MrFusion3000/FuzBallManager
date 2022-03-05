@@ -17,7 +17,7 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Get Team data.
+        /// Get Team data by TeamName
         /// </summary>
         /// <param name="teamname"></param>
         /// <returns></returns>
@@ -26,6 +26,18 @@ namespace API.Controllers
         public async Task<IActionResult> GetByTeamName(string teamname)
         {
             return Ok(await _mediator.Send(new GetTeamQuery { TeamName = teamname }));
+        }
+
+        /// <summary>
+        /// Get Team data by TeamId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("GetByTeamId/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetByTeamId(Guid id)
+        {
+            return Ok(await _mediator.Send(new GetTeamByIdQuery { TeamID = id }));
         }
 
         /// <summary>

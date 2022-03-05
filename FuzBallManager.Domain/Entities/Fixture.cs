@@ -10,9 +10,9 @@ namespace Domain.Entities
         public Guid FixtureID { get; set; }
         public Guid HomeTeamId { get; set; }
         public Guid AwayTeamId { get; set; }
-        public int? HomeTeamScore { get; set; } = 0;
-        public int? AwayTeamScore { get; set; } = 0;
-        public int? Attendance { get; set; } = 0;
+        public int HomeTeamScore { get; set; } = 0;
+        public int AwayTeamScore { get; set; } = 0;
+        public int Attendance { get; set; } = 0;
         public DateTime FixtureDate { get; set; }
         public bool Played { get; set; }
     }

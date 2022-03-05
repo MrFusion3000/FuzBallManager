@@ -30,13 +30,13 @@ namespace API.Controllers
         /// <summary>
         /// Gets Manager data.
         /// </summary>
-        /// <param name="lastname"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        [HttpGet("GetManager/{lastname}")]
+        [HttpGet("GetManager/{name}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetManager(string lastname )
+        public async Task<IActionResult> GetManager(string name )
         {
-            return Ok(await _mediator.Send(new GetManagerQuery { LastName = lastname }));
+            return Ok(await _mediator.Send(new GetManagerQuery { Name = name }));
         }
 
         /// <summary>

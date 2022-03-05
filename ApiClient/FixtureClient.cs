@@ -23,6 +23,6 @@ public class FixtureClient : BaseClient
     {
         var fixture = newFixture.Adapt<Fixture>();
 
-        await GetFixtureClient().PostJsonAsync(newFixture);
+        await GetFixtureClient().PostJsonAsync(fixture);
     }
 }

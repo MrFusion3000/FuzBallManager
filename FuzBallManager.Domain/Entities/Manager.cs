@@ -8,8 +8,8 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ManagerID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
+        //public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Score { get; set; }
         public int Bank { get; set; }

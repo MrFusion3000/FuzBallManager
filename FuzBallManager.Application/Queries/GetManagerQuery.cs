@@ -5,6 +5,6 @@ namespace Application.Queries
 {
     public class GetManagerQuery : IRequest<Manager>
     {
-        public string? LastName { get; set; }
+        public string? Name { get; set; }
     }
 }

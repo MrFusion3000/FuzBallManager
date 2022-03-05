@@ -17,19 +17,12 @@ namespace Application.Handlers.CommandHandlers
         }
         public async Task<ManagerResponse> Handle(CreateManagerCommand request, CancellationToken cancellationToken)
         {
-            //var managerEntity = ManagerMapper.Mapper.Map<Manager>(request);
             var managerEntity = request.Adapt<Manager>();
-
-            //if (managerEntity is null)
-            //{
-            //    throw new ApplicationException("issue with mapper");
-            //}
 
             ArgumentNullException.ThrowIfNull(managerEntity);
 
             var newManager = await _managerRepo.AddAsync(managerEntity);
-            //var managerResponse = ManagerMapper.Mapper.Map<ManagerResponse>(newManager);
-            var managerResponse = request.Adapt<ManagerResponse>();
+            var managerResponse = newManager.Adapt<ManagerResponse>();
 
 
             return managerResponse;

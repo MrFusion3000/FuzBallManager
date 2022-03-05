@@ -9,9 +9,9 @@ public class ManagerClient : BaseClient
 {
     private static Url GetManagerClient() => GetClient().AppendPathSegment("Manager");
 
-    public static async Task<ManagerResponse> GetManagerByLastName(string lastname)
+    public static async Task<ManagerResponse> GetManagerByName(string name)
     {
-        return await GetManagerClient().AppendPathSegment("GetManager").AppendPathSegment(lastname).GetJsonAsync<ManagerResponse>();
+        return await GetManagerClient().AppendPathSegment("GetManager").AppendPathSegment(name).GetJsonAsync<ManagerResponse>();
     }
     public static async Task Create(ManagerResponse manager)
     {

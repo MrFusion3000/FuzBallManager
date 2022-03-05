@@ -8,7 +8,7 @@ public class Team
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid TeamID { get; set; }
-    public string TeamName { get; set; } = "Team Null FC";
+    public string TeamName { get; set; }
     public int? Points { get; set; }
     public int? Wins { get; set; }
     public int? Draws { get; set; }

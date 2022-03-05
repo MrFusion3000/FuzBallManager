@@ -6,14 +6,14 @@ namespace UIConsole
     {
         public static void PrintTeamsToConsole(List<TeamResponse> teams)
         {
-            //TODO Teams prints twice
+            //Teams prints
             int i = 1;
 
+            Console.Clear();
             Console.WriteLine("CHOOSE TEAM TO MANAGE :\n");
             Console.WriteLine("NUMBER \t\tNAME");
             foreach (var team in teams)
             {
-                //Console.SetCursorPosition(40, Console.CursorTop);
                 Console.Write(" " + i + "\t\t{0}", team.TeamName + "\n");
                 i++;
             }

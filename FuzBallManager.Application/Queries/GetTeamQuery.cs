@@ -1,10 +1,9 @@
 ﻿using Domain.Entities;
 using MediatR;
 
-namespace Application.Queries
+namespace Application.Queries;
+
+public class GetTeamQuery : IRequest<Team>
 {
-    public class GetTeamQuery : IRequest<Team>
-    {
-        public string? TeamName { get; set; }
-    }
+    public string? TeamName { get; set; }
 }

@@ -14,7 +14,14 @@ namespace Infrastructure.Repositories
         {
             return await _FBMContext.Teams
                 .Where(m => m.TeamName == teamname)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<Team> GetTeamById(Guid teamid, CancellationToken cancellationToken)
+        {
+            return await _FBMContext.Teams
+                .Where(m => m.TeamID == teamid)
+                .FirstOrDefaultAsync(cancellationToken);
         }
     }
 }

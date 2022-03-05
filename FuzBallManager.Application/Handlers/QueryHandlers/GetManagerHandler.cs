@@ -14,13 +14,13 @@ namespace Application.Handlers.QueryHandlers
         }
         public async Task<Manager> Handle(GetManagerQuery request, CancellationToken cancellationToken)
         {
-            var lastname = request.LastName;
+            var name = request.Name;
 
             //var manager = await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
             //var managerResponse = manager.Adapt<Manager>();
 
             //return manager;
-            return (Manager)await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
+            return (Manager)await _managerRepository.GetManagerByName(name, cancellationToken);
         }
     }
 }

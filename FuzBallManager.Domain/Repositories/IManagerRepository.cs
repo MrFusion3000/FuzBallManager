@@ -5,6 +5,6 @@ namespace Domain.Repositories
 {
     public interface IManagerRepository : IRepository<Manager>
     {
-        Task<Manager> GetManagerByLastName(string lastname, CancellationToken cancellationToken);
+        Task<Manager> GetManagerByName(string name, CancellationToken cancellationToken);
     }
 }
