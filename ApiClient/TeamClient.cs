@@ -19,7 +19,7 @@ public class TeamClient : BaseClient
 
     public static async Task<TeamResponse> GetTeamById(Guid teamId)
     {
-        return await GetTeamClient().AppendPathSegment("GetByTeamId").AppendPathSegment(teamId).GetJsonAsync<TeamResponse>();
+        return await GetTeamClient().AppendPathSegment("GetTeamByTeamId").AppendPathSegment(teamId).GetJsonAsync<TeamResponse>();
     }
 
 }

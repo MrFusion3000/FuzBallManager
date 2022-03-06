@@ -21,9 +21,9 @@ namespace API.Controllers
         /// </summary>
         /// <param name="teamname"></param>
         /// <returns></returns>
-        [HttpGet("GetByTeamName/{teamname}")]
+        [HttpGet("GetTeamByTeamName/{teamname}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByTeamName(string teamname)
+        public async Task<IActionResult> GetTeamByTeamName(string teamname)
         {
             return Ok(await _mediator.Send(new GetTeamQuery { TeamName = teamname }));
         }
@@ -33,9 +33,9 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetByTeamId/{id}")]
+        [HttpGet("GetTeamByTeamId/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByTeamId(Guid id)
+        public async Task<IActionResult> GetTeamByTeamId(Guid id)
         {
             return Ok(await _mediator.Send(new GetTeamByIdQuery { TeamID = id }));
         }
