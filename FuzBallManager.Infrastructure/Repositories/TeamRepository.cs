@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<Team> GetTeamById(Guid teamid, CancellationToken cancellationToken)
+        public async Task<Team> GetTeamByTeamId(Guid teamid, CancellationToken cancellationToken)
         {
             return await _FBMContext.Teams
                 .Where(m => m.TeamID == teamid)

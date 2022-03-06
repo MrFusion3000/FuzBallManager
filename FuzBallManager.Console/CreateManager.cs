@@ -9,10 +9,8 @@ public class CreateManager
     {
         //InitManager initManager = new();
 
-        Console.Write("Enter Manager Firstname: ");
+        Console.Write("Enter Manager name: ");
         string name = Console.ReadLine();
-        //Console.Write("Enter Manager Lastname: ");
-        //string lastname = Console.ReadLine();
 
         //Get Manager profile
         var manager = await ManagerClient.GetManagerByName(name);
@@ -22,9 +20,12 @@ public class CreateManager
         //If Manager exists notify player (function not finished )
         if (manager != null)
         {
+            //TODO Add "Load profile or create new?"
+
+            //var managedTeamName = await TeamClient.GetTeamById(manager.ManagingTeamID);
             Console.Write("Manager exists: " + manager.Name);
             Console.SetCursorPosition(40, Console.CursorTop);
-            Console.WriteLine(manager.ManagingTeamName);
+           // Console.WriteLine(managedTeamName);
             Console.WriteLine("---------------------------------------------------------------------------------");
         }
         // Otherwise create Manager

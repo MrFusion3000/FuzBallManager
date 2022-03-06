@@ -9,6 +9,7 @@ public static class InitFixtures
     public static async Task CalcSeasonFixturesAsync(ManagerResponse manager)
     {
         var managedTeamId = manager.ManagingTeamID;
+        var managedTeam = await TeamClient.GetTeamById(managedTeamId);
         int AddDaysToMatchDay = 0;
         bool Odd = true;
 
@@ -50,7 +51,7 @@ public static class InitFixtures
                 Odd = true;
             }
 
-            Console.WriteLine(oppositeTeam.TeamName, newFixtureResponse.FixtureDate);
+            Console.WriteLine("{0} \t-\t {1}\t{2}", managedTeam, oppositeTeam.TeamName, newFixtureResponse.FixtureDate);
         }
 
         //Create list of each fixture with ManagerTeam as Away team and matchday every 3rd or 4th day depending on week

@@ -20,7 +20,7 @@ namespace Application.Handlers.QueryHandlers
             var getreq = request.Adapt<TeamResponse>();
             var teamid = getreq.TeamID;
 
-            return await _teamRepository.GetTeamById(teamid, cancellationToken);
+            return await _teamRepository.GetTeamByTeamId(teamid, cancellationToken);
         }
     }
 }

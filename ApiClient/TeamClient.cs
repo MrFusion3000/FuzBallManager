@@ -8,6 +8,8 @@ using Flurl.Http;
 namespace ApiClient;
 public class TeamClient : BaseClient
 {
+
+    //TODO add Async to Task names
     private static Url GetTeamClient() => GetClient().AppendPathSegment("Team");
 
     public static async Task<List<TeamResponse>> GetAllTeams()
@@ -17,7 +19,7 @@ public class TeamClient : BaseClient
 
     public static async Task<TeamResponse> GetTeamById(Guid teamId)
     {
-        return await GetTeamClient().AppendPathSegment(teamId).GetJsonAsync<TeamResponse>();
+        return await GetTeamClient().AppendPathSegment("GetByTeamId").AppendPathSegment(teamId).GetJsonAsync<TeamResponse>();
     }
 
 }
