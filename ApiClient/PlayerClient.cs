@@ -27,4 +27,8 @@ public class PlayerClient : BaseClient
         return await GetPlayerClient().AppendPathSegment("GetPlayerByPlayerId").AppendPathSegment(playerId).GetJsonAsync<PlayerResponse>();
     }
 
+    public static async Task Update(PlayerResponse player)
+    {
+        await GetPlayerClient().PutJsonAsync(player);
+    }
 }

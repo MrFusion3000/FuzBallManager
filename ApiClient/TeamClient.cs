@@ -1,14 +1,10 @@
-﻿using ApiClient;
-using Application;
-using Application.Responses;
-using Domain.Entities;
+﻿using Application.Responses;
 using Flurl;
 using Flurl.Http;
 
 namespace ApiClient;
 public class TeamClient : BaseClient
 {
-
     //TODO add Async to Task names
     private static Url GetTeamClient() => GetClient().AppendPathSegment("Team");
 
@@ -21,5 +17,4 @@ public class TeamClient : BaseClient
     {
         return await GetTeamClient().AppendPathSegment("GetTeamByTeamId").AppendPathSegment(teamId).GetJsonAsync<TeamResponse>();
     }
-
 }

@@ -11,5 +11,7 @@ namespace Application.Responses
         public int? PlayerStats { get; set; }
         public Guid? TeamID { get; set; }
         public string? TeamName { get; set; }
+        public bool InManagedTeam { get; set; }
+        public bool Injured { get; set; }
     }
 }

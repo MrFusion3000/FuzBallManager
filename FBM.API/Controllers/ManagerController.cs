@@ -52,7 +52,7 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Creates a New Manager.
+        /// Updates a Manager.
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>

@@ -23,10 +23,11 @@ public class CreateManager
             //TODO Add "Load profile or create new?"
 
             //var managedTeamName = await TeamClient.GetTeamById(manager.ManagingTeamID);
-            Console.Write("Manager exists: " + manager.Name);
+            Console.WriteLine("Manager exists: " + manager.Name);
             Console.SetCursorPosition(40, Console.CursorTop);
            // Console.WriteLine(managedTeamName);
             Console.WriteLine("---------------------------------------------------------------------------------");
+            Console.ReadKey();
         }
         // Otherwise create Manager
         else

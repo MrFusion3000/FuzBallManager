@@ -13,6 +13,8 @@ class Program
         //Init Season Fixtures (Home and Away Matches)
         await InitFixtures.CalcSeasonFixturesAsync(NewManager);
 
+        await InitManager.SetupManagedTeam(NewManager);
+
         // Get and list all fixtures
         //await FixtureClient.GetAllFixtures();
 
@@ -30,5 +32,6 @@ class Program
         //TODO 8.1 Save game
         //TODO 8.2 Restore saved game
         //TODO 2 Press SPACE BAR to continue
+        //TODO RND 11 players for Managed team
     }
 }

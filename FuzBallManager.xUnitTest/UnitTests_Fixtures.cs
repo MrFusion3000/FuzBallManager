@@ -49,7 +49,7 @@ namespace xUnitTest
 
         }
 
-        readonly ShowTeam team = new();
+        //readonly ShowTeam team = new();
         [Fact]
         public void CalculateFixtures()
         {
@@ -71,13 +71,13 @@ namespace xUnitTest
         public async void GetAllTeams()
         {
             //Arr
-            var teams = await team.GetTeams();
+            //var teams = await team.GetTeams();
 
             //Act
 
 
             //Ass
-            Assert.NotNull(teams);
+            //Assert.NotNull(teams);
             //output.WriteLine("List of teams fetched. {0}", teams.TeamName);
 
         }

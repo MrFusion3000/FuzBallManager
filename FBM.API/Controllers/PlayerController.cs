@@ -50,5 +50,17 @@ namespace API.Controllers
         {
             return Ok(await _mediator.Send(command));
         }
+
+        /// <summary>
+        /// Updates a Player.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPut("UpdatePlayer/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<PlayerResponse>> UpdatePlayer([FromBody] UpdatePlayerCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
     }
 }
