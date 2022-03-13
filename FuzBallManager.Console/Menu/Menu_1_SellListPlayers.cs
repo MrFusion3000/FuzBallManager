@@ -1,10 +1,11 @@
-﻿using UIConsole;
+﻿using Application.Responses;
+using UIConsole.Menu;
 
 namespace UIConsole;
 
-public class ShowMenu_SellListPlayers
+public class Menu_1_SellListPlayers
 {
-    public static void SellListPlayers()
+    public static void SellListPlayers(ManagerResponse manager)
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -17,22 +18,6 @@ public class ShowMenu_SellListPlayers
 
         menuChoice = Console.ReadKey(true);
 
-        WaitKey(menuChoice);
-
-    }
-
-    private static void WaitKey(ConsoleKeyInfo menuChoice)
-    {
-
-            switch (menuChoice.Key)
-            {
-                case ConsoleKey.Escape:
-                ShowMenu.ShowTopMenu();
-                    break;
-
-
-            }
-
-
+        Navigation.WaitKey(menuChoice, manager);
     }
 }
