@@ -7,20 +7,16 @@ namespace Application.Handlers.QueryHandlers
 {
     public class GetManagerHandler : IRequestHandler<GetManagerQuery, Manager>
     {
-        private readonly IManagerRepository _managerRepository;
-        public GetManagerHandler(IManagerRepository managerRepository)
+        private readonly IManagerRepository _managerRepo;
+        public GetManagerHandler(IManagerRepository managerRepo)
         {
-            _managerRepository = managerRepository;
+            _managerRepo = managerRepo;
         }
         public async Task<Manager> Handle(GetManagerQuery request, CancellationToken cancellationToken)
         {
             var name = request.Name;
 
-            //var manager = await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
-            //var managerResponse = manager.Adapt<Manager>();
-
-            //return manager;
-            return (Manager)await _managerRepository.GetManagerByName(name, cancellationToken);
+            return (Manager)await _managerRepo.GetManagerByName(name, cancellationToken);
         }
     }
 }

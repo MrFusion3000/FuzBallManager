@@ -9,18 +9,30 @@ namespace Infrastructure.Repositories
     public class PlayerRepository : Repository<Player>, IPlayerRepository
     {
         public PlayerRepository(FBMContext FBMContext) : base(FBMContext) { }
-        public async Task<Player> GetPlayerByFirstNameLastName(string firstName, string lastname, CancellationToken cancellationToken)
+
+        public Task<Player> GetPlayerByLastName(string lastName, CancellationToken cancellationToken)
         {
-            return await _FBMContext.Players
-                .Where(m => m.PlayerLastName == lastname)
-                .FirstOrDefaultAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<List<Player>> GetPlayersByTeamNameAsync(string teamName, CancellationToken cancellationToken)
+        //public async Task<Player> GetPlayerByFirstNameLastName(string firstName, string lastname, CancellationToken cancellationToken)
+        //{
+        //    //TODO add FirstName filter
+        //    return await _FBMContext.Players
+        //        .Where(m => m.PlayerLastName == lastname)
+        //        .FirstOrDefaultAsync(cancellationToken);
+        //}
+
+        public async Task<List<Player>> GetPlayersByTeamName(string teamname, CancellationToken cancellationToken)
         {
-            return await _FBMContext.Players
-                .Where(t => t.TeamName == teamName)
-                .ToListAsync();
+            var GetPlayer =
+            await _FBMContext.Players
+                .Where(t => t.TeamName == teamname)
+                .ToListAsync(cancellationToken);
+
+            if(GetPlayer == null)return default;
+
+            return GetPlayer;
         }
     }
 }

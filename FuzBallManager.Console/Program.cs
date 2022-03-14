@@ -7,19 +7,21 @@ class Program
 {
     static async Task Main(/*string[] args*/)
     {
+        await AddTeamIdToPlayer.AddTeamIdToPlayers();
+ 
         // Init Player Manager: FirstName, LastName, Managing Team (Default values: ManagerID: New Guid, DateOfBirth: Today, Score:0, Bank:50000)  
-        ManagerResponse NewManager = await CreateManager.CreatePlayerManagerAsync();
+//        ManagerResponse NewManager = await CreateManager.CreatePlayerManagerAsync();
 
         //Init Season Fixtures (Home and Away Matches)
-        await InitFixtures.CalcSeasonFixturesAsync(NewManager);
+//        await InitFixtures.CalcSeasonFixturesAsync(NewManager);
 
-        await InitManager.SetupManagedTeam(NewManager);
+//        await InitManager.SetupManagedTeam(NewManager);
 
         // Get and list all fixtures
         //await FixtureClient.GetAllFixtures();
 
         //TODO *1 Show Menu
-        ShowMenu.ShowTopMenu(NewManager);
+// ShowMenu.ShowTopMenu(NewManager);
 
 
         //TODO 1 Sell/List your players

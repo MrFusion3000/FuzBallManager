@@ -9,18 +9,18 @@ namespace Application.Handlers.QueryHandlers
 {
     public class GetTeamHandler : IRequestHandler<GetTeamQuery, Team>
     {
-        private readonly ITeamRepository _teamRepository;
+        private readonly ITeamRepository _teamRepo;
 
-        public GetTeamHandler(ITeamRepository teamRepository)
+        public GetTeamHandler(ITeamRepository teamRepo)
         {
-            _teamRepository = teamRepository;
+            _teamRepo = teamRepo;
         }
         public async Task<Team> Handle(GetTeamQuery request, CancellationToken cancellationToken)
         {
             var getreq = request.Adapt<TeamResponse>();
             var teamname = getreq.TeamName;
 
-            return await _teamRepository.GetTeamByTeamName(teamname, cancellationToken);
+            return await _teamRepo.GetTeamByTeamName(teamname, cancellationToken);
         }
     }
 }

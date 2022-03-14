@@ -1,6 +1,4 @@
-﻿using Application;
-using Application.Responses;
-using Domain.Entities;
+﻿using Application.Responses;
 using Flurl;
 using Flurl.Http;
 

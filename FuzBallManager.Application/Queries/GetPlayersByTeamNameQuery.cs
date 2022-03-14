@@ -5,6 +5,6 @@ namespace Application.Queries
 {
     public class GetPlayersByTeamNameQuery : IRequest<List<Player>>
     {
-        public string? TeamName { get; set; }
+        public string TeamName { get; set; }
     }
 }

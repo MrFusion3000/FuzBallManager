@@ -25,7 +25,7 @@ public class InitManager
     public static async Task SetupManagedTeam(ManagerResponse newmanager)
     {
         var ManagedTeam = await TeamClient.GetTeamById(newmanager.ManagingTeamID);
-        var ManagedTeamPlayers = await PlayerClient.GetAllPlayersByTeamName(ManagedTeam.TeamName);
+        var ManagedTeamPlayers = await PlayerClient.GetPlayersByTeamName(ManagedTeam.TeamName);
 
         //Get list of players for managed team
         //Randomize 11 player numbers to join team from ManagedTeamplayers (ManagedTeamPlayer.count)
@@ -38,7 +38,7 @@ public class InitManager
             //TODO Check if player already in team (InManagedTeam = true)
             JoinTeam.InManagedTeam = true;
 
-            Console.WriteLine(JoinTeam.PlayerLastName);
+            Console.WriteLine($"Name: {JoinTeam.PlayerLastName}, {JoinTeam.InManagedTeam}");
         }
 
         //Save Team Id to each Player

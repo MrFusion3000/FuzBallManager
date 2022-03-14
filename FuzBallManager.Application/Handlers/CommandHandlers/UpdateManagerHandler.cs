@@ -1,5 +1,4 @@
 ﻿using Application.Commands;
-using Application.Responses;
 using Domain.Entities;
 using Domain.Repositories;
 using Mapster;
@@ -10,16 +9,18 @@ namespace Application.Handlers.CommandHandlers;
 public class UpdateManagerHandler : IRequestHandler<UpdateManagerCommand, Guid>
 {
     private readonly IManagerRepository _managerRepo;
-    public UpdateManagerHandler(IManagerRepository managerRepository)
+    public UpdateManagerHandler(IManagerRepository managerRepo)
     {
-        _managerRepo = managerRepository;
+        _managerRepo = managerRepo;
     }
     public async Task<Guid> Handle(UpdateManagerCommand request, CancellationToken cancellationToken)
     {
-        var result = request.Adapt<Manager>();
-        if (result == null) return default;
+        var managerEntity = request.Adapt<Manager>();
 
-        await _managerRepo.UpdateAsync(result, cancellationToken);
+        ArgumentNullException.ThrowIfNull(managerEntity);
+
+        await _managerRepo.UpdateAsync(managerEntity, cancellationToken);
+
         return default;
     }
 }

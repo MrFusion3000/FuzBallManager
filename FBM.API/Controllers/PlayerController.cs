@@ -32,7 +32,7 @@ namespace API.Controllers
         /// </summary>
         /// <param name="teamname"></param>
         /// <returns></returns>
-        [HttpGet("GetByTeamName/{teamname}")]
+        [HttpGet("GetPlayersByTeamName/{teamname}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPlayersByTeamName(string teamname)
         {
@@ -54,12 +54,14 @@ namespace API.Controllers
         /// <summary>
         /// Updates a Player.
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("UpdatePlayer/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<PlayerResponse>> UpdatePlayer([FromBody] UpdatePlayerCommand command)
+        public async Task<IActionResult> UpdatePlayer(Guid id, UpdatePlayerCommand command)
         {
+            command.PlayerID = id;
             return Ok(await _mediator.Send(command));
         }
     }

@@ -1,7 +1,4 @@
-﻿using ApiClient;
-using Application;
-using Application.Responses;
-using Domain.Entities;
+﻿using Application.Responses;
 using Flurl;
 using Flurl.Http;
 
@@ -17,9 +14,9 @@ public class PlayerClient : BaseClient
         return await GetPlayerClient().GetJsonAsync<List<PlayerResponse>>();
     }
 
-    public static async Task<List<PlayerResponse>> GetAllPlayersByTeamName(string teamName)
+    public static async Task<List<PlayerResponse>> GetPlayersByTeamName(string teamName)
     {
-        return await GetPlayerClient().AppendPathSegment("GetByTeamName").AppendPathSegment(teamName).GetJsonAsync<List<PlayerResponse>>();
+        return await GetPlayerClient().AppendPathSegment("GetPlayersByTeamName").AppendPathSegment(teamName).GetJsonAsync<List<PlayerResponse>>();
     }
 
     public static async Task<PlayerResponse> GetPlayerById(Guid playerId)

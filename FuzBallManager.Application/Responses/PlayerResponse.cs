@@ -3,7 +3,7 @@ namespace Application.Responses
 {
     public class PlayerResponse
     {
-        public Guid PlayerId { get; set; }
+        public Guid PlayerID { get; set; }
         public string? PlayerFirstName { get; set; }
         public string? PlayerLastName { get; set; }
         public DateTime? DateOfBirth { get; set; }
@@ -11,7 +11,10 @@ namespace Application.Responses
         public int? PlayerStats { get; set; }
         public Guid? TeamID { get; set; }
         public string? TeamName { get; set; }
-        public bool InManagedTeam { get; set; }
-        public bool Injured { get; set; }
+        public bool? InManagedTeam { get; set; }
+        public bool? Injured { get; set; }
+
+        public override string? ToString() => TeamName;
+
     }
 }

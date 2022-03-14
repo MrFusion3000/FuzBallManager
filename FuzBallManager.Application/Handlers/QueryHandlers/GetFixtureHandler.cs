@@ -7,20 +7,16 @@ namespace Application.Handlers.QueryHandlers
 {
     public class GetFixtureHandler : IRequestHandler<GetFixtureQuery, Fixture>
     {
-        private readonly IFixtureRepository _fixtureRepository;
-        public GetFixtureHandler(IFixtureRepository fixtureRepository)
+        private readonly IFixtureRepository _fixtureRepo;
+        public GetFixtureHandler(IFixtureRepository fixtureRepo)
         {
-            _fixtureRepository = fixtureRepository;
+            _fixtureRepo = fixtureRepo;
         }
         public async Task<Fixture> Handle(GetFixtureQuery request, CancellationToken cancellationToken)
         {
             var fixtureId = request.FixtureID;
 
-            //var manager = await _managerRepository.GetManagerByLastName(lastname, cancellationToken);
-            //var managerResponse = manager.Adapt<Manager>();
-
-            //return manager;
-            return (Fixture)await _fixtureRepository.GetByIdAsync(fixtureId);
+            return (Fixture)await _fixtureRepo.GetByIdAsync(fixtureId);
         }
     }
 }
