@@ -8,5 +8,8 @@ namespace Domain.Repositories
         Task<Player> GetPlayerByLastName(string lastName, CancellationToken cancellationToken);
         //Task<Player> GetPlayerByFirstNameLastName(string firstName, string lastName, CancellationToken cancellationToken);
         Task<List<Player>> GetPlayersByTeamName(string teamName, CancellationToken cancellationToken);
+
+        Task<Guid> Update(Player command, CancellationToken cancellationToken);
+
     }
 }

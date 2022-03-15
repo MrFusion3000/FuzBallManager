@@ -13,14 +13,14 @@ public class UpdatePlayerHandler : IRequestHandler<UpdatePlayerCommand, Guid>
     {
         _playerRepo = playerRepo;
     }
-    public async Task<Guid> Handle(UpdatePlayerCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(UpdatePlayerCommand command, CancellationToken cancellationToken)
     {
-        var playerEntity = request.Adapt<Player>();
+        var playerEntity = command.Adapt<Player>();
 
         ArgumentNullException.ThrowIfNull(playerEntity);
 
-        await _playerRepo.UpdateAsync(playerEntity, cancellationToken);
+        await _playerRepo.  Update(playerEntity, cancellationToken);
 
-        return default;
+        return playerEntity.PlayerID;
     }
 }

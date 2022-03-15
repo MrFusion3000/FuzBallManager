@@ -19,12 +19,23 @@ namespace UIConsole
                     //Update player with Team ID from db table Team
                     foreach (var player in fetchedTeam)
                     {
-                        player.TeamID = team.TeamID;
-                        Console.WriteLine($"Player: {player.PlayerFirstName} {player.PlayerLastName} updated with Team Name: {team.TeamName}, TeamId: {team.TeamID}");
-                        await PlayerClient.Update(player);
+                        if (player.TeamID == null)
+                        {
+                            player.TeamID = team.TeamID;
+                            Console.WriteLine($"Player: {player.PlayerFirstName} {player.PlayerLastName} updated with Team Name: {team.TeamName}");
+                            var playerUpdate = player.Adapt<Player>();
 
-                        Console.ReadKey();
+                            //Console.WriteLine($"{player.PlayerID}, {playerUpdate.PlayerLastName}");
+
+                            await PlayerClient.Update(player.PlayerID, playerUpdate);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Player: {player.PlayerLastName} already updated");
+                        }                        
                     }
+                    Console.WriteLine($"All {team.TeamName} players TeamId's updated.");
+                    Console.ReadKey();
                 }
 
             }

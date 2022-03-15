@@ -10,6 +10,7 @@ public class UpdatePlayerCommand : IRequest<Guid>
     public DateTime? DateOfBirth { get; set; }
     public string? PlayerPosition { get; set; }
     public int? PlayerStats { get; set; }
+    public Guid TeamID { get; set; }
     public string? TeamName { get; set; }
     public bool? InManagedTeam { get; set; }
     public bool? Injured { get; set; }

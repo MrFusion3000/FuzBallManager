@@ -1,4 +1,5 @@
-﻿using Application.Responses;
+﻿using Application.Commands;
+using Application.Responses;
 using Flurl;
 using Flurl.Http;
 
@@ -16,7 +17,7 @@ public class ManagerClient : BaseClient
         await GetManagerClient().PostJsonAsync(manager);
     }
 
-    public static async Task Update(ManagerResponse manager)
+    public static async Task Update(UpdateManagerCommand manager)
     {
         await GetManagerClient().PutJsonAsync(manager);
     }

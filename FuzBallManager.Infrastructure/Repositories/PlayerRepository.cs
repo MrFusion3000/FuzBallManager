@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Commands;
+using Domain.Entities;
 using Domain.Repositories;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Base;
@@ -33,6 +34,31 @@ namespace Infrastructure.Repositories
             if(GetPlayer == null)return default;
 
             return GetPlayer;
+        }
+
+        public async Task<Guid> Update(Player command, CancellationToken cancellationToken)
+        {
+            var player = _FBMContext.Players.Where(a => a.PlayerID == command.PlayerID).FirstOrDefault();
+
+            if (player == null)
+            {
+                return default;
+            }
+            else
+            {
+                player.PlayerFirstName = command.PlayerFirstName;
+                player.PlayerLastName = command.PlayerLastName;
+                player.PlayerStats = command.PlayerStats;
+                player.PlayerPosition = command.PlayerPosition;
+                player.DateOfBirth = command.DateOfBirth;
+                player.TeamID = command.TeamID;
+                player.TeamName = command.TeamName;
+                player.Injured = command.Injured;
+                player.InManagedTeam = command.InManagedTeam;
+
+                await _FBMContext.SaveChangesAsync(cancellationToken);
+                return player.PlayerID;
+            }
         }
     }
 }
