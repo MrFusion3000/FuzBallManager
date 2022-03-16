@@ -1,5 +1,5 @@
 ﻿using ApiClient;
-using Domain.Entities;
+using Application.Responses;
 using Mapster;
 
 namespace UIConsole
@@ -23,7 +23,7 @@ namespace UIConsole
                         {
                             player.TeamID = team.TeamID;
                             Console.WriteLine($"Player: {player.PlayerFirstName} {player.PlayerLastName} updated with Team Name: {team.TeamName}");
-                            var playerUpdate = player.Adapt<Player>();
+                            var playerUpdate = player.Adapt<PlayerResponse>();
 
                             //Console.WriteLine($"{player.PlayerID}, {playerUpdate.PlayerLastName}");
 
@@ -32,7 +32,7 @@ namespace UIConsole
                         else
                         {
                             Console.WriteLine($"Player: {player.PlayerLastName} already updated");
-                        }                        
+                        }
                     }
                     Console.WriteLine($"All {team.TeamName} players TeamId's updated.");
                     Console.ReadKey();

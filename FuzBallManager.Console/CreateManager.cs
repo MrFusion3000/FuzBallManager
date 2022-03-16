@@ -13,26 +13,26 @@ public class CreateManager
         string name = Console.ReadLine();
 
         //Get Manager profile
-        var manager = await ManagerClient.GetManagerByName(name);
-        //Get List of teams
-        var teams = await TeamClient.GetAllTeams();
+        ManagerResponse Manager = await ManagerClient.GetManagerByName(name);
+        //Get List of available teams
+        List<TeamResponse> teams = await TeamClient.GetAllTeams();
 
         //If Manager exists notify player (function not finished )
-        if (manager != null)
+        if (Manager != null)
         {
             //TODO Add "Load profile or create new?"
+            //TODO Add reset game to default
 
             //var managedTeamName = await TeamClient.GetTeamById(manager.ManagingTeamID);
-            Console.WriteLine("Manager exists: " + manager.Name);
-            Console.SetCursorPosition(40, Console.CursorTop);
-           // Console.WriteLine(managedTeamName);
+            Console.WriteLine($"Manager {Manager.Name} exists");
+
             Console.WriteLine("---------------------------------------------------------------------------------");
             Console.ReadKey();
         }
         // Otherwise create Manager
         else
         {
-            manager = new()
+            Manager = new()
             {
                 Name = name,
                 //LastName = lastname,
@@ -43,16 +43,16 @@ public class CreateManager
 
             //Ask player to choose team from list
             var managedTeam = ChooseManagedTeam.ChooseTeam(teams);
-            manager.ManagingTeamID = managedTeam.TeamID;
+            Manager.ManagingTeamID = managedTeam.TeamID;
 
             //Save new Manager with chosen Name and Team to DB
-            await InitManager.Create(manager);
+            await InitManager.CreateNewManager(Manager);
         }
 
         // Get fresh Manager profile
-        var showManager = await ManagerClient.GetManagerByName(manager.Name);
+        //var showManager = await ManagerClient.GetManagerByName(manager.Name);
 
-        return showManager;
+        return Manager;
     }
 
 }

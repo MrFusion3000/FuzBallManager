@@ -25,6 +25,8 @@ public static class InitFixtures
         {
             //Home match
             //take ManagerTeam.Id and oppositeTeam.Id + return a matchday from GetMatchday-function
+            //TODO NTH **refactor idea - function that switches home/away-teams after given amount of matches (Home team + all Away teams)
+
             var fixturedate = GetMatchday(AddDaysToMatchDay);
 
             FixtureResponse newFixtureResponse = new()
@@ -51,7 +53,8 @@ public static class InitFixtures
                 Odd = true;
             }
 
-            Console.WriteLine("{0} \t-\t {1}\t{2}", managedTeam, oppositeTeam.TeamName, newFixtureResponse.FixtureDate);
+            //Only for development output
+            Console.WriteLine($"{managedTeam} - {oppositeTeam.TeamName}, {newFixtureResponse.FixtureDate.ToShortDateString()}");
         }
 
         //Create list of each fixture with ManagerTeam as Away team and matchday every 3rd or 4th day depending on week
@@ -85,7 +88,8 @@ public static class InitFixtures
                 Odd = true;
             }
 
-            Console.WriteLine(oppositeTeam.TeamName + "\t\t\t" + fixturedate.ToShortDateString());
+            //Only for development output
+            Console.WriteLine($"{oppositeTeam.TeamName} t\t{fixturedate.ToShortDateString()}");
         }
     }
 
