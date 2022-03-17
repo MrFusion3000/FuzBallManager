@@ -9,14 +9,14 @@ public class FixtureClient : BaseClient
 {
     private static Url GetFixtureClient() => GetClient().AppendPathSegment("Fixture");
 
-    public static async Task<List<FixtureJsonDto>> GetAllFixtures()
+    public static async Task<List<FixtureResponse>> GetAllFixtures()
     {
-        return await GetFixtureClient().GetJsonAsync<List<FixtureJsonDto>>();
+        return await GetFixtureClient().GetJsonAsync<List<FixtureResponse>>();
     }
 
-    public static async Task<FixtureJsonDto> GetFixtureById(Guid fixtureId)
+    public static async Task<FixtureResponse> GetFixtureById(Guid fixtureId)
     {
-        return await GetFixtureClient().AppendPathSegment(fixtureId).GetJsonAsync<FixtureJsonDto>();
+        return await GetFixtureClient().AppendPathSegment(fixtureId).GetJsonAsync<FixtureResponse>();
     }
 
     public static async Task Create(FixtureResponse newFixture)

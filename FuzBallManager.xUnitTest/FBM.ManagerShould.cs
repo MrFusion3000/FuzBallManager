@@ -65,7 +65,7 @@ namespace xUnitTest
             string? actual = Team.TeamName;
 
             //Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual, ignoreCase: true);
             //actual = "";
         }
 
@@ -84,6 +84,24 @@ namespace xUnitTest
 
             //Assert
             Assert.NotEqual(expected, actual);
+            //}
+        }
+
+        [Fact]
+        public async void HaveManagerNameToIncludeOnlyIntlAlphaCharsWithCapitalFirsts()
+        {
+            //Arrange
+            //string managerName = "Lord Manager";
+            Guid managedTeamId = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
+            //ManagerResponse teamManager = await ManagerClient.GetManagerByName(managerName);
+            TeamResponse managedTeam = await TeamClient.GetTeamById(managedTeamId);
+
+            //Act
+            managedTeam.TeamName = "Manchester City";
+            string? actual = managedTeam.TeamName;
+
+            //Assert
+            Assert.DoesNotMatch("[A-Z[a-z]+ [A-Z[a-z]+", actual);
             //}
         }
     }
