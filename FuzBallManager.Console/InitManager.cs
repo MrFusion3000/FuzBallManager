@@ -32,15 +32,7 @@ public class InitManager
         {
             player.InManagedTeam = false;
             await PlayerClient.Update(player.PlayerID, player);
-
-            //***Only for Dev***
-            //Console.WriteLine($"Name: {player.PlayerLastName}, {player.InManagedTeam}");
-            //***
         }
-
-        //***Only for Dev***
-        //Console.WriteLine(ManagedTeamPlayers.Count(c => c.InManagedTeam == true));
-        //***
 
         //Get list of players for managed team
         //Randomize 11 player numbers to join team from ManagedTeamplayers
@@ -55,10 +47,6 @@ public class InitManager
             //Save Team Id to each Player 
             //TODO Change to update range
             await PlayerClient.Update(JoinTeam.PlayerID, JoinTeam);
-
-            //***Only for dev
-            //Console.WriteLine($"Name: {JoinTeam.PlayerLastName}, {JoinTeam.InManagedTeam}");
-            //***
         }
 
         Console.ReadKey();

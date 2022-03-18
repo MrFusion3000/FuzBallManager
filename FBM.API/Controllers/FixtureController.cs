@@ -64,5 +64,17 @@ namespace API.Controllers
             command.FixtureID = id;
             return Ok(await _mediator.Send(command));
         }
+
+        /// <summary>
+        /// Deletes a Fixture.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("DeleteFixture/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult> DeleteFixture(Guid id)
+        {
+            return Ok(await _mediator.Send(new DeleteFixtureCommand { FixtureID = id }));
+        }
     }
 }

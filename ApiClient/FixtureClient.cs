@@ -1,4 +1,5 @@
-﻿using Application.Responses;
+﻿using Application.Commands;
+using Application.Responses;
 using Domain.Entities;
 using Flurl;
 using Flurl.Http;
@@ -26,6 +27,19 @@ public class FixtureClient : BaseClient
         await GetFixtureClient().PostJsonAsync(fixture);
     }
 
-    //TODOHIGH - Update fixture method
+    //Update fixture method
+    public static async Task<Guid> Update(Guid fixtureId, UpdateFixtureCommand fixture)
+    {
+        await GetFixtureClient().AppendPathSegment("UpdateFixture").AppendPathSegment(fixture.FixtureID).PutJsonAsync(fixture);
+
+        return fixtureId;
+    }
+
     //TODOHIGH - Delete fixture method
+    public static async Task<Guid> Delete(Guid id)
+    {
+        await GetFixtureClient().AppendPathSegment("DeleteFixture").AppendPathSegment(id).DeleteAsync();
+
+        return id;
+    }
 }

@@ -46,5 +46,13 @@ namespace Infrastructure.Repositories
                 return fixture.FixtureID;
             }
         }
+
+        public async Task<Guid> DeleteAsync(Guid fixtureID, CancellationToken cancellationToken)
+        {
+            if (fixtureID == Guid.Empty) return (default);
+
+            await _FBMContext.SaveChangesAsync(cancellationToken);
+            return fixtureID;
+        }
     }
 }

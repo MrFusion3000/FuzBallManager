@@ -37,5 +37,11 @@ namespace Infrastructure.Repositories.Base
            await _FBMContext.SaveChangesAsync(cancellationToken);
         }
 
+        public async Task DeleteAsync(T entity, CancellationToken cancellationToken)
+        {
+            _FBMContext.Remove(entity);
+            await _FBMContext.SaveChangesAsync(cancellationToken);
+        }
+
     }
 }
