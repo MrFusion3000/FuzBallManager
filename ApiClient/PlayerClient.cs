@@ -7,8 +7,8 @@ using Flurl.Http;
 namespace ApiClient;
 public class PlayerClient : BaseClient
 {
+    //TODOLow add Async to Task names
 
-    //TODO add Async to Task names
     private static Url GetPlayerClient() => GetClient().AppendPathSegment("Player");
 
     public static async Task<List<PlayerResponse>> GetAllPlayers()

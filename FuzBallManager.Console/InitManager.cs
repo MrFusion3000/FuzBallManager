@@ -3,6 +3,8 @@ using Application.Responses;
 
 namespace UIConsole;
 
+//TODO Rethink structure (ex. load data into memory once and save only after each fixture)
+
 public class InitManager
 {
     public static async Task CreateNewManager(ManagerResponse newmanager)

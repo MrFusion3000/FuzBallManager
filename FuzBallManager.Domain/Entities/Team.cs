@@ -2,9 +2,11 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities;
-//TODO NTH - Add props for Energy, Morale, Defence, Midfield, Attack
+
 public class Team
 {
+    //TODONTH - Add props for Energy/Morale/Defence/Midfield/Attack
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid TeamID { get; set; }

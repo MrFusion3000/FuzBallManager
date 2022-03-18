@@ -20,8 +20,8 @@ public class CreateManager
         //If Manager exists notify player (function not finished )
         if (Manager != null)
         {
-            //TODO Add "Load profile or create new?"
-            //TODO Add reset game to default
+            //TODONTH Add "Load profile or create new?"
+            //TODONTH Add reset game to default
 
             //var managedTeamName = await TeamClient.GetTeamById(manager.ManagingTeamID);
             Console.WriteLine($"Manager {Manager.Name} exists");

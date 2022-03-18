@@ -5,7 +5,7 @@ using Flurl.Http;
 namespace ApiClient;
 public class TeamClient : BaseClient
 {
-    //TODO add Async to Task names
+    //TODOLow add Async to Task names
     private static Url GetTeamClient() => GetClient().AppendPathSegment("Team");
 
     public static async Task<List<TeamResponse>> GetAllTeams()

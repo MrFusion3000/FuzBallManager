@@ -25,4 +25,7 @@ public class FixtureClient : BaseClient
 
         await GetFixtureClient().PostJsonAsync(fixture);
     }
+
+    //TODOHIGH - Update fixture method
+    //TODOHIGH - Delete fixture method
 }
