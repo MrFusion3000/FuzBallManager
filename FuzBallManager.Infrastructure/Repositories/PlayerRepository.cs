@@ -1,5 +1,4 @@
-﻿using Application.Commands;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Repositories;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Base;
@@ -31,7 +30,7 @@ namespace Infrastructure.Repositories
                 .Where(t => t.TeamName == teamname)
                 .ToListAsync(cancellationToken);
 
-            if(GetPlayer == null)return default;
+            if (GetPlayer == null) return default;
 
             return GetPlayer;
         }

@@ -50,5 +50,19 @@ namespace API.Controllers
         {
             return Ok(await _mediator.Send(command));
         }
+
+        /// <summary>
+        /// Updates a Fixture.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateFixture/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult> UpdateFixture(Guid id, [FromBody] UpdateFixtureCommand command)
+        {
+            command.FixtureID = id;
+            return Ok(await _mediator.Send(command));
+        }
     }
 }

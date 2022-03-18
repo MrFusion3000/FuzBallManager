@@ -59,7 +59,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPut("UpdateManager/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateManager(Guid id, UpdateManagerCommand command)
+        public async Task<IActionResult> UpdateManager(Guid id, [FromBody] UpdateManagerCommand command)
         {
             command.ManagerID = id;
             return Ok(await _mediator.Send(command));
