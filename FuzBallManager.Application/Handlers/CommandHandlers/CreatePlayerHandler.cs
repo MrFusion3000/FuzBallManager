@@ -1,10 +1,9 @@
 ﻿using Application.Commands;
-using Application.Mappers;
 using Application.Responses;
-using Domain.Repositories;
 using Domain.Entities;
-using MediatR;
+using Domain.Repositories;
 using Mapster;
+using MediatR;
 
 namespace Application.Handlers.CommandHandlers
 {
@@ -15,14 +14,14 @@ namespace Application.Handlers.CommandHandlers
         {
             _playerRepo = playerRepository;
         }
-        public async Task <PlayerResponse> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
+        public async Task<PlayerResponse> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {
             var playerEntity = request.Adapt<Player>();
 
             ArgumentNullException.ThrowIfNull(playerEntity);
 
             var newPlayer = await _playerRepo.AddAsync(playerEntity);
-            var playerResponse = request.Adapt<PlayerResponse>();
+            var playerResponse = newPlayer.Adapt<PlayerResponse>();
 
             return playerResponse;
         }

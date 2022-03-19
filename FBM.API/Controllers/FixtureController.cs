@@ -40,6 +40,18 @@ namespace API.Controllers
         }
 
         /// <summary>
+        /// Gets next Fixtures data.
+        /// </summary>
+        /// <param name="played"></param>
+        /// <returns></returns>
+        [HttpGet("GetNextFixture/{played}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetNextFixture(bool played)
+        {
+            return Ok(await _mediator.Send(new GetNextFixtureQuery { Played = played }));
+        }
+
+        /// <summary>
         /// Creates a New Manager.
         /// </summary>
         /// <param name="command"></param>

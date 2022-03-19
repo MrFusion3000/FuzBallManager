@@ -8,6 +8,7 @@ namespace Application.Handlers.QueryHandlers
     public class GetFixtureHandler : IRequestHandler<GetFixtureQuery, Fixture>
     {
         private readonly IFixtureRepository _fixtureRepo;
+
         public GetFixtureHandler(IFixtureRepository fixtureRepo)
         {
             _fixtureRepo = fixtureRepo;
@@ -16,7 +17,7 @@ namespace Application.Handlers.QueryHandlers
         {
             var fixtureId = request.FixtureID;
 
-            return (Fixture)await _fixtureRepo.GetByIdAsync(fixtureId);
+            return await _fixtureRepo.GetByIdAsync(fixtureId);
         }
     }
 }

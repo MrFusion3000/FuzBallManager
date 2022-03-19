@@ -1,10 +1,5 @@
 ﻿using ApiClient;
 using Application.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UIConsole;
 
@@ -12,27 +7,32 @@ public class PrintFixtures
 {
     public static async void PrintAllFixtures()
     {
-        //Only for development output
         List<FixtureResponse> AllFixtures = await FixtureClient.GetAllFixtures();
         List<TeamResponse> AllTeams = await TeamClient.GetAllTeams();
 
-        foreach (var Fixture in AllFixtures)
+        foreach (var fixture in AllFixtures)
         {
-            var Team1 = AllTeams.Where(f => f.TeamID == Fixture.HomeTeamId).FirstOrDefault();
-            var Team2 = AllTeams.Where(f => f.TeamID == Fixture.AwayTeamId).FirstOrDefault();
-
+            var Team1 = AllTeams.Where(f => f.TeamID == fixture.HomeTeamId).FirstOrDefault();
+            var Team2 = AllTeams.Where(f => f.TeamID == fixture.AwayTeamId).FirstOrDefault();
 
             string PrintFixture = Team1.TeamName + " - " + Team2.TeamName;
-        Console.SetCursorPosition((Console.WindowWidth / 2 - PrintFixture.Length) / 2, Console.CursorTop);
-        Console.WriteLine($"{PrintFixture} \t\t{Fixture.FixtureDate.ToShortDateString()}");
+            Console.SetCursorPosition((Console.WindowWidth / 2 - PrintFixture.Length) / 2, Console.CursorTop);
+            Console.WriteLine($"{PrintFixture} \t\t{fixture.FixtureDate.ToShortDateString()}");
         }
     }
 
-    public static void PrintAllFixtures(TeamResponse team1, TeamResponse team2, FixtureResponse newFixtureResponse)
+    public static async void PrintNextFixture()
     {
+        //TODO Get next Fixture where Played == false
+        FixtureResponse NextFixture = await FixtureClient.GetNextFixture(false);
+        List<TeamResponse> AllTeams = await TeamClient.GetAllTeams();
+
+        var Team1 = AllTeams.Where(f => f.TeamID == NextFixture.HomeTeamId).FirstOrDefault();
+        var Team2 = AllTeams.Where(f => f.TeamID == NextFixture.AwayTeamId).FirstOrDefault();
+
         //Only for development output
-        string PrintFixture = team1.TeamName + " - " + team2.TeamName;
+        string PrintFixture = Team1.TeamName + " - " + Team2.TeamName;
         Console.SetCursorPosition((Console.WindowWidth / 2 - PrintFixture.Length) / 2, Console.CursorTop);
-        Console.WriteLine($"{PrintFixture} \t\t{newFixtureResponse.FixtureDate.ToShortDateString()}");
+        Console.WriteLine($"{PrintFixture} \t\t{NextFixture.FixtureDate.ToShortDateString()}");
     }
 }

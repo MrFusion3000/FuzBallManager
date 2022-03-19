@@ -20,6 +20,11 @@ public class FixtureClient : BaseClient
         return await GetFixtureClient().AppendPathSegment(fixtureId).GetJsonAsync<FixtureResponse>();
     }
 
+    public static async Task<FixtureResponse> GetNextFixture(bool played)
+    {
+        return await GetFixtureClient().AppendPathSegment("GetNextFixture").AppendPathSegment(played).GetJsonAsync<FixtureResponse>();
+    }
+
     public static async Task Create(FixtureResponse newFixture)
     {
         var fixture = newFixture.Adapt<Fixture>();
@@ -35,7 +40,7 @@ public class FixtureClient : BaseClient
         return fixtureId;
     }
 
-    //TODOHIGH - Delete fixture method
+    //Delete fixture method
     public static async Task<Guid> Delete(Guid id)
     {
         await GetFixtureClient().AppendPathSegment("DeleteFixture").AppendPathSegment(id).DeleteAsync();

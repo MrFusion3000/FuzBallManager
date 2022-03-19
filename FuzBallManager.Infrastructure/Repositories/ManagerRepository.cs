@@ -11,6 +11,7 @@ namespace Infrastructure.Repositories
     public class ManagerRepository : Repository<Manager>, IManagerRepository
     {
         public ManagerRepository(FBMContext FBMContext) : base(FBMContext) { }
+
         public async Task<Manager> GetManagerByName(string name, CancellationToken cancellationToken)
         {
             var manager = await _FBMContext.Managers

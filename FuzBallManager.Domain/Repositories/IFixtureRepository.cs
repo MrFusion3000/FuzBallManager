@@ -5,8 +5,10 @@ namespace Domain.Repositories
 {
     public interface IFixtureRepository : IRepository<Fixture>
     {
-        //Task<Fixture> GetNextFixture(DateTime dateTime, CancellationToken cancellationToken);
         Task<Guid> Update(Fixture command, CancellationToken cancellationToken);
 
+        Task<Guid> Delete(Fixture command, CancellationToken cancellationToken);
+
+        Task<Fixture> GetNextFixture(Fixture request, CancellationToken cancellationToken);
     }
 }

@@ -19,7 +19,7 @@ public class DeleteFixtureHandler : IRequestHandler<DeleteFixtureCommand, Guid>
 
         ArgumentNullException.ThrowIfNull(fixtureEntity);
 
-        await _fixtureRepo.DeleteAsync(fixtureEntity, cancellationToken);
+        await _fixtureRepo.Delete(fixtureEntity, cancellationToken);
 
         return fixtureEntity.FixtureID;
     }

@@ -2,6 +2,8 @@
 using Domain.Repositories;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Base;
+using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Infrastructure.Repositories
@@ -10,18 +12,14 @@ namespace Infrastructure.Repositories
     {
         public FixtureRepository(FBMContext FBMContext) : base(FBMContext) { }
 
-        //public async Task<Manager> GetManagerByLastName(string lastname, CancellationToken cancellationToken)
-        //{
-        //    var manager = await _FBMContext.Managers
-        //        .FirstOrDefaultAsync(m => m.LastName == lastname, cancellationToken);
+        public async Task<Fixture> GetNextFixture(Fixture request, CancellationToken cancellationToken)
+        {
+            var fixture = await _FBMContext.Fixtures
+                .FirstOrDefaultAsync(f => f.Played == false, cancellationToken: cancellationToken);
 
-        //    if (manager == null) return default;
-
-        //    var managerResponse = manager.Adapt<Manager>();
-
-        //    return managerResponse;
-        //}
-
+            var fixtureResponse = fixture.Adapt<Fixture>();
+            return fixture;
+        }
 
         public async Task<Guid> Update(Fixture command, CancellationToken cancellationToken)
         {
@@ -47,12 +45,15 @@ namespace Infrastructure.Repositories
             }
         }
 
-        public async Task<Guid> DeleteAsync(Guid fixtureID, CancellationToken cancellationToken)
+        public async Task<Guid> Delete(Fixture command, CancellationToken cancellationToken)
         {
-            if (fixtureID == Guid.Empty) return (default);
+            var fixtureToDelete = _FBMContext.Fixtures.Where(a => a.FixtureID == command.FixtureID).FirstOrDefault();
+
+            if (fixtureToDelete.FixtureID == Guid.Empty) return (default);
+            _FBMContext.Fixtures.Remove(fixtureToDelete);
 
             await _FBMContext.SaveChangesAsync(cancellationToken);
-            return fixtureID;
+            return command.FixtureID;
         }
     }
 }
