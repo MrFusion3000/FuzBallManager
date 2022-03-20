@@ -20,7 +20,11 @@ public class PrintManagedTeamPlayers
             }
             else if(player.Playing == false)
             {
-
+                PlayingNotPlayingInjured = " ";
+            }
+            else
+            {
+                PlayingNotPlayingInjured = "I";
             }
             string FirstLetter = player.PlayerFirstName[..1];
             string PosLetter = player.PlayerPosition[..1];
