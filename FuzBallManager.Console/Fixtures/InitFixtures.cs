@@ -2,7 +2,7 @@
 using Application.Responses;
 using UIConsole;
 
-namespace Application;
+namespace UIConsole.Fixtures;
 
 public static class InitFixtures
 {
@@ -100,12 +100,10 @@ public static class InitFixtures
             }
         }
 
-        PrintFixtures.PrintAllFixtures();
-
-        Console.WriteLine("Next Match:");
-        PrintFixtures.PrintNextFixture();
-
-        Console.ReadKey();
+        //await PrintFixtures.PrintAllFixtures();
+        //Console.WriteLine("Next Match:");
+        //await PrintFixtures.PrintNextFixture();
+        //Console.ReadKey();
     }
 
     private static DateTime GetMatchday(DateTime addDaysToMatchDay)

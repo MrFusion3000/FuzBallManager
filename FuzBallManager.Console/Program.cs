@@ -1,6 +1,6 @@
-﻿using ApiClient;
-using Application;
-using Application.Responses;
+﻿using Application.Responses;
+using UIConsole.Fixtures;
+using UIConsole.Manager;
 
 namespace UIConsole;
 class Program
@@ -12,18 +12,15 @@ class Program
  
         // Init Player Manager: FirstName, LastName, Managing Team (Default values: ManagerID: New Guid, DateOfBirth: Today, Score:0, Bank:50000)  
         //TODO Check if Manager exists/Question to use this or create new
-        ManagerResponse NewManager = await CreateManager.CreatePlayerManagerAsync();
+        ManagerResponse UserPlayerManager = await CreateManager.CreatePlayerManagerAsync();
 
         //Init Season Fixtures (Home and Away Matches)
-        await InitFixtures.CalcSeasonFixturesAsync(NewManager);
+        await InitFixtures.CalcSeasonFixturesAsync(UserPlayerManager);
 
-        await InitManager.SetupManagedTeam(NewManager);
+        List<PlayerResponse> ManagedTeamPlayers = await InitManager.SetupManagedTeam(UserPlayerManager);
 
-        // Get and list all fixtures
-        //await FixtureClient.GetAllFixtures();
-
-        //TODO *1 Show Menu
-        ShowMenu.ShowTopMenu(NewManager);
+        //Show Top Menu
+        ShowMenu.ShowTopMenu(UserPlayerManager, ManagedTeamPlayers);
 
 
         //TODO 1 Sell/List your players

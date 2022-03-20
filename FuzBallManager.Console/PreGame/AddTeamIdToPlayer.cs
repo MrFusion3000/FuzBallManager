@@ -2,7 +2,7 @@
 using Application.Responses;
 using Mapster;
 
-namespace UIConsole
+namespace UIConsole.PreGame
 {
     public class AddTeamIdToPlayer
     {

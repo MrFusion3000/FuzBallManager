@@ -1,11 +1,11 @@
 ﻿using ApiClient;
 using Application.Responses;
 
-namespace UIConsole;
+namespace UIConsole.Fixtures;
 
 public class PrintFixtures
 {
-    public static async void PrintAllFixtures()
+    public static async Task PrintAllFixtures() // Changed to async task to make it print before jumping to next step in InitFixtures
     {
         List<FixtureResponse> AllFixtures = await FixtureClient.GetAllFixtures();
         List<TeamResponse> AllTeams = await TeamClient.GetAllTeams();
@@ -21,9 +21,9 @@ public class PrintFixtures
         }
     }
 
-    public static async void PrintNextFixture()
+    public static async Task PrintNextFixture()
     {
-        //TODO Get next Fixture where Played == false
+        //Get next Fixture where Played == false
         FixtureResponse NextFixture = await FixtureClient.GetNextFixture(false);
         List<TeamResponse> AllTeams = await TeamClient.GetAllTeams();
 

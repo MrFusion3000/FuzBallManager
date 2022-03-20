@@ -4,15 +4,15 @@ namespace UIConsole.Menu;
 
 public class Navigation
 {
-    public static void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager)
+    public static void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
     {
         switch (menuChoice.Key)
         {
             case ConsoleKey.Escape:
-                ShowMenu.ShowTopMenu(manager);
+                ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Spacebar:
-                PlayGame.PlayGame.Matchday(manager);
+                PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.D0:
             case ConsoleKey.D1:
@@ -34,16 +34,16 @@ public class Navigation
         }
     }
 
-    public static string playerNo { get; set; }
+    public static string PlayerNo { get; set; }
     private static void PrintOneToNine(Char keyChar)
     {
-        playerNo += keyChar;
+        PlayerNo += keyChar;
         Console.Write(keyChar.ToString());
     }
 
     private static void SubstitutePlayer()
     {
-            Console.WriteLine(playerNo);
-        playerNo = "";
+            Console.WriteLine(PlayerNo);
+        PlayerNo = "";
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UIConsole;
+using UIConsole.Manager;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -69,9 +70,9 @@ namespace xUnitTest
 
         }
 
-        [Fact]
-        public async void GetAllTeams()
-        {
+        //[Fact]
+        //public async void GetAllTeams()
+        //{
             //Arr
             //var teams = await team.GetTeams();
 
@@ -82,7 +83,7 @@ namespace xUnitTest
             //Assert.NotNull(teams);
             //output.WriteLine("List of teams fetched. {0}", teams.TeamName);
 
-        }
+       //}
 
     }
 }

@@ -8,9 +8,10 @@ using Xunit;
 
 namespace xUnitTest
 {
+
     public class ManagerShould
     {
-        // *** Start API first in Package Manager | 'cd FBM.API' | 'dotnet run' ***
+        // *** Start API first in Package Manager | 'cd FuzBallManager.API' | 'dotnet run' ***
 
         [Fact]
         public async void HaveAName()
@@ -102,22 +103,22 @@ namespace xUnitTest
         }
 
         //TODO NotBeInListOfOppositeTeams
-        [Fact]
-        public async void NotBeInListOfOpposiongTeams()
-        {
-            //Arrange
-            List<TeamResponse> teams = await TeamClient.GetAllTeams();
-            var managedTeamId = Guid.NewGuid();
-            GetOpposingTeams.GetOppTeams(teams, managedTeamId);
+        //[Fact]
+        //public async void NotBeInListOfOpposiongTeams()
+        //{
+        //    //Arrange
+        //    List<TeamResponse> teams = await TeamClient.GetAllTeams();
+        //    var managedTeamId = Guid.NewGuid();
+        //    var opposingTeams = GetOpposingTeams.GetOppTeams(teams, managedTeamId);
 
-            //Act
+        //    //Act
 
-            //Assert
-        }
+        //    //Assert
+        //    Assert.DoesNotContain(managedTeamId, opposingTeams);
+
+        //}
 
 
-        //TODO HaveAName
-        //TODO HaveATeam
         //TODO HaveAInitialBankof50000
         //TODO HaveAnInitialScoreOf0
 

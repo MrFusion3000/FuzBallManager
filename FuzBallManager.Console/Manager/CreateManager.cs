@@ -1,7 +1,7 @@
 ﻿using ApiClient;
 using Application.Responses;
 
-namespace UIConsole;
+namespace UIConsole.Manager;
 
 public class CreateManager
 {

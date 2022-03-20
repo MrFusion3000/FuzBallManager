@@ -1,7 +1,7 @@
 ﻿using ApiClient;
 using Application.Responses;
 
-namespace UIConsole;
+namespace UIConsole.Manager;
 
 //TODO Rethink structure (ex. load data into memory once and save only after each fixture)
 
@@ -22,7 +22,7 @@ public class InitManager
         await ManagerClient.Create(newPlayerManager);
     }
 
-    public static async Task SetupManagedTeam(ManagerResponse newmanager)
+    public static async Task<List<PlayerResponse>> SetupManagedTeam(ManagerResponse newmanager)
     {
         var ManagedTeam = await TeamClient.GetTeamById(newmanager.ManagingTeamID);
         var ManagedTeamPlayers = await PlayerClient.GetPlayersByTeamName(ManagedTeam.TeamName);
@@ -49,7 +49,7 @@ public class InitManager
             await PlayerClient.Update(JoinTeam.PlayerID, JoinTeam);
         }
 
-        Console.ReadKey();
-
+        //Console.ReadKey();
+        return ManagedTeamPlayers;
     }
 }

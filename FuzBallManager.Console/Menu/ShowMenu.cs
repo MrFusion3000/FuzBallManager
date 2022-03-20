@@ -5,7 +5,7 @@ namespace UIConsole;
 
 public class ShowMenu
 {
-    public static void ShowTopMenu(ManagerResponse manager)
+    public static void ShowTopMenu(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
     {
         Console.Clear();
 
@@ -42,11 +42,11 @@ public class ShowMenu
 
         menuChoice = Console.ReadKey(true);
 
-        WaitKey(menuChoice, manager);
+        WaitKey(menuChoice, manager, managedTeamPlayers);
 
     }
 
-    private static void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager)
+    private static void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
     {
         switch (menuChoice.Key)
         {
@@ -55,16 +55,16 @@ public class ShowMenu
                 break;
 
             case ConsoleKey.A:
-                Menu_1_SellListPlayers.SellListPlayers(manager);
+                Menu_1_SellListPlayers.SellListPlayers(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.S:
-                Menu_2_PrintScore.PrintScore(manager);
+                Menu_2_PrintScore.PrintScore(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.D:
-                Menu_5_DisplayLeagueTable.DisplayLeagueTable(manager);
+                Menu_5_DisplayLeagueTable.DisplayLeagueTable(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Spacebar:
-                PlayGame.PlayGame.Matchday(manager);
+                PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
                 break;
 
             default:

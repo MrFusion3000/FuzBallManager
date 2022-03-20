@@ -21,8 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiClient\ApiClient.csproj" />
-    <ProjectReference Include="..\FBM.API\API.csproj" />
+    <ProjectReference Include="..\FuzBallManager.API\API.csproj" />
     <ProjectReference Include="..\FuzBallManager.ApiClient\ApiClient.csproj" />
     <ProjectReference Include="..\FuzBallManager.Application\Application.csproj" />
     <ProjectReference Include="..\FuzBallManager.Console\UIConsole.csproj" />
