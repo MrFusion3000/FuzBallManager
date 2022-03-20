@@ -2,6 +2,7 @@
 using Application;
 using Application.Responses;
 using System;
+using System.Collections.Generic;
 using UIConsole;
 using Xunit;
 
@@ -9,10 +10,7 @@ namespace xUnitTest
 {
     public class ManagerShould
     {
-        // *** Start API first in Package Manager using 'dotnet run' ***
-
-        //readonly InitManager manager1 = new();
-        //readonly InitManager manager2 = new();
+        // *** Start API first in Package Manager | 'cd FBM.API' | 'dotnet run' ***
 
         [Fact]
         public async void HaveAName()
@@ -51,7 +49,7 @@ namespace xUnitTest
         }
 
         [Fact]
-        public async void HaveATeamWithNameBasedOnID()
+        public async void HaveATeamNameAssociatedWithID()
         {
             //Fetch the Managers Name
 
@@ -70,10 +68,9 @@ namespace xUnitTest
         }
 
         [Fact]
-        public async void NotHaveWrongManagingTeamName()
+        public async void NotHaveWrongTeamName()
         {
             //Arrange
-            //string managerName = "Lord Manager";
             Guid managedTeamId = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
             TeamResponse managedTeam = await TeamClient.GetTeamById(managedTeamId);
 
@@ -87,7 +84,7 @@ namespace xUnitTest
         }
 
         [Fact]
-        public async void HaveManagerNameToIncludeOnlyIntlAlphaCharsWithCapitalFirsts()
+        public async void HaveManagerNameIncludeOnlyInternationalAlphaCharsWithCapitalFirsts()
         {
             //Arrange
             //string managerName = "Lord Manager";
@@ -103,6 +100,21 @@ namespace xUnitTest
             Assert.DoesNotMatch("[A-Z[a-z]+ [A-Z[a-z]+", actual);
             //}
         }
+
+        //TODO NotBeInListOfOppositeTeams
+        [Fact]
+        public async void NotBeInListOfOpposiongTeams()
+        {
+            //Arrange
+            List<TeamResponse> teams = await TeamClient.GetAllTeams();
+            var managedTeamId = Guid.NewGuid();
+            GetOpposingTeams.GetOppTeams(teams, managedTeamId);
+
+            //Act
+
+            //Assert
+        }
+
 
         //TODO HaveAName
         //TODO HaveATeam

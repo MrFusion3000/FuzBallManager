@@ -9,32 +9,26 @@ public static class InitFixtures
     public static async Task CalcSeasonFixturesAsync(ManagerResponse manager)
     {
         var managedTeamId = manager.ManagingTeamID;
-        var managedTeam = await TeamClient.GetTeamById(managedTeamId);
+        //var managedTeam = await TeamClient.GetTeamById(managedTeamId);
         int AddDaysToMatchDay = 0;
         bool Odd = true;
 
         //--Add function for calculating season fixtures--
-        // Get All teams
+        // Get all teams
         var teams = await TeamClient.GetAllTeams();
 
-        // Filter out opposite teams
-        var AllTeamsAgainst = teams.Where(t => t.TeamID != managedTeamId).ToList();
+        var AllTeamsAgainst = GetOpposingTeams.GetOppTeams(teams, managedTeamId);
+        // Filter out opposing teams
+        //var AllTeamsAgainst = teams.Where(t => t.TeamID != managedTeamId).ToList();
 
         var CheckFixtureExist = await FixtureClient.GetAllFixtures();
 
         if (CheckFixtureExist.Any())
         {
-            //TODOHIGH checks only if ANY fixtures exists, not for which team! So. wrong.
-            //Delete all rows in Table Fixture
-
+            //Delete all rows in Table Fixture if any exists
             foreach (var fixture in CheckFixtureExist)
             {
                 await FixtureClient.Delete(fixture.FixtureID);
-                //Get TeamName for each TeamID in Fixtures
-                //var hometeam = teams.FirstOrDefault(f => f.TeamID == fixture.HomeTeamId);
-                //var awayteam = teams.FirstOrDefault(f => f.TeamID == fixture.AwayTeamId);
-
-                //PrintFixtures.PrintAllFixtures(hometeam, awayteam, fixture);
             }
             Console.WriteLine("Old fixtures deleted.");
         }

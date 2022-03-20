@@ -3,27 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Domain", "1.Domain", "{11094571-DCF8-4C68-85C6-A49A5FEF7307}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "FuzBallManager.Domain\Domain.csproj", "{A9D82492-4190-42A3-8E46-848A1818587E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{153B3A71-B283-4F1F-8FC7-54F127CB724C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "FuzBallManager.Application\Application.csproj", "{596314AC-C722-4663-A81F-ED998F9B1C7F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Infrastructure", "3.Infrastructure", "{5CB326C9-C4D4-460A-977C-9AFD01A08CFC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "FuzBallManager.Infrastructure\Infrastructure.csproj", "{8A25DD48-5FB3-49C6-B386-44F5A1CDBA7F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1.API", "4.1.API", "{C322043E-B6B4-49EC-A8AE-2ED29FC0F973}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "FuzBallManager.API\API.csproj", "{BE3B8CA4-21FA-4815-840A-BB014B3DD6D5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2.APIClient", "4.2.APIClient", "{F51662A6-1579-4CFB-84DE-36C676B3DDD0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClient", "FuzBallManager.ApiClient\ApiClient.csproj", "{8A280B7C-E7B3-4B90-9BEA-527BD9532104}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.UIConsole", "5.UIConsole", "{59DFF82E-1F55-433C-9357-C39A7808396F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIConsole", "FuzBallManager.Console\UIConsole.csproj", "{224AFDCC-22C0-463C-B116-21E5D0ADEE09}"
 EndProject
@@ -31,7 +15,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Testing", "6.Testing", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitTest", "FuzBallManager.xUnitTest\xUnitTest.csproj", "{CDC001A2-C430-4FA6-9791-2F9D5488BCC8}"
 EndProject
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "FBM.API\API.csproj", "{BE3B8CA4-21FA-4815-840A-BB014B3DD6D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Domain", "1.Domain", "{11094571-DCF8-4C68-85C6-A49A5FEF7307}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{153B3A71-B283-4F1F-8FC7-54F127CB724C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Infrastructure", "3.Infrastructure", "{5CB326C9-C4D4-460A-977C-9AFD01A08CFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1.API", "4.1.API", "{C322043E-B6B4-49EC-A8AE-2ED29FC0F973}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.UIConsole", "5.UIConsole", "{59DFF82E-1F55-433C-9357-C39A7808396F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClient", "ApiClient\ApiClient.csproj", "{8A280B7C-E7B3-4B90-9BEA-527BD9532104}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2.APIClient", "4.2.APIClient", "{F51662A6-1579-4CFB-84DE-36C676B3DDD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -13,6 +13,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiClient\ApiClient.csproj" />
+    <ProjectReference Include="..\FuzBallManager.ApiClient\ApiClient.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+	<InternalsVisibleTo Include="../FuzballManager.xUnitTest" />
   </ItemGroup>
 
 </Project>
