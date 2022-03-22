@@ -61,11 +61,13 @@ namespace Infrastructure.Repositories
                 player.PlayerLastName = command.PlayerLastName;
                 player.PlayerStats = command.PlayerStats;
                 player.PlayerPosition = command.PlayerPosition;
+                player.PlayerShirtNo = command.PlayerShirtNo;
                 player.DateOfBirth = command.DateOfBirth;
                 player.TeamID = command.TeamID;
                 player.TeamName = command.TeamName;
                 player.Injured = command.Injured;
                 player.InManagedTeam = command.InManagedTeam;
+                player.Value = command.Value;
 
                 await _FBMContext.SaveChangesAsync(cancellationToken);
                 return player.PlayerID;

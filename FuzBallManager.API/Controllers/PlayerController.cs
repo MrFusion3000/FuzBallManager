@@ -40,13 +40,13 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Gets all Players by Team Name.
+        /// Gets all Players by Managed Team.
         /// </summary>
         /// <param name="inmanagedteam"></param>
         /// <returns></returns>
         [HttpGet("GetPlayersByManagedTeam/{inmanagedteam}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPlayersByInManagedTeam(string inmanagedteam)
+        public async Task<IActionResult> GetPlayersByInManagedTeam(bool inmanagedteam)
         {
             return Ok(await _mediator.Send(new GetPlayersByManagedTeamQuery { InManagedTeam = inmanagedteam }));
         }

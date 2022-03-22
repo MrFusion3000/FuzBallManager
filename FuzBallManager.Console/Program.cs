@@ -1,13 +1,14 @@
 ﻿using Application.Responses;
 using UIConsole.Fixtures;
 using UIConsole.Manager;
+using UIConsole.PreGame;
 
 namespace UIConsole;
 class Program
 {
     static async Task Main(/*string[] args*/)
     {
-        //***This Function Adds Team Id to Players With TeamID Null if not initiated***
+        //***This Function Adds Team Id to Players With TeamID Null if not initiated + Add RND ShirtNo***
         //await AddTeamIdToPlayer.AddTeamIdToPlayers();
  
         // Init Player Manager: FirstName, LastName, Managing Team (Default values: ManagerID: New Guid, DateOfBirth: Today, Score:0, Bank:50000)  
@@ -16,7 +17,6 @@ class Program
 
         //Init Season Fixtures (Home and Away Matches)
         await InitFixtures.CalcSeasonFixturesAsync(UserPlayerManager);
-
 
         List<PlayerResponse> ManagedTeamPlayers = await InitManager.SetupManagedTeam(UserPlayerManager);
 

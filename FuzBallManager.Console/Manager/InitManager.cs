@@ -35,12 +35,14 @@ public class InitManager
         InitPlayers.InitThePlayers(AllPlayers);
 
         Console.WriteLine("Roster initiated...");
+        //Console.ReadKey();
 
         //Get list of players for managed team (already refactored this 3 times :-) )
         //Randomize 10 player numbers to join team from ManagedTeamplayers
         Random rndPlayer = new();
         int AddUp = 10;
 
+        //TODO Check why Error Flynn 500 appears
         for (int i = 0; i < AddUp; i++)
         {
             var JoinTeam = ManagedTeamPlayers[rndPlayer.Next(1, ManagedTeamPlayers.Count)];

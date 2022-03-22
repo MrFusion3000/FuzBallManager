@@ -8,15 +8,13 @@ namespace UIConsole
         public static async void InitThePlayers(List<PlayerResponse> allplayers)
         {
             var AllPlayers = allplayers;
+
             //TODO ** Set properties to default **
-            // InManagedTeam = false
-            // Injured = false
-            // Playing = false
             foreach (var player in AllPlayers)
             {
-                player.InManagedTeam = false;
-                player.Injured = false;
-                player.Playing = false;
+                if (player.InManagedTeam == true) player.InManagedTeam = false;
+                if (player.Injured == true) player.Injured = false;
+                if (player.Playing == true) player.Playing = false;
                 await PlayerClient.Update(player.PlayerID, player);
             }
         }

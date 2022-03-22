@@ -25,7 +25,9 @@ public static class PrintManagedTeamPlayers
             }
             string FirstLetter = player.PlayerFirstName[..1];
             string PosLetter = player.PlayerPosition[..1];
-            Console.WriteLine("{0} {1}.{2}\t{3} \t{4}\t{5}", PosLetter, FirstLetter, player.PlayerLastName, player.PlayerShirtNo, player.PlayerStats, PlayingNotPlayingInjured );
+            Console.WriteLine($"{PosLetter} {FirstLetter}.{player.PlayerLastName}"); 
+            Console.CursorLeft = 13;
+            Console.WriteLine($"{player.PlayerShirtNo} \t{player.PlayerStats}\t{PlayingNotPlayingInjured}" );
         }
     }
 }

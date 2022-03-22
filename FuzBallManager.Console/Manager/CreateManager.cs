@@ -27,7 +27,7 @@ public class CreateManager
             Console.WriteLine($"Manager {Manager.Name} exists");
 
             Console.WriteLine("---------------------------------------------------------------------------------");
-            Console.ReadKey();
+            //Console.ReadKey();
         }
         // Otherwise create Manager
         else
@@ -35,7 +35,6 @@ public class CreateManager
             Manager = new()
             {
                 Name = name,
-                //LastName = lastname,
             };
 
             //Print teams to screen

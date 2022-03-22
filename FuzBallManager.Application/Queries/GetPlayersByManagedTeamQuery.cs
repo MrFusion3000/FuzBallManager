@@ -5,6 +5,6 @@ namespace Application.Queries
 {
     public class GetPlayersByManagedTeamQuery : IRequest<List<Player>>
     {
-        public string InManagedTeam { get; set; }
+        public bool InManagedTeam { get; set; }
     }
 }
