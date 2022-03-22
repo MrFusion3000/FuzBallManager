@@ -35,6 +35,18 @@ namespace Infrastructure.Repositories
             return GetPlayer;
         }
 
+        public async Task<List<Player>> GetPlayersByManagedTeam(bool managedteam, CancellationToken cancellationToken)
+        {
+            var GetPlayer =
+            await _FBMContext.Players
+                .Where(t => t.InManagedTeam == managedteam)
+                .ToListAsync(cancellationToken);
+
+            if (GetPlayer == null) return default;
+
+            return GetPlayer;
+        }
+
         public async Task<Guid> Update(Player command, CancellationToken cancellationToken)
         {
             var player = _FBMContext.Players.Where(a => a.PlayerID == command.PlayerID).FirstOrDefault();

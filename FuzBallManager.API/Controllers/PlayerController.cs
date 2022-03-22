@@ -28,7 +28,7 @@ namespace API.Controllers
         }
 
         /// <summary>
-        /// Gets all Players.
+        /// Gets all Players by Team Name.
         /// </summary>
         /// <param name="teamname"></param>
         /// <returns></returns>
@@ -37,6 +37,18 @@ namespace API.Controllers
         public async Task<IActionResult> GetPlayersByTeamName(string teamname)
         {
             return Ok(await _mediator.Send(new GetPlayersByTeamNameQuery { TeamName = teamname}));
+        }
+
+        /// <summary>
+        /// Gets all Players by Team Name.
+        /// </summary>
+        /// <param name="inmanagedteam"></param>
+        /// <returns></returns>
+        [HttpGet("GetPlayersByManagedTeam/{inmanagedteam}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetPlayersByInManagedTeam(string inmanagedteam)
+        {
+            return Ok(await _mediator.Send(new GetPlayersByManagedTeamQuery { InManagedTeam = inmanagedteam }));
         }
 
         /// <summary>

@@ -20,6 +20,10 @@ public class PlayerClient : BaseClient
     {
         return await GetPlayerClient().AppendPathSegment("GetPlayersByTeamName").AppendPathSegment(teamName).GetJsonAsync<List<PlayerResponse>>();
     }
+    public static async Task<List<PlayerResponse>> GetPlayersByManagedTeam(bool managedTeam)
+    {
+        return await GetPlayerClient().AppendPathSegment("GetPlayersByManagedTeam").AppendPathSegment(managedTeam).GetJsonAsync<List<PlayerResponse>>();
+    }
 
     public static async Task<PlayerResponse> GetPlayerById(Guid playerId)
     {
