@@ -29,17 +29,11 @@ public class InitManager
         var AllPlayers = await PlayerClient.GetAllPlayers();
         Console.WriteLine("All Players fetched...");
         var ManagedTeamPlayers = AllPlayers.FindAll(p => p.TeamID == ManagedTeam.TeamID).ToList();
-        //var ManagedTeamPlayers = await PlayerClient.GetPlayersByTeamName(ManagedTeam.TeamName);
+
         Console.WriteLine("Managed Team Players filtered...");
 
-        //Clean all players fom roster
-        foreach (var player in AllPlayers)
-        {
-            player.InManagedTeam = false;
-            player.Injured = false;
-            player.Playing = false;
-            await PlayerClient.Update(player.PlayerID, player);
-        }
+        InitPlayers.InitThePlayers(AllPlayers);
+
         Console.WriteLine("Roster initiated...");
 
         //Get list of players for managed team (already refactored this 3 times :-) )
