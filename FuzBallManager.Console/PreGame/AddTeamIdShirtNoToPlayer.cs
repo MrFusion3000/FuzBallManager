@@ -4,7 +4,7 @@ using Mapster;
 
 namespace UIConsole.PreGame;
 
-public class AddTeamIdToPlayer
+public class AddTeamIdShirtNoToPlayer
 {
     public static async Task AddTeamIdToPlayers()
     {
