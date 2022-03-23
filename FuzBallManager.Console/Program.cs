@@ -12,6 +12,7 @@ class Program
         //await AddTeamIdToPlayer.AddTeamIdToPlayers();
  
         // Init Player Manager: FirstName, LastName, Managing Team (Default values: ManagerID: New Guid, DateOfBirth: Today, Score:0, Bank:50000)  
+        //TODO Make a proper UserManagerClass
         //TODO Check if Manager exists/Question to use this or create new
         ManagerResponse UserPlayerManager = await CreateManager.CreatePlayerManagerAsync();
 

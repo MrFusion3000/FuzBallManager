@@ -23,13 +23,9 @@ public class CreateManager
             //TODONTH Add "Load profile or create new?"
             //TODONTH Add reset game to default
 
-            //var managedTeamName = await TeamClient.GetTeamById(manager.ManagingTeamID);
             Console.WriteLine($"Manager {Manager.Name} exists");
-
-            Console.WriteLine("---------------------------------------------------------------------------------");
-            //Console.ReadKey();
         }
-        // Otherwise create Manager
+        // Otherwise create new Manager
         else
         {
             Manager = new()

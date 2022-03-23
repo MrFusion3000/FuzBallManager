@@ -1,17 +1,35 @@
 ﻿using ApiClient;
 using Application;
 using Application.Responses;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using UIConsole;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace xUnitTest
 {
 
-    public class ManagerShould
+    public class ManagerShould //: IDisposable
     {
         // *** Start API first in Package Manager | 'cd FuzBallManager.API' | 'dotnet run' ***
+        private readonly ITestOutputHelper _output;
+
+        //private readonly Manager _sut;
+
+        public ManagerShould(ITestOutputHelper output)
+        {
+            _output = output;
+
+            //_sut = ManagerClient.GetManagerByName(managerName);
+        }
+
+        //public void Dispose()
+        //{
+        //    _output.WriteLine($"Disposing UserManager {_sut.Name}");
+            
+        //}
 
         [Fact]
         public async void HaveAName()
@@ -28,7 +46,7 @@ namespace xUnitTest
 
             //Assert
             Assert.Equal(expected, actual);
-            //actual = "";
+            _output.WriteLine($"Manager has name: {teamManager.Name}");
         }
 
         [Fact]
@@ -46,7 +64,7 @@ namespace xUnitTest
 
             //Assert
             Assert.Equal(expected, actual);
-            //actual = "";
+            _output.WriteLine($"Manager has Id: {teamManager.ManagerID}");
         }
 
         [Fact]
@@ -65,7 +83,7 @@ namespace xUnitTest
 
             //Assert
             Assert.Equal(expected, actual, ignoreCase: true);
-            //actual = "";
+            _output.WriteLine($"Manager has name: {teamManager.Name} with associated Id: {teamManager.ManagerID}");
         }
 
         [Fact]
@@ -81,7 +99,7 @@ namespace xUnitTest
 
             //Assert
             Assert.NotEqual(expected, actual);
-            //}
+            
         }
 
         [Fact]
@@ -98,8 +116,9 @@ namespace xUnitTest
             string? actual = managedTeam.TeamName;
 
             //Assert
-            Assert.DoesNotMatch("[A-Z[a-z]+ [A-Z[a-z]+", actual);
-            //}
+            Assert.Matches("[A-Z[a-z]+ [A-Z[a-z]+", actual);
+            _output.WriteLine($"Manager has name: {managedTeam.TeamName} with first letters uppercase");
+
         }
 
         //TODO NotBeInListOfOppositeTeams

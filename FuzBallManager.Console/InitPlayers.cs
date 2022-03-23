@@ -5,7 +5,7 @@ namespace UIConsole
 {
     public class InitPlayers
     {
-        public static async void InitThePlayers(List<PlayerResponse> allplayers)
+        public static async Task InitThePlayers(List<PlayerResponse> allplayers)
         {
             var AllPlayers = allplayers;
 
@@ -14,8 +14,9 @@ namespace UIConsole
             {
                 if (player.InManagedTeam == true) player.InManagedTeam = false;
                 if (player.Injured == true) player.Injured = false;
-                if (player.Playing == true) player.Playing = false;
+                if (player.Playing == true || player.Playing == null) player.Playing = false;
                 await PlayerClient.Update(player.PlayerID, player);
+                //Console.WriteLine($"{player.PlayerFirstName}, {player.PlayerLastName}");
             }
         }
         //TODO PlayerShirtNo (function to RND a shirtNo only once per team, or just number them top to bottom 1--x)

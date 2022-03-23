@@ -32,29 +32,13 @@ public class InitManager
 
         Console.WriteLine("Managed Team Players filtered...");
 
-        InitPlayers.InitThePlayers(AllPlayers);
+        await InitPlayers.InitThePlayers(AllPlayers);
 
         Console.WriteLine("Roster initiated...");
-        //Console.ReadKey();
 
-        //Get list of players for managed team (already refactored this 3 times :-) )
-        //Randomize 10 player numbers to join team from ManagedTeamplayers
-        Random rndPlayer = new();
-        int AddUp = 10;
+        await RndTeam.RandomizeTeam(ManagedTeamPlayers);
 
-        //TODO Check why Error Flynn 500 appears
-        for (int i = 0; i < AddUp; i++)
-        {
-            var JoinTeam = ManagedTeamPlayers[rndPlayer.Next(1, ManagedTeamPlayers.Count)];
-
-            JoinTeam.InManagedTeam = true;
-
-            //TODO Refactor to update range
-            await PlayerClient.Update(JoinTeam.PlayerID, JoinTeam);
-        }
-
-        ManagedTeamPlayers =await PlayerClient.GetPlayersByManagedTeam(true);
-        //Console.ReadKey();
+        ManagedTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
         return ManagedTeamPlayers;
     }
 }
