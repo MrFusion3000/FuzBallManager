@@ -8,23 +8,25 @@ namespace UIConsole
         public static async Task InitThePlayers(List<PlayerResponse> allplayers)
         {
             var AllPlayers = allplayers;
+            Random RndStats = new();
 
-            //TODO ** Set properties to default **
+            // ** Set properties to default **
+            //PlayerShirtNo (function to RND a shirtNo only once per team)
+            //Init all players PlayerStats  with RND (20-50)
+            //Set Player Value to (500 * Player Stats)
             foreach (var player in AllPlayers)
             {
                 if (player.InManagedTeam == true) player.InManagedTeam = false;
                 if (player.Injured == true) player.Injured = false;
                 if (player.Playing == true || player.Playing == null) player.Playing = false;
-                //TODO rnd PlayerStats
-                if (player.PlayerStats == null) player.PlayerStats = 0;
+                //rnd PlayerStats
+                if (player.PlayerStats == 0 || player.PlayerStats ==  null) player.PlayerStats = RndStats.Next(20,50);
                 //TODO rnd Value based on PlayerStats
-                if (player.Value == null) player.Value = 0;
+                if (player.Value == 0 || player.Value == null) player.Value = player.PlayerStats * 500;
                 await PlayerClient.Update(player.PlayerID, player);
             }
         }
-        //TODO PlayerShirtNo (function to RND a shirtNo only once per team, or just number them top to bottom 1--x)
-        //TODO Init all players PlayerStats  with RND (50-80)
-        //TODO Set Player Value to (5000 * Player Stats)
+        
 
     }
 }

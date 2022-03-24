@@ -43,6 +43,8 @@ public class Navigation
 
     private static void SubstitutePlayer()
     {
+        //TODO Function for assigning Player to Team
+        //TODO Check if team roster is filled (if = 11 players then Print message)
             Console.WriteLine(PlayerNo);
         PlayerNo = "";
     }

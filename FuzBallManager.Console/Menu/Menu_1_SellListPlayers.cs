@@ -4,6 +4,8 @@ using UIConsole.Menu;
 
 namespace UIConsole;
 
+//TODO 1 Sell/List your players (Only List players for now)
+
 public class Menu_1_SellListPlayers
 {
     public static void SellListPlayers(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
