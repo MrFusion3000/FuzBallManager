@@ -4,7 +4,7 @@ namespace UIConsole.Menu;
 
 public class Navigation
 {
-    public static void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static async void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
     {
         switch (menuChoice.Key)
         {
@@ -27,7 +27,7 @@ public class Navigation
                 PrintOneToNine(menuChoice.KeyChar);
                 break;
             case ConsoleKey.Enter:
-                SubstitutePlayer();
+                await SubstitutePlayer(managedTeamPlayers, PlayerNoConverted );
                 break;
             default:
                 break;
@@ -35,17 +35,24 @@ public class Navigation
     }
 
     public static string PlayerNo { get; set; }
-    private static void PrintOneToNine(Char keyChar)
+    public static int PlayerNoConverted  { get; set; }
+    private static int PrintOneToNine(Char keyChar)
     {
-        PlayerNo += keyChar;
+        PlayerNo += keyChar.ToString();
+        PlayerNoConverted = int.Parse(PlayerNo);
         Console.Write(keyChar.ToString());
+
+        return PlayerNoConverted;
     }
 
-    private static void SubstitutePlayer()
+    private static async Task SubstitutePlayer(List<PlayerResponse> players, int playerNo)
     {
         //TODO Function for assigning Player to Team
         //TODO Check if team roster is filled (if = 11 players then Print message)
             Console.WriteLine(PlayerNo);
-        PlayerNo = "";
+
+        await PlayerSubstitution.PlayerSubstitute(players, playerNo);
+        PlayerNoConverted = 0;
+
     }
 }

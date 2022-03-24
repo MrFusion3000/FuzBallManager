@@ -15,13 +15,16 @@ public class Menu_1_SellListPlayers
 
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine(" p : picked to play, i : injured");
-        Console.ForegroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
         PrintManagedTeamPlayers.PrintTeamPlayers(manager, managedTeamPlayers);
 
-        menuChoice = Console.ReadKey(true);
+        while (true)
+        {
+            menuChoice = Console.ReadKey(true);
 
-        Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+            Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+        }
     }
 }
