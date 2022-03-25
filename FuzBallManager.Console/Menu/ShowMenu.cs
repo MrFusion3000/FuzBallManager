@@ -51,7 +51,7 @@ public class ShowMenu
         switch (menuChoice.Key)
         {
             case ConsoleKey.Escape:
-                Console.WriteLine("End");
+                //Console.WriteLine("End");
                 break;
 
             case ConsoleKey.A:
@@ -64,7 +64,7 @@ public class ShowMenu
                 Menu_5_DisplayLeagueTable.DisplayLeagueTable(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Spacebar:
-                PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
+                MatchDay.MatchDay1.PickTeam(manager, managedTeamPlayers);
                 break;
 
             default:

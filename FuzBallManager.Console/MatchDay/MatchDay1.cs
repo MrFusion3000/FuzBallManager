@@ -1,12 +1,11 @@
 ﻿using Application.Responses;
 using UIConsole.Manager;
-using UIConsole.Menu;
 
-namespace UIConsole.PlayGame;
+namespace UIConsole.MatchDay;
 
-public class PlayGame
+public class MatchDay1
 {
-    public static void Matchday(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void PickTeam(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -20,9 +19,9 @@ public class PlayGame
         //TODO Get player list
         PrintManagedTeamPlayers.PrintTeamPlayers(manager, managedTeamPlayers);
 
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        int PlayersPicked = 0;
-        Console.WriteLine("PLAYERS PICKED: {0}", PlayersPicked);
+        //Console.ForegroundColor = ConsoleColor.Magenta;
+        //int PlayersPicked = 0;
+        //Console.WriteLine("PLAYERS PICKED: {0}", PlayersPicked);
 
         Console.ForegroundColor = ConsoleColor.White;
         Console.SetCursorPosition(7, 14);
@@ -43,7 +42,16 @@ public class PlayGame
 
             //TODO Function for assigning player no to menu switch
 
-            Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+            //Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+            switch (menuChoice.Key)
+            {
+                //case ConsoleKey.Escape:
+                //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
+                //    break;
+                case ConsoleKey.Spacebar:
+                    MatchDay2.ShowPreMatch();
+                    break;
+            }
         }
     }
 }

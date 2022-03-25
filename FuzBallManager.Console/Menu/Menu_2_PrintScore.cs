@@ -22,10 +22,8 @@ public class Menu_2_PrintScore
         switch (menuChoice.Key)
         {
             case ConsoleKey.Escape:
-                ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
-                break;
             case ConsoleKey.Spacebar:
-                PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
+                ShowMenu.ShowTopMenu(manager, managedTeamPlayers);                
                 break;
         }
     }

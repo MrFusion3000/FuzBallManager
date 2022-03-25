@@ -1,4 +1,4 @@
-﻿namespace UIConsole.Manager;
+﻿namespace UIConsole.MatchDay;
 
 public class CalcMatchScore
 {

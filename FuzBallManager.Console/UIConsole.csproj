@@ -15,4 +15,8 @@
     <ProjectReference Include="..\FuzBallManager.ApiClient\ApiClient.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PlayGame\" />
+  </ItemGroup>
+
 </Project>

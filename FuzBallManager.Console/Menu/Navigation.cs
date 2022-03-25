@@ -1,5 +1,6 @@
 ﻿using ApiClient;
 using Application.Responses;
+using UIConsole.MatchDay;
 
 namespace UIConsole.Menu;
 
@@ -13,7 +14,7 @@ public class Navigation
                 ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Spacebar:
-                PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
+                MatchDay.MatchDay1.PickTeam (manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Backspace:
             case ConsoleKey.D0:

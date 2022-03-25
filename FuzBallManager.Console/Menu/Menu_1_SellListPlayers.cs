@@ -14,7 +14,7 @@ public class Menu_1_SellListPlayers
         ConsoleKeyInfo menuChoice;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine(" p : picked to play, i : injured");
+        Console.WriteLine("\n p : picked to play, i : injured");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 

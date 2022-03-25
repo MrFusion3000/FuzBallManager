@@ -11,13 +11,16 @@ namespace UIConsole
 
             while (!success)
             {
-                Console.WriteLine("Type team number of the team you want to manage\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n  Type team number of the team you want to\n  manage");
+                Console.SetCursorPosition(2,23);
+                //Console.ForegroundColor= ConsoleColor.White;
                 string userInput = Console.ReadLine();
                 success = int.TryParse(userInput, out int chosenTeam);
 
                 managedTeam = teams.ElementAtOrDefault(chosenTeam - 1);
 
-                Console.WriteLine("You chose : {0} {1}", chosenTeam, managedTeam);
+                //Console.WriteLine("  You chose : {0} {1}", chosenTeam, managedTeam);
             }
 
             return managedTeam;
