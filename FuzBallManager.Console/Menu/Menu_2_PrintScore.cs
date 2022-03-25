@@ -19,6 +19,14 @@ public class Menu_2_PrintScore
 
         menuChoice = Console.ReadKey(true);
 
-        Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+        switch (menuChoice.Key)
+        {
+            case ConsoleKey.Escape:
+                ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
+                break;
+            case ConsoleKey.Spacebar:
+                PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
+                break;
+        }
     }
 }

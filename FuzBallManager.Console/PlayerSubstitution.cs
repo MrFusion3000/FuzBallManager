@@ -20,7 +20,6 @@ namespace UIConsole
                     await PlayerClient.Update(player.PlayerID, player);
                 }
             }
-            
         }
     }
 }

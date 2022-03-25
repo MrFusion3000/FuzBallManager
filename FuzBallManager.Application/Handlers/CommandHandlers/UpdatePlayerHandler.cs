@@ -19,7 +19,7 @@ public class UpdatePlayerHandler : IRequestHandler<UpdatePlayerCommand, Guid>
 
         ArgumentNullException.ThrowIfNull(playerEntity);
 
-        await _playerRepo.  Update(playerEntity, cancellationToken);
+        await _playerRepo.Update(playerEntity, cancellationToken);
 
         return playerEntity.PlayerID;
     }

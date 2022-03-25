@@ -17,7 +17,8 @@ public class Player
     public Guid? TeamID { get; set; }
     public string TeamName { get; set; }
     public bool? InManagedTeam { get; set; }
-    public bool? Playing { get; set; }
     public bool? Injured { get; set; }
     public int? Value { get; set; }
+    public bool? Playing { get; set; }
+
 }

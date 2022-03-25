@@ -1,14 +1,17 @@
 ﻿using Domain.Repositories.Base;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using MapsterMapper;
 
 namespace Infrastructure.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T: class
     {
         protected readonly FBMContext _FBMContext;
-        public Repository(FBMContext FBMContext)
+        //private readonly IMapper _mapper;
+        public Repository(FBMContext FBMContext) //, IMapper mapper)
         {
+            //_mapper = mapper;
             _FBMContext = FBMContext;
         }
         public async Task<T> AddAsync(T entity)

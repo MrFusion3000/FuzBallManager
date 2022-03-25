@@ -36,6 +36,7 @@ namespace UIConsole.Manager
             {
                 var JoinTeam = ManagedTeamPlayers[UsedNumbs[i]];
                 JoinTeam.InManagedTeam = true;
+                JoinTeam.Playing = true;
 
                 //TODO Refactor to update range
                 await PlayerClient.Update(JoinTeam.PlayerID, JoinTeam);

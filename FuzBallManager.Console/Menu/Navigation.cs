@@ -1,4 +1,5 @@
-﻿using Application.Responses;
+﻿using ApiClient;
+using Application.Responses;
 
 namespace UIConsole.Menu;
 
@@ -14,6 +15,7 @@ public class Navigation
             case ConsoleKey.Spacebar:
                 PlayGame.PlayGame.Matchday(manager, managedTeamPlayers);
                 break;
+            case ConsoleKey.Backspace:
             case ConsoleKey.D0:
             case ConsoleKey.D1:
             case ConsoleKey.D2:
@@ -37,11 +39,13 @@ public class Navigation
     public static string PlayerNo { get; set; }
     public static int PlayerNoConverted  { get; set; }
     private static int PrintOneToNine(Char keyChar)
-    {
-        PlayerNo += keyChar.ToString();
-        PlayerNoConverted = int.Parse(PlayerNo);
-        Console.Write(keyChar.ToString());
+    {        
+        var keyIn =keyChar.ToString();
+        PlayerNo += keyIn; //keyChar.ToString();        
 
+        PlayerNoConverted = int.Parse(PlayerNo);
+        //Console.Write(keyChar.ToString());
+        PlayerNo = null;
         return PlayerNoConverted;
     }
 
@@ -52,6 +56,8 @@ public class Navigation
             Console.WriteLine(PlayerNo);
 
         await PlayerSubstitution.PlayerSubstitute(players, playerNo);
+        await PlayerClient.GetPlayersByManagedTeam(true);
+
         PlayerNoConverted = 0;
 
     }

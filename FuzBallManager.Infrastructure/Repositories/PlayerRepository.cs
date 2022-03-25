@@ -2,6 +2,7 @@
 using Domain.Repositories;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Base;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -49,7 +50,10 @@ namespace Infrastructure.Repositories
 
         public async Task<Guid> Update(Player command, CancellationToken cancellationToken)
         {
-            var player = _FBMContext.Players.Where(a => a.PlayerID == command.PlayerID).FirstOrDefault();
+            var player = 
+                await _FBMContext.Players
+                .Where(a => a.PlayerID == command.PlayerID)
+                .FirstOrDefaultAsync();
 
             if (player == null)
             {
@@ -57,6 +61,10 @@ namespace Infrastructure.Repositories
             }
             else
             {
+                //_mapper.From(data)
+                //    .EntityFromContext(_FBMcontext)
+                //    .AdaptTo(player);
+
                 player.PlayerFirstName = command.PlayerFirstName;
                 player.PlayerLastName = command.PlayerLastName;
                 player.PlayerStats = command.PlayerStats;
@@ -68,6 +76,7 @@ namespace Infrastructure.Repositories
                 player.Injured = command.Injured;
                 player.InManagedTeam = command.InManagedTeam;
                 player.Value = command.Value;
+                player.Playing = command.Playing;
 
                 await _FBMContext.SaveChangesAsync(cancellationToken);
                 return player.PlayerID;
