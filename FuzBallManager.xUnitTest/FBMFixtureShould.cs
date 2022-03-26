@@ -1,46 +1,31 @@
-﻿using Application;
+﻿using ApiClient;
+using Application;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UIConsole;
 using UIConsole.Manager;
+using UIConsole.MatchDay;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace xUnitTest
 {
-    public class UnitTests_Fixtures
+    public class FBMFixtureShould
     {
         private readonly ITestOutputHelper output;
 
-        public UnitTests_Fixtures(ITestOutputHelper output)
+        public FBMFixtureShould(ITestOutputHelper output)
         {
             this.output = output;
         }
 
-
         [Fact]
-        public void CalculateMatchTeamScore()
-        {
-            //Function to determine the scored goals by a team in a given match
-            //
-            //Arr
-
-            //Act
-            //var result = CalcMatchResults.CalcTeamScore();
-
-            //Ass
-            //output.WriteLine("Goals by HomeTeam : {0}", result);
-            //Assert.InRange((int)result, 0, 10);
-        }
-
-        [Fact]
-        public void CalculateMatchScore()
+        public void HaveCorrectlyCalculatedMatchScores()
         {
             //Arr
 
-            //Fixture match = new();
             //Act
             var result = CalcMatchScore.MatchScore();
 
@@ -54,9 +39,10 @@ namespace xUnitTest
 
         //readonly ShowTeam team = new();
         [Fact]
-        public void CalculateFixtures()
+        public async void GetAllFixtures()
         {
             //Arr
+            var fixtures = await FixtureClient.GetAllFixtures();
             //CalcFixtures calcFixtures = new();
             //Manager manager = new();
             //var teams = await team.GetTeams();
@@ -66,24 +52,8 @@ namespace xUnitTest
 
             //Ass
             //Assert.Throws<NotImplementedException>(() => calcFixtures.CalcSeasonFixturesAsync(manager));
-            output.WriteLine("Fixtures calculated.");
-
+            Assert.NotNull(fixtures);
+            output.WriteLine($"Fixtures calculated: {fixtures.Count}");
         }
-
-        //[Fact]
-        //public async void GetAllTeams()
-        //{
-            //Arr
-            //var teams = await team.GetTeams();
-
-            //Act
-
-
-            //Ass
-            //Assert.NotNull(teams);
-            //output.WriteLine("List of teams fetched. {0}", teams.TeamName);
-
-       //}
-
     }
 }
