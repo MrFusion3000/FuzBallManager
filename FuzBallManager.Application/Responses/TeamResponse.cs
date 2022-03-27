@@ -14,5 +14,9 @@
 
         public override string? ToString() => TeamName;
 
+        public static implicit operator List<object>(TeamResponse v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

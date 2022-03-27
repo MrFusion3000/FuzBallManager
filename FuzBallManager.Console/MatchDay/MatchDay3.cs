@@ -3,15 +3,15 @@ using UIConsole.Manager;
 
 namespace UIConsole.MatchDay;
 
-public class MatchDay2
+public class MatchDay3
 {
-    public static void PickTeam(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void PreGameTeamStats(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers, FixtureResponse fixture)
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine(" p : picked to play, i : injured");
+        Console.WriteLine($" {fixture.HomeTeamId}");
         //Console.SetCursorPosition(31, 0);
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
@@ -49,7 +49,7 @@ public class MatchDay2
                 //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 //    break;
                 case ConsoleKey.Spacebar:
-                    //MatchDay3.PreGameTeamStats(manager, managedTeamPlayers);
+                    MatchDay2.PickTeam(manager, managedTeamPlayers);
                     break;
             }
         }

@@ -28,7 +28,9 @@ public class InitManager
         Console.WriteLine("Managed Team fetched...");
         var AllPlayers = await PlayerClient.GetAllPlayers();
         Console.WriteLine("All Players fetched...");
-        var ManagedTeamPlayers = AllPlayers.FindAll(p => p.TeamID == ManagedTeam.TeamID).ToList();
+        var ManagedTeamPlayers = AllPlayers
+            .FindAll(p => p.TeamID == ManagedTeam.TeamID)
+            .ToList();
 
         Console.WriteLine("Managed Team Players filtered...");
 

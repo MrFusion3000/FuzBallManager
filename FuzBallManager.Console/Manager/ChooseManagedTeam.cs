@@ -17,7 +17,6 @@ namespace UIConsole
                 //Console.ForegroundColor= ConsoleColor.White;
                 string userInput = Console.ReadLine();
                 success = int.TryParse(userInput, out int chosenTeam);
-
                 managedTeam = teams.ElementAtOrDefault(chosenTeam - 1);
 
                 //Console.WriteLine("  You chose : {0} {1}", chosenTeam, managedTeam);

@@ -1,56 +1,59 @@
-﻿using Application.Responses;
+﻿using ApiClient;
+using Application.Responses;
 using UIConsole.Manager;
 
-namespace UIConsole.MatchDay;
-
-public class MatchDay1
+namespace UIConsole.MatchDay
 {
-    public static void PickTeam(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public class MatchDay1
     {
-        Console.Clear();
-        ConsoleKeyInfo menuChoice;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine(" p : picked to play, i : injured");
-        //Console.SetCursorPosition(31, 0);
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
-
-        //TODO Get player list
-        PrintManagedTeamPlayers.PrintTeamPlayers(manager, managedTeamPlayers);
-
-        //Console.ForegroundColor = ConsoleColor.Magenta;
-        //int PlayersPicked = 0;
-        //Console.WriteLine("PLAYERS PICKED: {0}", PlayersPicked);
-
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.SetCursorPosition(7, 14);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write("Press ");
-        Console.BackgroundColor = ConsoleColor.Green;
-        Console.ForegroundColor = ConsoleColor.Black;
-        Console.Write("SPACE BAR");
-        Console.BackgroundColor = ConsoleColor.Black;
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(" to continue");
-        Console.ForegroundColor = ConsoleColor.White;
-
-
-        while (true)
+        //TODO BUG Can't run Match if not first visited Sell/List players ?!!?
+        public static async void ShowPreMatch(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
         {
-            menuChoice = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
+            var fixture = await FixtureClient.GetNextFixture(false);
+            var HomeTeam = await TeamClient.GetTeamById(fixture.HomeTeamId);
+            var AwayTeam = await TeamClient.GetTeamById((Guid)fixture.AwayTeamId);
+            var HomeTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
+            var AwayTeamPlayers = await PlayerClient.GetPlayersByTeamName(AwayTeam.TeamName);
+            await RndAwayTeam.RandomizeTeam(AwayTeamPlayers);
+            var AwayTeamAllPlayers = await PlayerClient.GetPlayersByTeamName(AwayTeam.TeamName);
+            AwayTeamPlayers = AwayTeamAllPlayers
+           .FindAll(p => p.TeamID == AwayTeam.TeamID)
+           .Where(p => p.TeamName == AwayTeam.TeamName)
+           .ToList();
 
-            //TODO Function for assigning player no to menu switch
 
-            //Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
-            switch (menuChoice.Key)
+            int HomeTeamStats =0;
+            int AwayTeamStats=0;
+
+            foreach (var player in HomeTeamPlayers)
             {
-                //case ConsoleKey.Escape:
-                //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
-                //    break;
-                case ConsoleKey.Spacebar:
-                    MatchDay2.ShowPreMatch();
-                    break;
+                HomeTeamStats += player.PlayerStats.Value;
+            }
+
+            foreach (var player in AwayTeamPlayers)
+            {
+                AwayTeamStats += player.PlayerStats.Value;
+            }
+
+            Console.Clear();
+            ConsoleKeyInfo menuChoice;
+
+            Console.WriteLine($"\n\n\t\t{HomeTeam.TeamName}\t{AwayTeam.TeamName}");
+            Console.WriteLine($"\nStats\t\t{HomeTeamStats}\t{AwayTeamStats}");
+            Console.WriteLine("League Pos.\t\t 0\t0");
+            while (true)
+            {
+                menuChoice = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
+
+                switch (menuChoice.Key)
+                {
+                    //case ConsoleKey.Escape:
+                    //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
+                    //    break;
+                    case ConsoleKey.Spacebar:
+                        MatchDay2.PickTeam(manager, managedTeamPlayers);
+                        break;
+                }
             }
         }
     }

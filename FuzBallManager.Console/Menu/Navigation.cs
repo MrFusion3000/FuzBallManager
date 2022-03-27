@@ -14,7 +14,7 @@ public class Navigation
                 ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Spacebar:
-                MatchDay.MatchDay1.PickTeam (manager, managedTeamPlayers);
+                MatchDay1.ShowPreMatch(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Backspace:
             case ConsoleKey.D0:

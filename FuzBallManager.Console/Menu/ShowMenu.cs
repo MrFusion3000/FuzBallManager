@@ -64,7 +64,7 @@ public class ShowMenu
                 Menu_5_DisplayLeagueTable.DisplayLeagueTable(manager, managedTeamPlayers);
                 break;
             case ConsoleKey.Spacebar:
-                MatchDay.MatchDay1.PickTeam(manager, managedTeamPlayers);
+                MatchDay.MatchDay1.ShowPreMatch(manager, managedTeamPlayers);
                 break;
 
             default:
