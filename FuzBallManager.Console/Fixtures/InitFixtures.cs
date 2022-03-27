@@ -28,6 +28,7 @@ public static class InitFixtures
             //Delete all rows in Table Fixture if any exists
             foreach (var fixture in CheckFixtureExist)
             {
+                //TODO function to clear table in one go?
                 await FixtureClient.Delete(fixture.FixtureID);
             }
             Console.WriteLine("Old fixtures deleted.");
@@ -99,11 +100,6 @@ public static class InitFixtures
                 Odd = true;
             }
         }
-
-        //await PrintFixtures.PrintAllFixtures();
-        //Console.WriteLine("Next Match:");
-        //await PrintFixtures.PrintNextFixture();
-        //Console.ReadKey();
     }
 
     private static DateTime GetMatchday(DateTime addDaysToMatchDay)

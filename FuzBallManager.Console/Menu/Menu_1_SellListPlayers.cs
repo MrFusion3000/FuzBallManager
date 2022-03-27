@@ -1,6 +1,5 @@
 ﻿using Application.Responses;
 using UIConsole.Manager;
-using UIConsole.Menu;
 
 namespace UIConsole;
 
@@ -8,7 +7,7 @@ namespace UIConsole;
 
 public class Menu_1_SellListPlayers
 {
-    public static void SellListPlayers(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void SellListPlayers()
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -18,13 +17,19 @@ public class Menu_1_SellListPlayers
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
-        PrintManagedTeamPlayers.PrintTeamPlayers(manager, managedTeamPlayers);
+        PrintManagedTeamPlayers.PrintTeamPlayers();
 
         while (true)
         {
             menuChoice = Console.ReadKey(true);
 
-            Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+            switch (menuChoice.Key)
+            {
+                case ConsoleKey.Escape:
+                case ConsoleKey.Spacebar:
+                    ShowMenu.ShowTopMenu();
+                    break;
+            }
         }
     }
 }

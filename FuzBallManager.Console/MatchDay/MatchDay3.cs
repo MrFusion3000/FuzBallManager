@@ -17,7 +17,7 @@ public class MatchDay3
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
         //TODO Get player list
-        PrintManagedTeamPlayers.PrintTeamPlayers(manager, managedTeamPlayers);
+        PrintManagedTeamPlayers.PrintTeamPlayers();
 
         //Console.ForegroundColor = ConsoleColor.Magenta;
         //int PlayersPicked = 0;
@@ -49,7 +49,7 @@ public class MatchDay3
                 //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 //    break;
                 case ConsoleKey.Spacebar:
-                    MatchDay2.PickTeam(manager, managedTeamPlayers);
+                    MatchDay2.PickTeam();
                     break;
             }
         }

@@ -1,4 +1,5 @@
-﻿using Application.Responses;
+﻿using ApiClient;
+using Application.Responses;
 using System.Runtime.InteropServices;
 
 namespace UIConsole.Manager;
@@ -7,8 +8,9 @@ public static class PrintManagedTeamPlayers
 {
     static string PlayingNotPlayingInjured { get; set; }
 
-    public static void PrintTeamPlayers(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static async void PrintTeamPlayers()
     {
+        List<PlayerResponse> managedTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
         List<PlayerResponse> GoalKeepers = new();
         List<PlayerResponse> Defence = new();
         List<PlayerResponse> Midfield = new();

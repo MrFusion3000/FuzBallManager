@@ -1,14 +1,13 @@
-﻿using Application.Responses;
+﻿using UIConsole.MatchDay;
 using UIConsole.Menu;
 
 namespace UIConsole;
 
 public class ShowMenu
 {
-    public static void ShowTopMenu(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void ShowTopMenu()
     {
         Console.Clear();
-
         ConsoleKeyInfo menuChoice;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
@@ -40,35 +39,32 @@ public class ShowMenu
         Console.WriteLine(" to continue");
         Console.ForegroundColor = ConsoleColor.White;
 
-        menuChoice = Console.ReadKey(true);
-
-        WaitKey(menuChoice, manager, managedTeamPlayers);
-
-    }
-
-    private static void WaitKey(ConsoleKeyInfo menuChoice, ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
-    {
-        switch (menuChoice.Key)
+        while (true)
         {
-            case ConsoleKey.Escape:
-                //Console.WriteLine("End");
-                break;
+            menuChoice = Console.ReadKey(true);
 
-            case ConsoleKey.A:
-                Menu_1_SellListPlayers.SellListPlayers(manager, managedTeamPlayers);
-                break;
-            case ConsoleKey.S:
-                Menu_2_PrintScore.PrintScore(manager, managedTeamPlayers);
-                break;
-            case ConsoleKey.D:
-                Menu_5_DisplayLeagueTable.DisplayLeagueTable(manager, managedTeamPlayers);
-                break;
-            case ConsoleKey.Spacebar:
-                MatchDay.MatchDay1.ShowPreMatch(manager, managedTeamPlayers);
-                break;
+            switch (menuChoice.Key)
+            {
+                case ConsoleKey.Escape:
+                    //Console.WriteLine("End");
+                    break;
 
-            default:
-                break;
+                case ConsoleKey.A:
+                    Menu_1_SellListPlayers.SellListPlayers();
+                    break;
+                case ConsoleKey.S:
+                    Menu_2_PrintScore.PrintScore();
+                    break;
+                case ConsoleKey.D:
+                    Menu_5_DisplayLeagueTable.DisplayLeagueTable();
+                    break;
+                case ConsoleKey.Spacebar:
+                    MatchDay1.ShowPreMatch();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

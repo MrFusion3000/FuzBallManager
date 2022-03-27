@@ -21,10 +21,11 @@ class Program
         //Init Season Fixtures (Home and Away Matches)
         await InitFixtures.CalcSeasonFixturesAsync(UserPlayerManager);
 
-        List<PlayerResponse> ManagedTeamPlayers = await InitManager.SetupManagedTeam(UserPlayerManager);
+        //List<PlayerResponse> ManagedTeamPlayers = await InitManager.SetupManagedTeam(UserPlayerManager);
+        await InitManager.SetupManagedTeam(UserPlayerManager);
 
         //Show Top Menu
-        ShowMenu.ShowTopMenu(UserPlayerManager, ManagedTeamPlayers);
+        ShowMenu.ShowTopMenu();
 
 
         //TODONTH 5.1 Obtain a loan

@@ -6,8 +6,9 @@ namespace UIConsole.Menu;
 
 public class Menu_2_PrintScore
 {
-    public static void PrintScore(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void PrintScore()
     {
+
         Console.Clear();
         ConsoleKeyInfo menuChoice;
 
@@ -23,7 +24,7 @@ public class Menu_2_PrintScore
         {
             case ConsoleKey.Escape:
             case ConsoleKey.Spacebar:
-                ShowMenu.ShowTopMenu(manager, managedTeamPlayers);                
+                ShowMenu.ShowTopMenu();                
                 break;
         }
     }

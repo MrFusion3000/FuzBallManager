@@ -5,7 +5,7 @@ namespace UIConsole.MatchDay;
 
 public class MatchDay2
 {
-    public static void PickTeam(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void PickTeam()
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -17,7 +17,7 @@ public class MatchDay2
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
         //TODO Get player list
-        PrintManagedTeamPlayers.PrintTeamPlayers(manager, managedTeamPlayers);
+        PrintManagedTeamPlayers.PrintTeamPlayers();
 
         //Console.ForegroundColor = ConsoleColor.Magenta;
         //int PlayersPicked = 0;
@@ -50,6 +50,8 @@ public class MatchDay2
                 //    break;
                 case ConsoleKey.Spacebar:
                     //MatchDay3.PreGameTeamStats(manager, managedTeamPlayers);
+                    break;
+                default:
                     break;
             }
         }

@@ -4,7 +4,7 @@ namespace UIConsole.Menu;
 
 public class Menu_5_DisplayLeagueTable
 {
-    public static void DisplayLeagueTable(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers)
+    public static void DisplayLeagueTable()
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -14,6 +14,14 @@ public class Menu_5_DisplayLeagueTable
 
         menuChoice = Console.ReadKey(true);
 
-        Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+        switch (menuChoice.Key)
+        {
+            case ConsoleKey.Escape:
+            case ConsoleKey.Spacebar:
+                ShowMenu.ShowTopMenu();
+                break;
+        }
+
+        //Navigation.WaitKey(menuChoice);
     }
 }
