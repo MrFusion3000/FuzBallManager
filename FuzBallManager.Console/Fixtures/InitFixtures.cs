@@ -1,6 +1,5 @@
 ﻿using ApiClient;
 using Application.Responses;
-using UIConsole;
 
 namespace UIConsole.Fixtures;
 
@@ -44,7 +43,7 @@ public static class InitFixtures
             //take ManagerTeam.Id and oppositeTeam.Id + return a matchday from GetMatchday-function
             var fixturedate = GetMatchday(SeasonStart.AddDays(AddDaysToMatchDay));
 
-            FixtureResponse newFixtureResponse = new()
+            FixtureResponse newHomeFixture = new()
             {
                 HomeTeamId = managedTeamId,
                 AwayTeamId = oppositeTeam.TeamID,
@@ -55,7 +54,7 @@ public static class InitFixtures
                 Played = false
             };
 
-            await FixtureClient.Create(newFixtureResponse);
+            await FixtureClient.Create(newHomeFixture);
 
             if (Odd == true)
             {
@@ -67,16 +66,14 @@ public static class InitFixtures
                 AddDaysToMatchDay += 4;
                 Odd = true;
             }
-        }
 
-        //Create list of each fixture with ManagerTeam as Away team and matchday every 3rd or 4th day depending on week
-        foreach (var oppositeTeam in AllTeamsAgainst)
-        {
+            //Create list of each fixture with ManagerTeam as Away team and matchday every 3rd or 4th day depending on week
+
             //Away match
             //take ManagerTeam.Id and oppositeTeam.Id + return a matchday from GetMatchday-function
-            var fixturedate = GetMatchday(SeasonStart.AddDays(AddDaysToMatchDay));
+            fixturedate = GetMatchday(SeasonStart.AddDays(AddDaysToMatchDay));
 
-            FixtureResponse newFixtureResponse = new()
+            FixtureResponse newAwayFixture = new()
             {
                 HomeTeamId = oppositeTeam.TeamID,
                 AwayTeamId = managedTeamId,
@@ -87,7 +84,7 @@ public static class InitFixtures
                 Played = false
             };
 
-            await FixtureClient.Create(newFixtureResponse);
+            await FixtureClient.Create(newAwayFixture);
 
             if (Odd == true)
             {

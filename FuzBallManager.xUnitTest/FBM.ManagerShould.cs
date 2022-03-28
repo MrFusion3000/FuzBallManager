@@ -10,10 +10,9 @@ using Xunit.Abstractions;
 
 namespace xUnitTest
 {
-
     public class ManagerShould //: IDisposable
     {
-        // *** Start API first in Package Manager | 'cd FuzBallManager.API' | 'dotnet run' ***
+        // *** Start API first in Package Manager : 'cd FuzBallManager.API' | 'dotnet run' ***
         private readonly ITestOutputHelper _output;
 
         //private readonly Manager _sut;

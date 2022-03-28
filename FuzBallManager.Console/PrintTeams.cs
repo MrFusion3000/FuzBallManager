@@ -9,9 +9,6 @@ namespace UIConsole
             //Teams prints
             int i = 1;
 
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" CHOOSE TEAM TO MANAGE :\n");
             Console.WriteLine(" NUMBER \tNAME");
             Console.ForegroundColor = ConsoleColor.White;
 

@@ -1,23 +1,50 @@
-﻿using Application.Responses;
+﻿using ApiClient;
+using Application.Responses;
 using UIConsole.Manager;
 
 namespace UIConsole.MatchDay;
 
 public class MatchDay2
 {
-    public static void PickTeam()
+    public static async void ShowTeamStats(TeamResponse homeTeam, TeamResponse awayTeam)
     {
+        var HomeTeamPlayers = await PlayerClient.GetPlayersByTeamName(homeTeam.TeamName);
+        var AwayTeamPlayers = await PlayerClient.GetPlayersByTeamName(awayTeam.TeamName);
+        await RndAwayTeam.RandomizeTeam(AwayTeamPlayers);
+        var AwayTeamAllPlayers = await PlayerClient.GetPlayersByTeamName(awayTeam.TeamName);
+
+        AwayTeamPlayers = AwayTeamAllPlayers
+       .FindAll(p => p.TeamName == awayTeam.TeamName)
+       .Where(p => p.Playing == true)
+       .ToList();
+
+        int HomeTeamStats = 0;
+        int AwayTeamStats = 0;
+
+
+        foreach (var player in HomeTeamPlayers)
+        {
+            HomeTeamStats += player.PlayerStats.Value;
+        }
+
+        foreach (var player in AwayTeamPlayers)
+        {
+            AwayTeamStats += player.PlayerStats.Value;
+        }
+
+        HomeTeamStats /= 11;
+        AwayTeamStats /= 11;
+
         Console.Clear();
-        ConsoleKeyInfo menuChoice;
+        Console.WriteLine($"\n\n\t\t{homeTeam.TeamName}\t{awayTeam.TeamName}");
+        Console.WriteLine($"\nStats\t\t{HomeTeamStats}\t\t{AwayTeamStats}");
+
+        Console.Clear();
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine(" p : picked to play, i : injured");
         //Console.SetCursorPosition(31, 0);
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
-
-        //TODO Get player list
-        PrintManagedTeamPlayers.PrintTeamPlayers();
 
         //Console.ForegroundColor = ConsoleColor.Magenta;
         //int PlayersPicked = 0;
@@ -35,25 +62,11 @@ public class MatchDay2
         Console.WriteLine(" to continue");
         Console.ForegroundColor = ConsoleColor.White;
 
+        var menuchoice = Console.ReadKey();
 
-        while (true)
+        if (menuchoice.Key == ConsoleKey.Enter)
         {
-            menuChoice = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
-
-            //TODO Function for assigning player no to menu switch
-
-            //Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
-            switch (menuChoice.Key)
-            {
-                //case ConsoleKey.Escape:
-                //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
-                //    break;
-                case ConsoleKey.Spacebar:
-                    //MatchDay3.PreGameTeamStats(manager, managedTeamPlayers);
-                    break;
-                default:
-                    break;
-            }
+            MatchDay3.PreGameTeamStats();
         }
     }
 }

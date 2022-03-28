@@ -12,13 +12,10 @@ public class CreateManager
         Console.Write("\n\n   Type your name  ");
         string name = Console.ReadLine();
 
-        var Manager = new ManagerResponse();
         //Get Manager profile
         //ManagerResponse Manager = await ManagerClient.GetManagerByName(name);
-        //Get List of available teams
-        List<TeamResponse> teams = await TeamClient.GetAllTeams();
 
-        //If Manager exists notify player (function not finished )
+        //If Manager exists use existing / notify player (function not finished )
         //if (Manager != null)
         //{
         //    //TODONTH Add "Load profile or create new?"
@@ -29,12 +26,19 @@ public class CreateManager
         // Otherwise create new Manager
         //else
         //{
-        Manager = new()
+        ManagerResponse Manager = new()
         {
             Name = name,
         };
 
+        //Get List of available teams
+        List<TeamResponse> teams = await TeamClient.GetAllTeams();
+
         //Print teams to screen
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(" CHOOSE TEAM TO MANAGE :\n");
+
         PrintTeams.PrintTeamsToConsole(teams);
 
         //Ask player to choose team from list

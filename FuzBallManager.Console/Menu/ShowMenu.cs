@@ -59,6 +59,7 @@ public class ShowMenu
                     Menu_5_DisplayLeagueTable.DisplayLeagueTable();
                     break;
                 case ConsoleKey.Spacebar:
+                    // Press SPACE BAR to continue
                     MatchDay1.ShowPreMatch();
                     break;
 
@@ -68,3 +69,10 @@ public class ShowMenu
         }
     }
 }
+//TODONTH 5.1 Obtain a loan
+//TODONTH 5.2 Pay off loan
+//TODOHIGH 3 Display league table
+//TODONTH 6 Change your skill level
+//TODONTH 7 Change team or player names
+//TODONTH 8.1 Save game
+//TODONTH 8.2 Restore saved game

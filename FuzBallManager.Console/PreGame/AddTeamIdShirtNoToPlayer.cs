@@ -39,20 +39,14 @@ public class AddTeamIdShirtNoToPlayer
                         }
                     }
 
-                    //Console.WriteLine($"Player: {player.PlayerFirstName} {player.PlayerLastName} updated with Team Name: {team.TeamName} & ShirtNo: {player.PlayerShirtNo}");
                     var playerUpdate = player.Adapt<PlayerResponse>();
 
-                    //Console.WriteLine($"{player.PlayerID}, {playerUpdate.PlayerLastName}");
-
                     await PlayerClient.Update(player.PlayerID, playerUpdate);
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine($"Player: {player.PlayerLastName} already updated");
-                    //}
                 }
-                //Console.WriteLine($"All {team.TeamName} players TeamId's updated.");
-                //Console.ReadKey();
+                Console.WriteLine($"All {team.TeamName} players TeamId's updated.");                
+
+                await RndAwayTeam.RandomizeTeam(fetchedTeam);
+
             }
             Console.WriteLine($"All {team.TeamName} Players updated...");
 

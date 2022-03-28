@@ -1,5 +1,4 @@
 ﻿using ApiClient;
-using UIConsole.Manager;
 
 namespace UIConsole.MatchDay;
 
@@ -11,51 +10,39 @@ public class MatchDay1
         var nextFixture = await FixtureClient.GetNextFixture(false);
         var HomeTeam = await TeamClient.GetTeamById(nextFixture.HomeTeamId);
         var AwayTeam = await TeamClient.GetTeamById((Guid)nextFixture.AwayTeamId);
-        var HomeTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
-        var AwayTeamPlayers = await PlayerClient.GetPlayersByTeamName(AwayTeam.TeamName);
-        await RndAwayTeam.RandomizeTeam(AwayTeamPlayers);
-        var AwayTeamAllPlayers = await PlayerClient.GetPlayersByTeamName(AwayTeam.TeamName);
-        AwayTeamPlayers = AwayTeamAllPlayers
-       .FindAll(p => p.TeamID == AwayTeam.TeamID)
-       .Where(p => p.TeamName == AwayTeam.TeamName)
-       .ToList();
-
-
-        int HomeTeamStats = 0;
-        int AwayTeamStats = 0;
-
-        foreach (var player in HomeTeamPlayers)
-        {
-            HomeTeamStats += player.PlayerStats.Value;
-        }
-
-        foreach (var player in AwayTeamPlayers)
-        {
-            AwayTeamStats += player.PlayerStats.Value;
-        }
-
-        HomeTeamStats /= 11;
-        AwayTeamStats /= 11;
-
         Console.Clear();
-        ConsoleKeyInfo menuChoice;
-
+        Console.WriteLine("League Match : Division 1");
         Console.WriteLine($"\n\n\t\t{HomeTeam.TeamName}\t{AwayTeam.TeamName}");
-        Console.WriteLine($"\nStats\t\t{HomeTeamStats}\t{AwayTeamStats}");
-        Console.WriteLine("League Pos.\t\t 0\t0");
+        Console.WriteLine("League Pos.\t 0\t\t\t0");
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.SetCursorPosition(7, 21);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Press ");
+        Console.BackgroundColor = ConsoleColor.Green;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.Write("SPACE BAR");
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(" to continue");
+        Console.ForegroundColor = ConsoleColor.White;
+
+        ConsoleKeyInfo menuChoice1;
+
         while (true)
         {
-            menuChoice = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
+            menuChoice1 = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
 
-            switch (menuChoice.Key)
+            switch (menuChoice1.Key)
             {
                 //case ConsoleKey.Escape:
                 //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 //    break;
                 case ConsoleKey.Spacebar:
-                    MatchDay2.PickTeam();
+                    MatchDay2.ShowTeamStats(HomeTeam, AwayTeam);
                     break;
                 default:
+                    Console.WriteLine("Nuthin.");
                     break;
             }
         }

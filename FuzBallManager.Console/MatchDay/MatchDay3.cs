@@ -1,14 +1,16 @@
-﻿using Application.Responses;
+﻿using ApiClient;
+using Application.Responses;
 using UIConsole.Manager;
 
 namespace UIConsole.MatchDay;
 
 public class MatchDay3
 {
-    public static void PreGameTeamStats(ManagerResponse manager, List<PlayerResponse> managedTeamPlayers, FixtureResponse fixture)
+    public static async void PreGameTeamStats()
     {
+        var fixture = await FixtureClient.GetNextFixture(false);
+
         Console.Clear();
-        ConsoleKeyInfo menuChoice;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($" {fixture.HomeTeamId}");
@@ -35,21 +37,25 @@ public class MatchDay3
         Console.WriteLine(" to continue");
         Console.ForegroundColor = ConsoleColor.White;
 
+        ConsoleKeyInfo menuChoice3;
 
         while (true)
         {
-            menuChoice = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
+            menuChoice3 = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
 
             //TODO Function for assigning player no to menu switch
 
             //Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
-            switch (menuChoice.Key)
+            switch (menuChoice3.Key)
             {
                 //case ConsoleKey.Escape:
                 //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 //    break;
                 case ConsoleKey.Spacebar:
-                    MatchDay2.PickTeam();
+                    Console.WriteLine("Play match");
+                   // MatchDay4.();
+                    break;
+                default:
                     break;
             }
         }

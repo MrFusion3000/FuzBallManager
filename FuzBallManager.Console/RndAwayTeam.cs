@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UIConsole.Manager
+namespace UIConsole
 {
     internal class RndAwayTeam
     {
