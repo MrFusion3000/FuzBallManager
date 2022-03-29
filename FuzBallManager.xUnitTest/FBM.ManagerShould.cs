@@ -45,8 +45,6 @@ namespace xUnitTest
         [Fact]
         public async Task HaveATeamWithID()
         {
-            //Fetch the Managers Name
-
             //Arrange
             string managerName = "Lord Manager";
             ManagerResponse _sut = await ManagerClient.GetManagerByName(managerName);
@@ -64,14 +62,10 @@ namespace xUnitTest
         [Fact]
         public async Task HaveATeamNameAssociatedWithID()
         {
-            //Fetch the Managers Name
-
             //Arrange
             string managerName = "Lord Manager";
             ManagerResponse _sut = await ManagerClient.GetManagerByName(managerName);
-            TeamClient teamClient = new();
-            TeamResponse _sut2 = await teamClient.GetTeamById(_sut.ManagingTeamID);
-            await Task.Delay(5000);
+            TeamResponse _sut2 = await TeamClient.GetTeamById(_sut.ManagingTeamID);
 
             //Act
             string expected = "Manchester United";
@@ -87,9 +81,7 @@ namespace xUnitTest
         {
             //Arrange
             Guid managedTeamId = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
-            TeamClient teamClient = new();
-            TeamResponse _sut2 = await teamClient.GetTeamById(managedTeamId);
-            //await Task.Delay(3000);
+            TeamResponse _sut2 = await TeamClient.GetTeamById(managedTeamId);
 
             //Act
             string expected = "Manchester City";
@@ -109,9 +101,7 @@ namespace xUnitTest
             //ManagerResponse _sut = await ManagerClient.GetManagerByName(managerName);
 
             Guid managedTeamId = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
-            TeamClient teamClient = new();
-            TeamResponse _sut2 = await teamClient.GetTeamById(managedTeamId);
-            await Task.Delay(3000);
+            TeamResponse _sut2 = await TeamClient.GetTeamById(managedTeamId);
 
             //Act
             _sut2.TeamName = "Manchester City";

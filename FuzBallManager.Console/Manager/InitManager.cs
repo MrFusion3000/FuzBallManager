@@ -27,9 +27,9 @@ public class InitManager
         TeamClient teamClient = new();
         PlayerClient playerClient = new();
 
-        var ManagedTeam = await teamClient.GetTeamById(newmanager.ManagingTeamID);
+        var ManagedTeam = await TeamClient.GetTeamById(newmanager.ManagingTeamID);
         Console.WriteLine("Managed Team fetched...");
-        var AllPlayers = await playerClient.GetAllPlayers();
+        var AllPlayers = await PlayerClient.GetAllPlayers();
         Console.WriteLine("All Players fetched...");
         var ManagedTeamPlayers = AllPlayers
             .FindAll(p => p.TeamID == ManagedTeam.TeamID)
@@ -43,7 +43,7 @@ public class InitManager
 
         await RndTeam.RandomizeTeam(ManagedTeamPlayers);
 
-        ManagedTeamPlayers = await playerClient.GetPlayersByManagedTeam(true);
+        ManagedTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
         return ManagedTeamPlayers;
     }
 }

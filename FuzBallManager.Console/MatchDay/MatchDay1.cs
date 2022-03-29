@@ -9,8 +9,8 @@ public class MatchDay1
     {
         var nextFixture = await FixtureClient.GetNextFixture(false);
         TeamClient teamClient = new();
-        var HomeTeam = await teamClient.GetTeamById(nextFixture.HomeTeamId);
-        var AwayTeam = await teamClient.GetTeamById((Guid)nextFixture.AwayTeamId);
+        var HomeTeam = await TeamClient.GetTeamById(nextFixture.HomeTeamId);
+        var AwayTeam = await TeamClient.GetTeamById((Guid)nextFixture.AwayTeamId);
         Console.Clear();
         Console.WriteLine("League Match : Division 1");
         Console.WriteLine($"\n\n\t\t{HomeTeam.TeamName}\t{AwayTeam.TeamName}");

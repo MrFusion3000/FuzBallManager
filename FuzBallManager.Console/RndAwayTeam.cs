@@ -12,7 +12,6 @@ namespace UIConsole
     {
         internal static async Task RandomizeTeam(List<PlayerResponse> awayTeamPlayers)
         {
-            PlayerClient playerClient = new();
             var AwayTeamPlayers = awayTeamPlayers;
 
             //Get list of players for managed team (already refactored this 4 times :-) )
@@ -41,7 +40,7 @@ namespace UIConsole
                 JoinTeam.Playing = true;
 
                 //TODO Refactor to update range
-                await playerClient.Update(JoinTeam.PlayerID, JoinTeam);
+                await PlayerClient.Update(JoinTeam.PlayerID, JoinTeam);
             }
         }
     }

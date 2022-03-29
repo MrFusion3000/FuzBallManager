@@ -1,11 +1,4 @@
 ﻿using ApiClient;
-using Application;
-using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UIConsole;
-using UIConsole.Manager;
 using UIConsole.MatchDay;
 using Xunit;
 using Xunit.Abstractions;
@@ -42,9 +35,7 @@ namespace xUnitTest
         public async void GetAllFixtures()
         {
             //Arr
-            FixtureClient fixtureClient = new();
-
-            var fixtures = await fixtureClient.GetAllFixtures();
+            var fixtures = await FixtureClient.GetAllFixtures();
 
             //CalcFixtures calcFixtures = new();
             //Manager manager = new();

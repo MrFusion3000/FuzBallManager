@@ -1,12 +1,4 @@
 ﻿using ApiClient;
-using Application;
-using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UIConsole;
-using UIConsole.Manager;
-using UIConsole.MatchDay;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -24,9 +16,8 @@ namespace xUnitTest
         [Fact]
         public async void GetAllTeams()
         {
-            TeamClient teamClient = new();
             //Arr
-            var teams = await teamClient.GetAllTeams();
+            var teams = await TeamClient.GetAllTeams();
 
             //Act
 

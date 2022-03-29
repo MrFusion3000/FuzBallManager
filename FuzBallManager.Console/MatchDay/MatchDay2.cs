@@ -10,10 +10,10 @@ public class MatchDay2
     {
         PlayerClient playerClient = new();
 
-        var HomeTeamPlayers = await playerClient.GetPlayersByTeamName(homeTeam.TeamName);
-        var AwayTeamPlayers = await playerClient.GetPlayersByTeamName(awayTeam.TeamName);
+        var HomeTeamPlayers = await PlayerClient.GetPlayersByTeamName(homeTeam.TeamName);
+        var AwayTeamPlayers = await PlayerClient.GetPlayersByTeamName(awayTeam.TeamName);
         await RndAwayTeam.RandomizeTeam(AwayTeamPlayers);
-        var AwayTeamAllPlayers = await playerClient.GetPlayersByTeamName(awayTeam.TeamName);
+        var AwayTeamAllPlayers = await PlayerClient.GetPlayersByTeamName(awayTeam.TeamName);
 
         AwayTeamPlayers = AwayTeamAllPlayers
        .FindAll(p => p.TeamName == awayTeam.TeamName)

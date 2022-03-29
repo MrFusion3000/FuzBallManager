@@ -10,7 +10,7 @@ public class FixtureClient : BaseClient
 {
     private static Url GetFixtureClient() => GetClient().AppendPathSegment("Fixture");
 
-    public async Task<List<FixtureResponse>> GetAllFixtures()
+    public static async Task<List<FixtureResponse>> GetAllFixtures()
     {
         return await GetFixtureClient().GetJsonAsync<List<FixtureResponse>>();
     }

@@ -12,14 +12,12 @@ namespace UIConsole
     {
         public static async Task PlayerSubstitute(List<PlayerResponse> players, int playerNo)
         {
-            PlayerClient playerClient = new();
-
             foreach (var player in players)
             {
                 if (player.PlayerShirtNo == playerNo)
                 {
                     player.Playing = !player.Playing;
-                    await playerClient.Update(player.PlayerID, player);
+                    await PlayerClient.Update(player.PlayerID, player);
                 }
             }
         }

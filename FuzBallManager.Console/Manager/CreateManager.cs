@@ -34,7 +34,7 @@ public class CreateManager
 
         //Get List of available teams
         TeamClient teamClient = new();
-        List<TeamResponse> teams = await teamClient.GetAllTeams();
+        List<TeamResponse> teams = await TeamClient.GetAllTeams();
 
         //Print teams to screen
         Console.Clear();

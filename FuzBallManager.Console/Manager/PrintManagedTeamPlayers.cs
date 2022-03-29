@@ -12,7 +12,7 @@ public static class PrintManagedTeamPlayers
     {
         PlayerClient playerClient = new();
 
-        List<PlayerResponse> managedTeamPlayers = await playerClient.GetPlayersByManagedTeam(true);
+        List<PlayerResponse> managedTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
         List<PlayerResponse> GoalKeepers = new();
         List<PlayerResponse> Defence = new();
         List<PlayerResponse> Midfield = new();

@@ -12,7 +12,6 @@ namespace UIConsole.Manager
     {
         internal static async Task RandomizeTeam(List<PlayerResponse> managedTeamPlayers)
         {
-            PlayerClient playerClient = new();
             var ManagedTeamPlayers = managedTeamPlayers;
 
             //Get list of players for managed team (already refactored this 4 times :-) )
@@ -42,7 +41,7 @@ namespace UIConsole.Manager
 
                 //TODO Refactor to update range
                 //TODO make method general to choose team players for any team (even away team)
-                await playerClient.Update(JoinTeam.PlayerID, JoinTeam);
+                await PlayerClient.Update(JoinTeam.PlayerID, JoinTeam);
             }
         }
     }

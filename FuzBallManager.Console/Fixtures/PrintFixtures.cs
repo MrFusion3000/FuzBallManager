@@ -8,9 +8,9 @@ public class PrintFixtures
     public static async Task PrintAllFixtures() // Changed to async task to make it print before jumping to next step in InitFixtures
     {
         FixtureClient fixtureClient = new();
-        List<FixtureResponse> AllFixtures = await fixtureClient.GetAllFixtures();
+        List<FixtureResponse> AllFixtures = await FixtureClient.GetAllFixtures();
         TeamClient teamClient = new();
-        List<TeamResponse> AllTeams = await teamClient.GetAllTeams();
+        List<TeamResponse> AllTeams = await TeamClient.GetAllTeams();
 
         foreach (var fixture in AllFixtures)
         {
@@ -29,7 +29,7 @@ public class PrintFixtures
         FixtureResponse NextFixture = await FixtureClient.GetNextFixture(false);
         TeamClient teamClient = new();
 
-        List<TeamResponse> AllTeams = await teamClient.GetAllTeams();
+        List<TeamResponse> AllTeams = await TeamClient.GetAllTeams();
 
         var Team1 = AllTeams.Where(f => f.TeamID == NextFixture.HomeTeamId).FirstOrDefault();
         var Team2 = AllTeams.Where(f => f.TeamID == NextFixture.AwayTeamId).FirstOrDefault();
