@@ -42,7 +42,10 @@ namespace xUnitTest
         public async void GetAllFixtures()
         {
             //Arr
-            var fixtures = await FixtureClient.GetAllFixtures();
+            FixtureClient fixtureClient = new();
+
+            var fixtures = await fixtureClient.GetAllFixtures();
+
             //CalcFixtures calcFixtures = new();
             //Manager manager = new();
             //var teams = await team.GetTeams();

@@ -18,7 +18,7 @@ namespace Application.Handlers.QueryHandlers
         public async Task<List<Player>> Handle(GetPlayersByManagedTeamQuery request, CancellationToken cancellationToken)
         {
             var getreq = request.Adapt<PlayerResponse>();
-            bool inmanagedteam = (bool)getreq.InManagedTeam;
+            bool? inmanagedteam = (bool?)getreq.InManagedTeam;
 
             return (List<Player>)await _playerRepo.GetPlayersByManagedTeam(inmanagedteam, cancellationToken);
         }

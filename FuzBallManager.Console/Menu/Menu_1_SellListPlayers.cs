@@ -7,7 +7,7 @@ namespace UIConsole;
 
 public class Menu_1_SellListPlayers
 {
-    public static void SellListPlayers()
+    public static async Task SellListPlayers()
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -17,7 +17,7 @@ public class Menu_1_SellListPlayers
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
-        PrintManagedTeamPlayers.PrintTeamPlayers();
+        await PrintManagedTeamPlayers.PrintTeamPlayers();
 
         while (true)
         {
@@ -27,7 +27,7 @@ public class Menu_1_SellListPlayers
             {
                 case ConsoleKey.Escape:
                 case ConsoleKey.Spacebar:
-                    ShowMenu.ShowTopMenu();
+                    await ShowMenu.ShowTopMenu();
                     break;
             }
         }

@@ -24,8 +24,9 @@ namespace xUnitTest
         [Fact]
         public async void GetAllTeams()
         {
+            TeamClient teamClient = new();
             //Arr
-            var teams = await TeamClient.GetAllTeams();
+            var teams = await teamClient.GetAllTeams();
 
             //Act
 

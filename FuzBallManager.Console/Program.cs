@@ -24,6 +24,6 @@ class Program
         await InitManager.SetupManagedTeam(UserPlayerManager);
 
         //Show Top Menu
-        ShowMenu.ShowTopMenu();
+        await ShowMenu.ShowTopMenu();
     }
 }

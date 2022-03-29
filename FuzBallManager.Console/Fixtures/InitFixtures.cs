@@ -14,13 +14,15 @@ public static class InitFixtures
 
         //--Add function for calculating season fixtures--
         // Get all teams
-        var teams = await TeamClient.GetAllTeams();
+        TeamClient teamClient = new();
+        var teams = await teamClient.GetAllTeams();
 
         var AllTeamsAgainst = GetOpposingTeams.GetOppTeams(teams, managedTeamId);
         // Filter out opposing teams
         //var AllTeamsAgainst = teams.Where(t => t.TeamID != managedTeamId).ToList();
 
-        var CheckFixtureExist = await FixtureClient.GetAllFixtures();
+        FixtureClient fixtureClient = new();
+        var CheckFixtureExist = await fixtureClient.GetAllFixtures();
 
         if (CheckFixtureExist.Any())
         {

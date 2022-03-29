@@ -24,9 +24,12 @@ public class InitManager
 
     public static async Task<List<PlayerResponse>> SetupManagedTeam(ManagerResponse newmanager)
     {
-        var ManagedTeam = await TeamClient.GetTeamById(newmanager.ManagingTeamID);
+        TeamClient teamClient = new();
+        PlayerClient playerClient = new();
+
+        var ManagedTeam = await teamClient.GetTeamById(newmanager.ManagingTeamID);
         Console.WriteLine("Managed Team fetched...");
-        var AllPlayers = await PlayerClient.GetAllPlayers();
+        var AllPlayers = await playerClient.GetAllPlayers();
         Console.WriteLine("All Players fetched...");
         var ManagedTeamPlayers = AllPlayers
             .FindAll(p => p.TeamID == ManagedTeam.TeamID)
@@ -40,7 +43,7 @@ public class InitManager
 
         await RndTeam.RandomizeTeam(ManagedTeamPlayers);
 
-        ManagedTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
+        ManagedTeamPlayers = await playerClient.GetPlayersByManagedTeam(true);
         return ManagedTeamPlayers;
     }
 }

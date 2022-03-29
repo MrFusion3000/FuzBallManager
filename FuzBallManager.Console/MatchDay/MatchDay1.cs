@@ -5,11 +5,12 @@ namespace UIConsole.MatchDay;
 public class MatchDay1
 {
     //TODO BUG Can't run Match if not first visited Sell/List players ?!!?
-    public static async void ShowPreMatch()
+    public static async Task ShowPreMatch()
     {
         var nextFixture = await FixtureClient.GetNextFixture(false);
-        var HomeTeam = await TeamClient.GetTeamById(nextFixture.HomeTeamId);
-        var AwayTeam = await TeamClient.GetTeamById((Guid)nextFixture.AwayTeamId);
+        TeamClient teamClient = new();
+        var HomeTeam = await teamClient.GetTeamById(nextFixture.HomeTeamId);
+        var AwayTeam = await teamClient.GetTeamById((Guid)nextFixture.AwayTeamId);
         Console.Clear();
         Console.WriteLine("League Match : Division 1");
         Console.WriteLine($"\n\n\t\t{HomeTeam.TeamName}\t{AwayTeam.TeamName}");
@@ -27,24 +28,11 @@ public class MatchDay1
         Console.WriteLine(" to continue");
         Console.ForegroundColor = ConsoleColor.White;
 
-        ConsoleKeyInfo menuChoice1;
+            var menuchoice = Console.ReadKey();
 
-        while (true)
-        {
-            menuChoice1 = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
-
-            switch (menuChoice1.Key)
+            if (menuchoice.Key == ConsoleKey.Spacebar)
             {
-                //case ConsoleKey.Escape:
-                //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
-                //    break;
-                case ConsoleKey.Spacebar:
-                    MatchDay2.ShowTeamStats(HomeTeam, AwayTeam);
-                    break;
-                default:
-                    Console.WriteLine("Nuthin.");
-                    break;
+                await MatchDay3.PreGameTeamStats();
             }
-        }
     }
 }

@@ -10,7 +10,7 @@ public class FixtureClient : BaseClient
 {
     private static Url GetFixtureClient() => GetClient().AppendPathSegment("Fixture");
 
-    public static async Task<List<FixtureResponse>> GetAllFixtures()
+    public async Task<List<FixtureResponse>> GetAllFixtures()
     {
         return await GetFixtureClient().GetJsonAsync<List<FixtureResponse>>();
     }
@@ -22,7 +22,7 @@ public class FixtureClient : BaseClient
 
     public static async Task<FixtureResponse> GetNextFixture(bool played)
     {
-        return await GetFixtureClient().AppendPathSegment("GetNextFixture").AppendPathSegment(false).GetJsonAsync<FixtureResponse>();
+        return await GetFixtureClient().AppendPathSegment("GetNextFixture").AppendPathSegment(played).GetJsonAsync<FixtureResponse>();
     }
 
     public static async Task Create(FixtureResponse newFixture)

@@ -6,7 +6,7 @@ namespace UIConsole.Menu;
 
 public class Menu_2_PrintScore
 {
-    public static void PrintScore()
+    public static async Task PrintScore()
     {
 
         Console.Clear();
@@ -24,7 +24,7 @@ public class Menu_2_PrintScore
         {
             case ConsoleKey.Escape:
             case ConsoleKey.Spacebar:
-                ShowMenu.ShowTopMenu();                
+                await ShowMenu.ShowTopMenu();                
                 break;
         }
     }

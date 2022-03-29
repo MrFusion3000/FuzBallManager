@@ -36,7 +36,7 @@ namespace Infrastructure.Repositories
             return GetPlayer;
         }
 
-        public async Task<List<Player>> GetPlayersByManagedTeam(bool managedteam, CancellationToken cancellationToken)
+        public async Task<List<Player>> GetPlayersByManagedTeam(bool? managedteam, CancellationToken cancellationToken)
         {
             var GetPlayer =
             await _FBMContext.Players
@@ -53,7 +53,7 @@ namespace Infrastructure.Repositories
             var player = 
                 await _FBMContext.Players
                 .Where(a => a.PlayerID == command.PlayerID)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
 
             if (player == null)
             {

@@ -8,16 +8,20 @@ public class AddTeamIdShirtNoToPlayer
 {
     public static async Task AddTeamIdShirtNoToPlayers()
     {
+        PlayerClient playerClient = new();
+
         List<int> AlreadyDrawnNumbers = new();
 
         var RndShirtNo = new Random();
 
         //Fetch team from db table Team
-        var allTeams = await TeamClient.GetAllTeams();
+        TeamClient teamClient = new();
+
+        var allTeams = await teamClient.GetAllTeams();
         //Fetch players from db table Player matching fetched team name
         foreach (var team in allTeams)
         {
-            var fetchedTeam = await PlayerClient.GetPlayersByTeamName(team.TeamName);
+            var fetchedTeam = await playerClient.GetPlayersByTeamName(team.TeamName);
             if (fetchedTeam != null)
             {
                 //Update player with Team ID from db table Team
@@ -41,7 +45,7 @@ public class AddTeamIdShirtNoToPlayer
 
                     var playerUpdate = player.Adapt<PlayerResponse>();
 
-                    await PlayerClient.Update(player.PlayerID, playerUpdate);
+                    await playerClient.Update(player.PlayerID, playerUpdate);
                 }
                 Console.WriteLine($"All {team.TeamName} players TeamId's updated.");                
 

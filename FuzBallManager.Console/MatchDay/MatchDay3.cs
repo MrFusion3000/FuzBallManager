@@ -6,7 +6,7 @@ namespace UIConsole.MatchDay;
 
 public class MatchDay3
 {
-    public static async void PreGameTeamStats()
+    public static async Task PreGameTeamStats()
     {
         var fixture = await FixtureClient.GetNextFixture(false);
 
@@ -19,7 +19,7 @@ public class MatchDay3
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
         //TODO Get player list
-        PrintManagedTeamPlayers.PrintTeamPlayers();
+        await PrintManagedTeamPlayers.PrintTeamPlayers();
 
         //Console.ForegroundColor = ConsoleColor.Magenta;
         //int PlayersPicked = 0;

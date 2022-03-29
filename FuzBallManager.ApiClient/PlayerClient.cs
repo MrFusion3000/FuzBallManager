@@ -11,26 +11,26 @@ public class PlayerClient : BaseClient
 
     private static Url GetPlayerClient() => GetClient().AppendPathSegment("Player");
 
-    public static async Task<List<PlayerResponse>> GetAllPlayers()
+    public async Task<List<PlayerResponse>> GetAllPlayers()
     {
         return await GetPlayerClient().GetJsonAsync<List<PlayerResponse>>();
     }
 
-    public static async Task<List<PlayerResponse>> GetPlayersByTeamName(string teamName)
+    public async Task<List<PlayerResponse>> GetPlayersByTeamName(string teamName)
     {
         return await GetPlayerClient().AppendPathSegment("GetPlayersByTeamName").AppendPathSegment(teamName).GetJsonAsync<List<PlayerResponse>>();
     }
-    public static async Task<List<PlayerResponse>> GetPlayersByManagedTeam(bool managedTeam)
+    public async Task<List<PlayerResponse>> GetPlayersByManagedTeam(bool managedTeam)
     {
         return await GetPlayerClient().AppendPathSegment("GetPlayersByManagedTeam").AppendPathSegment(managedTeam).GetJsonAsync<List<PlayerResponse>>();
     }
 
-    public static async Task<PlayerResponse> GetPlayerById(Guid playerId)
+    public async Task<PlayerResponse> GetPlayerById(Guid playerId)
     {
         return await GetPlayerClient().AppendPathSegment("GetPlayerByPlayerId").AppendPathSegment(playerId).GetJsonAsync<PlayerResponse>();
     }
 
-    public static async Task<Guid> Update(Guid playerId, PlayerResponse player)
+    public async Task<Guid> Update(Guid playerId, PlayerResponse player)
     {
         await GetPlayerClient().AppendPathSegment("UpdatePlayer").AppendPathSegment(player.PlayerID).PutJsonAsync(player);
 

@@ -5,7 +5,7 @@ namespace UIConsole;
 
 public class ShowMenu
 {
-    public static void ShowTopMenu()
+    public static async Task ShowTopMenu()
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -50,17 +50,17 @@ public class ShowMenu
                     break;
 
                 case ConsoleKey.A:
-                    Menu_1_SellListPlayers.SellListPlayers();
+                    await Menu_1_SellListPlayers.SellListPlayers();
                     break;
                 case ConsoleKey.S:
-                    Menu_2_PrintScore.PrintScore();
+                    await Menu_2_PrintScore.PrintScore();
                     break;
                 case ConsoleKey.D:
-                    Menu_5_DisplayLeagueTable.DisplayLeagueTable();
+                    await Menu_5_DisplayLeagueTable.DisplayLeagueTable();
                     break;
                 case ConsoleKey.Spacebar:
                     // Press SPACE BAR to continue
-                    MatchDay1.ShowPreMatch();
+                    await MatchDay1.ShowPreMatch();
                     break;
 
                 default:

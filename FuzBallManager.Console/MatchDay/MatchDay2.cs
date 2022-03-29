@@ -6,12 +6,14 @@ namespace UIConsole.MatchDay;
 
 public class MatchDay2
 {
-    public static async void ShowTeamStats(TeamResponse homeTeam, TeamResponse awayTeam)
+    public static async Task ShowTeamStats(TeamResponse homeTeam, TeamResponse awayTeam)
     {
-        var HomeTeamPlayers = await PlayerClient.GetPlayersByTeamName(homeTeam.TeamName);
-        var AwayTeamPlayers = await PlayerClient.GetPlayersByTeamName(awayTeam.TeamName);
+        PlayerClient playerClient = new();
+
+        var HomeTeamPlayers = await playerClient.GetPlayersByTeamName(homeTeam.TeamName);
+        var AwayTeamPlayers = await playerClient.GetPlayersByTeamName(awayTeam.TeamName);
         await RndAwayTeam.RandomizeTeam(AwayTeamPlayers);
-        var AwayTeamAllPlayers = await PlayerClient.GetPlayersByTeamName(awayTeam.TeamName);
+        var AwayTeamAllPlayers = await playerClient.GetPlayersByTeamName(awayTeam.TeamName);
 
         AwayTeamPlayers = AwayTeamAllPlayers
        .FindAll(p => p.TeamName == awayTeam.TeamName)
@@ -39,12 +41,12 @@ public class MatchDay2
         Console.WriteLine($"\n\n\t\t{homeTeam.TeamName}\t{awayTeam.TeamName}");
         Console.WriteLine($"\nStats\t\t{HomeTeamStats}\t\t{AwayTeamStats}");
 
-        Console.Clear();
+        //Console.Clear();
 
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        //Console.SetCursorPosition(31, 0);
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
+        //Console.ForegroundColor = ConsoleColor.Magenta;
+        ////Console.SetCursorPosition(31, 0);
+        //Console.ForegroundColor = ConsoleColor.Yellow;
+        //Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
 
         //Console.ForegroundColor = ConsoleColor.Magenta;
         //int PlayersPicked = 0;
@@ -64,9 +66,9 @@ public class MatchDay2
 
         var menuchoice = Console.ReadKey();
 
-        if (menuchoice.Key == ConsoleKey.Enter)
+        if (menuchoice.Key == ConsoleKey.Spacebar)
         {
-            MatchDay3.PreGameTeamStats();
+            await MatchDay3.PreGameTeamStats();
         }
     }
 }

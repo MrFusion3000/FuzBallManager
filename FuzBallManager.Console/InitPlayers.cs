@@ -9,6 +9,7 @@ namespace UIConsole
         {
             var AllPlayers = allplayers;
             Random RndStats = new();
+            PlayerClient playerClient = new();
 
             // ** Set properties to default **
             //PlayerShirtNo (function to RND a shirtNo only once per team)
@@ -23,7 +24,7 @@ namespace UIConsole
                 if (player.PlayerStats == 0 || player.PlayerStats ==  null) player.PlayerStats = RndStats.Next(20,50);
                 //TODO rnd Value based on PlayerStats
                 if (player.Value == 0 || player.Value == null) player.Value = player.PlayerStats * 500;
-                await PlayerClient.Update(player.PlayerID, player);
+                await playerClient.Update(player.PlayerID, player);
             }
         }
         

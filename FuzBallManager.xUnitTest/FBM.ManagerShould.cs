@@ -1,10 +1,7 @@
 ﻿using ApiClient;
-using Application;
 using Application.Responses;
-using Domain.Entities;
 using System;
-using System.Collections.Generic;
-using UIConsole;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -13,110 +10,116 @@ namespace xUnitTest
     public class ManagerShould //: IDisposable
     {
         // *** Start API first in Package Manager : 'cd FuzBallManager.API' | 'dotnet run' ***
-        private readonly ITestOutputHelper _output;
-
-        //private readonly Manager _sut;
+        // Manager tests pass if only this group is run due to (possibly) DB threading
+        private readonly ITestOutputHelper output;
 
         public ManagerShould(ITestOutputHelper output)
         {
-            _output = output;
-
-            //_sut = ManagerClient.GetManagerByName(managerName);
+            this.output = output;
         }
 
         //public void Dispose()
         //{
         //    _output.WriteLine($"Disposing UserManager {_sut.Name}");
-            
+
         //}
 
         [Fact]
-        public async void HaveAName()
+        public async Task HaveAName()
         {
             //Fetch the Managers Name
 
             //Arrange
             string managerName = "Lord Manager";
-            ManagerResponse teamManager = await ManagerClient.GetManagerByName(managerName);
+            ManagerResponse? _sutManagerHaveName = await ManagerClient.GetManagerByName(managerName);
 
             //Act
             string expected = "Lord Manager";
-            string? actual = teamManager.Name;
+            string? actual = _sutManagerHaveName.Name;
 
             //Assert
             Assert.Equal(expected, actual);
-            _output.WriteLine($"Manager has name: {teamManager.Name}");
+            output.WriteLine($"Manager has name: {_sutManagerHaveName.Name}");
         }
 
         [Fact]
-        public async void HaveATeamWithID()
+        public async Task HaveATeamWithID()
         {
             //Fetch the Managers Name
 
             //Arrange
             string managerName = "Lord Manager";
-            ManagerResponse teamManager = await ManagerClient.GetManagerByName(managerName);
+            ManagerResponse _sut = await ManagerClient.GetManagerByName(managerName);
+            //await Task.Delay(3000);
 
             //Act
             Guid expected = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
-            Guid actual = teamManager.ManagingTeamID;
+            Guid actual = _sut.ManagingTeamID;
 
             //Assert
             Assert.Equal(expected, actual);
-            _output.WriteLine($"Manager has Id: {teamManager.ManagerID}");
+            output.WriteLine($"Manager has Id: {_sut.ManagerID}");
         }
 
         [Fact]
-        public async void HaveATeamNameAssociatedWithID()
+        public async Task HaveATeamNameAssociatedWithID()
         {
             //Fetch the Managers Name
 
             //Arrange
             string managerName = "Lord Manager";
-            ManagerResponse teamManager = await ManagerClient.GetManagerByName(managerName);
-            TeamResponse Team = await TeamClient.GetTeamById(teamManager.ManagingTeamID);
+            ManagerResponse _sut = await ManagerClient.GetManagerByName(managerName);
+            TeamClient teamClient = new();
+            TeamResponse _sut2 = await teamClient.GetTeamById(_sut.ManagingTeamID);
+            await Task.Delay(5000);
 
             //Act
             string expected = "Manchester United";
-            string? actual = Team.TeamName;
+            string? actual = _sut2.TeamName;
 
             //Assert
             Assert.Equal(expected, actual, ignoreCase: true);
-            _output.WriteLine($"Manager has name: {teamManager.Name} with associated Id: {teamManager.ManagerID}");
+            output.WriteLine($"Manager has name: {_sut.Name} with associated Id: {_sut.ManagerID}");
         }
 
         [Fact]
-        public async void NotHaveWrongTeamName()
+        public async Task NotHaveWrongTeamName()
         {
             //Arrange
             Guid managedTeamId = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
-            TeamResponse managedTeam = await TeamClient.GetTeamById(managedTeamId);
+            TeamClient teamClient = new();
+            TeamResponse _sut2 = await teamClient.GetTeamById(managedTeamId);
+            //await Task.Delay(3000);
 
             //Act
             string expected = "Manchester City";
-            string? actual = managedTeam.TeamName;
+            string? actual = _sut2.TeamName;
 
             //Assert
             Assert.NotEqual(expected, actual);
-            
+            output.WriteLine($"Team has name: {_sut2.TeamName} and not: {expected}");
+
         }
 
         [Fact]
-        public async void HaveManagerNameIncludeOnlyInternationalAlphaCharsWithCapitalFirsts()
+        public async Task HaveManagerNameIncludeOnlyInternationalAlphaCharsWithCapitalFirsts()
         {
             //Arrange
             //string managerName = "Lord Manager";
+            //ManagerResponse _sut = await ManagerClient.GetManagerByName(managerName);
+
             Guid managedTeamId = Guid.Parse("b5d4e653-7e8d-ec11-8465-244bfe57fd18");
-            //ManagerResponse teamManager = await ManagerClient.GetManagerByName(managerName);
-            TeamResponse managedTeam = await TeamClient.GetTeamById(managedTeamId);
+            TeamClient teamClient = new();
+            TeamResponse _sut2 = await teamClient.GetTeamById(managedTeamId);
+            await Task.Delay(3000);
 
             //Act
-            managedTeam.TeamName = "Manchester City";
-            string? actual = managedTeam.TeamName;
+            _sut2.TeamName = "Manchester City";
+            string? actual = _sut2.TeamName;
 
             //Assert
             Assert.Matches("[A-Z[a-z]+ [A-Z[a-z]+", actual);
-            _output.WriteLine($"Manager has name: {managedTeam.TeamName} with first letters uppercase");
+            output.WriteLine($"Manager has name: {_sut2.TeamName} with first letters uppercase");
 
         }
 

@@ -13,26 +13,28 @@ public class CreateManager
         string name = Console.ReadLine();
 
         //Get Manager profile
-        //ManagerResponse Manager = await ManagerClient.GetManagerByName(name);
+        ManagerResponse Manager = await ManagerClient.GetManagerByName(name);
 
-        //If Manager exists use existing / notify player (function not finished )
-        //if (Manager != null)
-        //{
-        //    //TODONTH Add "Load profile or create new?"
-        //    //TODONTH Add reset game to default
-
-        //    Console.WriteLine($"Manager {Manager.Name} exists");
-        //}
-        // Otherwise create new Manager
-        //else
-        //{
-        ManagerResponse Manager = new()
+        //In case Manager exists use existing / notify player (function not finished )
+        if (Manager != null)
         {
-            Name = name,
-        };
+            //TODONTH Add "Load profile or create new?"
+            //TODONTH Add reset game to default
+
+            Console.WriteLine($"Manager {Manager.Name} exists");
+        }
+        //Otherwise create new Manager
+        else
+        {
+            Manager = new()
+            {
+                Name = name,
+            };
+        }
 
         //Get List of available teams
-        List<TeamResponse> teams = await TeamClient.GetAllTeams();
+        TeamClient teamClient = new();
+        List<TeamResponse> teams = await teamClient.GetAllTeams();
 
         //Print teams to screen
         Console.Clear();

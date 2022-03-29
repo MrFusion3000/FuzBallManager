@@ -8,9 +8,11 @@ public static class PrintManagedTeamPlayers
 {
     static string PlayingNotPlayingInjured { get; set; }
 
-    public static async void PrintTeamPlayers()
+    public static async Task PrintTeamPlayers()
     {
-        List<PlayerResponse> managedTeamPlayers = await PlayerClient.GetPlayersByManagedTeam(true);
+        PlayerClient playerClient = new();
+
+        List<PlayerResponse> managedTeamPlayers = await playerClient.GetPlayersByManagedTeam(true);
         List<PlayerResponse> GoalKeepers = new();
         List<PlayerResponse> Defence = new();
         List<PlayerResponse> Midfield = new();
