@@ -31,6 +31,7 @@ namespace Infrastructure.Repositories
             }
             else
             {
+                //fixture = command.Adapt<Fixture>();
                 fixture.FixtureID = command.FixtureID;
                 fixture.HomeTeamId = command.HomeTeamId;
                 fixture.AwayTeamId = command.AwayTeamId;

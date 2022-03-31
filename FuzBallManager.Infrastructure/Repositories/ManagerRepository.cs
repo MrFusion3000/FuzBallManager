@@ -19,9 +19,11 @@ namespace Infrastructure.Repositories
 
             if (manager == null) return default;
 
-            var managerResponse = manager.Adapt<Manager>();
+            //var managerResponse = manager.Adapt<Manager>();
 
-            return managerResponse;
+            return manager;
         }
+
+        //TODO Place methods from UIConsole here
     }
 }

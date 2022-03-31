@@ -8,6 +8,7 @@ using Mapster;
 namespace ApiClient;
 public class FixtureClient : BaseClient
 {
+    #region API Calls
     private static Url GetFixtureClient() => GetClient().AppendPathSegment("Fixture");
 
     public static async Task<List<FixtureResponse>> GetAllFixtures()
@@ -32,7 +33,6 @@ public class FixtureClient : BaseClient
         await GetFixtureClient().PostJsonAsync(fixture);
     }
 
-    //Update fixture method
     public static async Task<Guid> Update(Guid fixtureId, UpdateFixtureCommand fixture)
     {
         await GetFixtureClient().AppendPathSegment("UpdateFixture").AppendPathSegment(fixture.FixtureID).PutJsonAsync(fixture);
@@ -40,11 +40,11 @@ public class FixtureClient : BaseClient
         return fixtureId;
     }
 
-    //Delete fixture method
     public static async Task<Guid> Delete(Guid id)
     {
         await GetFixtureClient().AppendPathSegment("DeleteFixture").AppendPathSegment(id).DeleteAsync();
 
         return id;
     }
+    #endregion
 }

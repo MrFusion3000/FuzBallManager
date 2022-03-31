@@ -10,8 +10,7 @@ public class MapsterMapster
     public static void MapsterSetter()
     {
         TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
-
-        TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = false;
+        TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = true;
 
         TypeAdapterConfig<Player, PlayerResponse>
             .NewConfig()

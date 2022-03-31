@@ -36,7 +36,7 @@ namespace UIConsole
             for (int i = 0; i < AddUp; i++)
             {
                 var JoinTeam = AwayTeamPlayers[UsedNumbs[i]];
-                //JoinTeam.InManagedTeam = true;
+                JoinTeam.InManagedTeam = false;
                 JoinTeam.Playing = true;
 
                 //TODO Refactor to update range

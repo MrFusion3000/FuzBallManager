@@ -6,4 +6,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Pages\Index.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\Index.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FuzBallManager.ApiClient\ApiClient.csproj" />
+    <ProjectReference Include="..\FuzBallManager.API\API.csproj" />
+    <ProjectReference Include="..\FuzBallManager.Application\Application.csproj" />
+    <ProjectReference Include="..\FuzBallManager.Domain\Domain.csproj" />
+    <ProjectReference Include="..\FuzBallManager.Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

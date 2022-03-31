@@ -8,20 +8,14 @@ public static class InitFixtures
     public static async Task CalcSeasonFixturesAsync(ManagerResponse manager)
     {
         var managedTeamId = manager.ManagingTeamID;
-        //var managedTeam = await TeamClient.GetTeamById(managedTeamId);
         int AddDaysToMatchDay = 0;
         bool Odd = true;
 
         //--Add function for calculating season fixtures--
-        // Get all teams
-        TeamClient teamClient = new();
         var teams = await TeamClient.GetAllTeams();
 
         var AllTeamsAgainst = GetOpposingTeams.GetOppTeams(teams, managedTeamId);
-        // Filter out opposing teams
-        //var AllTeamsAgainst = teams.Where(t => t.TeamID != managedTeamId).ToList();
 
-        FixtureClient fixtureClient = new();
         var CheckFixtureExist = await FixtureClient.GetAllFixtures();
 
         if (CheckFixtureExist.Any())
@@ -42,7 +36,6 @@ public static class InitFixtures
             //TODONTH - **refactor idea - shorter function that switches home/away-teams after given amount of matches (Home team + all Away teams)
 
             //Home match
-            //take ManagerTeam.Id and oppositeTeam.Id + return a matchday from GetMatchday-function
             var fixturedate = GetMatchday(SeasonStart.AddDays(AddDaysToMatchDay));
 
             FixtureResponse newHomeFixture = new()
@@ -58,21 +51,9 @@ public static class InitFixtures
 
             await FixtureClient.Create(newHomeFixture);
 
-            if (Odd == true)
-            {
-                AddDaysToMatchDay += 3;
-                Odd = false;
-            }
-            else
-            {
-                AddDaysToMatchDay += 4;
-                Odd = true;
-            }
-
-            //Create list of each fixture with ManagerTeam as Away team and matchday every 3rd or 4th day depending on week
+            (Odd, AddDaysToMatchDay) = OddEven(Odd, AddDaysToMatchDay);
 
             //Away match
-            //take ManagerTeam.Id and oppositeTeam.Id + return a matchday from GetMatchday-function
             fixturedate = GetMatchday(SeasonStart.AddDays(AddDaysToMatchDay));
 
             FixtureResponse newAwayFixture = new()
@@ -88,27 +69,33 @@ public static class InitFixtures
 
             await FixtureClient.Create(newAwayFixture);
 
-            if (Odd == true)
-            {
-                AddDaysToMatchDay += 3;
-                Odd = false;
-            }
-            else
-            {
-                AddDaysToMatchDay += 4;
-                Odd = true;
-            }
+            (Odd, AddDaysToMatchDay) = OddEven(Odd, AddDaysToMatchDay);
         }
     }
 
     private static DateTime GetMatchday(DateTime addDaysToMatchDay)
     {
-        //SeasonStart date is passed in to function
-        //DateTime SeasonStart = new(1985, 04, 01);
-
         var MatchDay = addDaysToMatchDay;
 
         return MatchDay;
+    }
+
+    private static (bool,int) OddEven(bool odd, int addDays )
+    {
+        var Odd = odd;
+        var AddDaysToMatchDay = addDays;
+
+        if (Odd == true)
+        {
+            AddDaysToMatchDay += 3;
+            Odd = false;
+        }
+        else
+        {
+            AddDaysToMatchDay += 4;
+            Odd = true;
+        }
+        return (Odd, AddDaysToMatchDay);
     }
 }
 

@@ -18,6 +18,6 @@ public class PlayerResponse
     public bool? Playing { get; set; }
 
 
-    public override string? ToString() => TeamName;
+    //public override string? ToString() => TeamName;
 
 }

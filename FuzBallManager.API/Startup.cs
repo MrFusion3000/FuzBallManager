@@ -10,6 +10,7 @@ using Application.Handlers.CommandHandlers;
 using System.Reflection;
 using Application;
 using WebApi;
+using Mapster;
 
 namespace API
 {
@@ -33,6 +34,9 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FBM.API", Version = "v1" });
             });
 
+            var config = new TypeAdapterConfig();
+            services.AddSingleton(config);
+
             MapsterMapster.MapsterSetter();
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(
@@ -40,8 +44,7 @@ namespace API
                 typeof(CreateManagerHandler).GetTypeInfo().Assembly, 
                 typeof(CreateTeamHandler).GetTypeInfo().Assembly,
                 typeof(CreateFixtureHandler).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(CreateManagerHandler).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(CreateTeamHandler).GetTypeInfo().Assembly);
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddTransient<IManagerRepository, ManagerRepository>();
