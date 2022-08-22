@@ -1,5 +1,5 @@
 # FuzBallManager
-Simple Fotball Manager Game (remake of the C64 game title Football Manager) using Clean Architecture, C#, .Net 6, ASPNetCore, EFCore 6, SQLServer, CodeFirst, AutoMapper (changed to Mapster), Webscraped data using UIPath. (Only for educational use).
+Simple Fotball Manager Game (a lovingly glare to the C64 game title Football Manager) using Clean Architecture, C#, .Net 6, ASPNetCore, EFCore 6, SQLServer, CodeFirst, AutoMapper (changed to Mapster), Webscraped data using UIPath. (Only for educational use).
 
 So far a few tests has been added, mostly to check API read calls.
 
