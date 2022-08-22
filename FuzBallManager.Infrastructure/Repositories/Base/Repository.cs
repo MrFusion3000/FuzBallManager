@@ -14,10 +14,10 @@ namespace Infrastructure.Repositories.Base
             //_mapper = mapper;
             _FBMContext = FBMContext;
         }
-        public async Task<T> AddAsync(T entity)
+        public async Task<T> AddAsync(T entity, CancellationToken cancellationToken)
         {
-            await _FBMContext.Set<T>().AddAsync(entity);
-            await _FBMContext.SaveChangesAsync();
+            await _FBMContext.Set<T>().AddAsync(entity, cancellationToken);
+            await _FBMContext.SaveChangesAsync(cancellationToken);
             return entity;
         }
         public async Task DeleteAsync(T entity)

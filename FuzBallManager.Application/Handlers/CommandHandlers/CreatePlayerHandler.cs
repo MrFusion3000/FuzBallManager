@@ -20,7 +20,7 @@ namespace Application.Handlers.CommandHandlers
 
             ArgumentNullException.ThrowIfNull(playerEntity);
 
-            var newPlayer = await _playerRepo.AddAsync(playerEntity);
+            var newPlayer = await _playerRepo.AddAsync(playerEntity, cancellationToken);
             var playerResponse = newPlayer.Adapt<PlayerResponse>();
 
             return playerResponse;

@@ -1,6 +1,6 @@
-﻿namespace Application.Responses
+﻿namespace FuzBallManager.FrontEnd.Data
 {
-    public class ManagerResponse
+    public class ManagerDto
     {
         public Guid ManagerID { get; set; }
         public string? Name { get; set; }

@@ -20,7 +20,7 @@ namespace Application.Handlers.CommandHandlers
 
             ArgumentNullException.ThrowIfNull(FixtureEntity);
 
-            var newFixture = await _FixtureRepo.AddAsync(FixtureEntity);
+            var newFixture = await _FixtureRepo.AddAsync(FixtureEntity, cancellationToken);
             var fixtureDto = newFixture.Adapt<FixtureResponse>();
 
             return fixtureDto;

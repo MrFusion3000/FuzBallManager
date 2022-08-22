@@ -1,7 +1,5 @@
-using FuzBallManager.FrontEnd.Data;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Domain.Repositories;
+using Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<IManagerRepository>();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped<IManagerRepository>();
 
 var app = builder.Build();
 

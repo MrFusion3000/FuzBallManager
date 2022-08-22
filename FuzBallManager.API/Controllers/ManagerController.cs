@@ -46,7 +46,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<ManagerResponse>> CreateManager([FromBody] CreateManagerCommand command)
+        public async Task<ActionResult<ManagerResponse>> CreateManager(CreateManagerCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

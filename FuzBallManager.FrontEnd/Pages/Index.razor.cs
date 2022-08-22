@@ -1,18 +1,26 @@
-﻿
-namespace FuzBallManager.FrontEnd.Pages;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 
-public partial class Manager
+namespace FuzBallManager.FrontEnd.Pages
 {
-    private ManagerResponse Manager = new ();
-    private List<ManagerResponse> Managers = new List<ManagerResponse>();
 
-    [Inject]
-    protected IManager ManagerApiService { get; set; }
-
-    private async Task HandleValidSubmit()
+    public partial class ManagerShow
     {
-        Manager = await ManagerClient.GetManagerByName("Nico");
+        //private Manager = 5;
+        public readonly ManagerClient Manager = new ();
+        private List<ManagerResponse> Managers = new List<ManagerResponse>();
+
+        //[Inject]
+        //protected IManager ManagerApiService { get; set; }
+
+        //private async Task HandleValidSubmit()
+        //{
+        //    Manager = await ManagerClient.GetManagerByName("Nico");
+        //}
+
+        //private void HandleValidSubmit() { }
+        
+
     }
 
-    private void HandleValidSubmit() { }
 }

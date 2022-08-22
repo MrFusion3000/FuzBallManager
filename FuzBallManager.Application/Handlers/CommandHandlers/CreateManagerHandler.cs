@@ -20,7 +20,7 @@ public class CreateManagerHandler : IRequestHandler<CreateManagerCommand, Manage
 
         ArgumentNullException.ThrowIfNull(managerEntity);
 
-        var newManager = await _managerRepo.AddAsync(managerEntity);
+        var newManager = await _managerRepo.AddAsync(managerEntity, cancellationToken);
         var managerResponse = newManager.Adapt<ManagerResponse>();
 
 

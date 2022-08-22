@@ -1,1 +1,19 @@
-﻿
+﻿@page "/index"
+
+@using Domain.Repositories
+@using Application.Responses
+@using FuzBallManager.FrontEnd.Data
+@inject IManagerRepository ManagerRepo
+
+<h1>Enter manager name : </h1>
+
+<li>@Manager.Name </li>
+
+@*@if (@Manager != null){
+    <h1>Hello, @Manager.Name</h1>
+}*@
+
+@code{
+    private ManagerResponse Manager = new();
+}
+

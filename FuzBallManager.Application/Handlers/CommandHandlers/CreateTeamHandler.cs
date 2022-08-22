@@ -22,7 +22,7 @@ namespace Application.Handlers.CommandHandlers
 
             ArgumentNullException.ThrowIfNull(teamEntity);
 
-            var newTeam = await _teamRepo.AddAsync(teamEntity);
+            var newTeam = await _teamRepo.AddAsync(teamEntity, cancellationToken);
             //var teamResponse = TeamMapper.Mapper.Map<TeamResponse>(newTeam);
             var teamResponse = newTeam.Adapt<TeamResponse>();
 
