@@ -5,6 +5,8 @@ namespace UIConsole;
 
 public class ShowMenu
 {
+    int screenlines = 0;
+
     public static async Task ShowTopMenu()
     {
         Console.Clear();

@@ -6,6 +6,7 @@ namespace UIConsole.MatchDay;
 
 public class MatchDay2
 {
+
     public static async Task ShowTeamStats(TeamResponse homeTeam, TeamResponse awayTeam)
     {
         PlayerClient playerClient = new();
@@ -66,12 +67,38 @@ public class MatchDay2
         Console.WriteLine(" to continue");
         Console.ForegroundColor = ConsoleColor.White;
 
-        var menuchoice = Console.ReadKey();
+        ConsoleKeyInfo menuChoice2;
+
+        while (true)
+        {
+            menuChoice2 = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
+
+            //TODO Function for assigning player no to menu switch
+
+            //Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
+            switch (menuChoice2.Key)
+            {
+                //case ConsoleKey.Escape:
+                //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
+                //    break;
+                case ConsoleKey.T:
+                    await MatchDay3.PreGameTeamStats();
+                    break;
+                case ConsoleKey.Spacebar:
+                    Console.WriteLine("Play match");
+                    // MatchDay4.();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //var menuchoice = Console.ReadKey();
 
         //TODO Switch statement t=PreGameTeamStats, Space=GameCalc 
-        if (menuchoice.Key == ConsoleKey.Spacebar)
-        {
-            await MatchDay3.PreGameTeamStats();
-        }
+        //if (menuchoice.Key == ConsoleKey.T)
+        //{
+        //    await MatchDay3.PreGameTeamStats();
+        //}
     }
 }

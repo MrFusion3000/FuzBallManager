@@ -6,6 +6,8 @@ namespace UIConsole.MatchDay;
 
 public class MatchDay3
 {
+    public static int screenlines { get; private set; }
+
     public static async Task PreGameTeamStats()
     {
         var fixture = await FixtureClient.GetNextFixture(false);
@@ -21,12 +23,11 @@ public class MatchDay3
         //TODO Get player list
         await PrintManagedTeamPlayers.PrintTeamPlayers();
 
-        //Console.ForegroundColor = ConsoleColor.Magenta;
-        //int PlayersPicked = 0;
-        //Console.WriteLine("PLAYERS PICKED: {0}", PlayersPicked);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\nType player no. to add to team");
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.SetCursorPosition(7, 14);
+        Console.SetCursorPosition(7, screenlines + 2);
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("Press ");
         Console.BackgroundColor = ConsoleColor.Green;

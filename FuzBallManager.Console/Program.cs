@@ -8,6 +8,7 @@ class Program
 {
     static async Task Main(/*string[] args*/)
     {
+
         //***This Function Adds Team Id to Players With TeamID Null if not initiated + Add RND ShirtNo AND Setup Teams 11 starting players***
         //TODONTH Place in seed phase
         //await AddTeamIdShirtNoToPlayer.AddTeamIdShirtNoToPlayers();
