@@ -38,7 +38,9 @@ public class MatchDay2
         AwayTeamStats /= 11;
 
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"\n\n\t\t{homeTeam.TeamName}\t{awayTeam.TeamName}");
+
         Console.WriteLine($"\nStats\t\t{HomeTeamStats}\t\t{AwayTeamStats}");
 
         //Console.Clear();
@@ -66,6 +68,7 @@ public class MatchDay2
 
         var menuchoice = Console.ReadKey();
 
+        //TODO Switch statement t=PreGameTeamStats, Space=GameCalc 
         if (menuchoice.Key == ConsoleKey.Spacebar)
         {
             await MatchDay3.PreGameTeamStats();
