@@ -53,8 +53,8 @@ public class MatchDay3
                 //    ShowMenu.ShowTopMenu(manager, managedTeamPlayers);
                 //    break;
                 case ConsoleKey.Spacebar:
-                    Console.WriteLine("Play match");
-                   // MatchDay4.();
+                    //Console.WriteLine("Play match");
+                    MatchDay4.ShowGameStats();
                     break;
                 default:
                     break;

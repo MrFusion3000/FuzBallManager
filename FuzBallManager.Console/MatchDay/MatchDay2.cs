@@ -85,8 +85,8 @@ public class MatchDay2
                     await MatchDay3.PreGameTeamStats();
                     break;
                 case ConsoleKey.Spacebar:
-                    Console.WriteLine("Play match");
-                    // MatchDay4.();
+                    //Console.WriteLine("Play match");
+                    await MatchDay4.ShowGameStats();
                     break;
                 default:
                     break;
