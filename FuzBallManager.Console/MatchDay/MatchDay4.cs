@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +30,8 @@ namespace UIConsole.MatchDay
 
         private static Tuple<int, int> GameCalc()
         {
-            int HomeTeamScore = 2;
-            int AwayTeamScore = 1;
+            int HomeTeamScore = 0;
+            int AwayTeamScore = 0;
 
             //TODOHIGH Calc match outcome
 
@@ -40,9 +41,18 @@ namespace UIConsole.MatchDay
             //TODOHIGH Rnd no of possible scoring situations
             //TODOHIGH Based on Team Stats randomize which team gets the goal chance
             //TODOHIGH Save scores to db
+
             //TODONTH Rnd - injuries, yellow card, red card (each action recalculates the Team Stats)
 
             return Tuple.Create(HomeTeamScore, AwayTeamScore);
+
+        }
+
+        private static int CalcAGoal()
+        {
+            int Goal = 0;
+
+            return Goal;
         }
 
     }
