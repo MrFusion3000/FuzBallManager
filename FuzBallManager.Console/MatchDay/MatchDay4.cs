@@ -36,7 +36,9 @@ namespace UIConsole.MatchDay
             //TODOHIGH Calc match outcome
 
             //HomeTeamStats
+
             //AwayTeamStats
+
             //Time = 90 min
             //TODOHIGH Rnd no of possible scoring situations
             //TODOHIGH Based on Team Stats randomize which team gets the goal chance
@@ -51,6 +53,20 @@ namespace UIConsole.MatchDay
         private static int CalcAGoal()
         {
             int Goal = 0;
+
+            //1.0 TeamInPossession #True(Home) / #False(Away)
+
+            bool Posession = true;
+
+            //1.1 RND passes before shot #Int
+            //Loop
+            //1.2 Who passes - Rnd TeamPlayer
+            //1.3 RND pass success #True(Goto 1.4) / #False (Goto 1.1 with changed team)  Posession = !Posession;
+
+            //1.4 Who recieves pass
+            //1.5 Shot on goal
+            //1.6 Goal? True/False
+            //Start over 1.0 
 
             return Goal;
         }

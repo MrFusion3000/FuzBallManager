@@ -42,7 +42,7 @@ public class MatchDay1
 
             if (menuchoice.Key == ConsoleKey.Spacebar)
             {
-            await MatchDay2.ShowTeamStats(HomeTeam, AwayTeam);
+            await MatchDay2.CalcTeamStats(HomeTeam, AwayTeam);
                 //await MatchDay3.PreGameTeamStats();
             }
     }

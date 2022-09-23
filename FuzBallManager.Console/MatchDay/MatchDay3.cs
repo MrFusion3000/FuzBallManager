@@ -44,7 +44,7 @@ public class MatchDay3
         {
             menuChoice3 = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
 
-            //TODO Function for assigning player no to menu switch
+            //TODO Function for assigning player number to menu switch
 
             //Navigation.WaitKey(menuChoice, manager, managedTeamPlayers);
             switch (menuChoice3.Key)
@@ -54,7 +54,7 @@ public class MatchDay3
                 //    break;
                 case ConsoleKey.Spacebar:
                     //Console.WriteLine("Play match");
-                    MatchDay4.ShowGameStats();
+                    await MatchDay4.ShowGameStats();
                     break;
                 default:
                     break;

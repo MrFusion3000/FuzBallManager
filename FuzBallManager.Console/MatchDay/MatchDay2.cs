@@ -7,7 +7,7 @@ namespace UIConsole.MatchDay;
 public class MatchDay2
 {
 
-    public static async Task ShowTeamStats(TeamResponse homeTeam, TeamResponse awayTeam)
+    public static async Task CalcTeamStats(TeamResponse homeTeam, TeamResponse awayTeam)
     {
         PlayerClient playerClient = new();
 
@@ -38,6 +38,11 @@ public class MatchDay2
         HomeTeamStats /= 11;
         AwayTeamStats /= 11;
 
+        ShowTeamStats(HomeTeamStats, AwayTeamStats, homeTeam, awayTeam);
+    }
+
+    public static async void ShowTeamStats(int HomeTeamStats, int AwayTeamStats, TeamResponse homeTeam, TeamResponse awayTeam)
+    {
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"\n\n\t\t{homeTeam.TeamName}\t{awayTeam.TeamName}");
