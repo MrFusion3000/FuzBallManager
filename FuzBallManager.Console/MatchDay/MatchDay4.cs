@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using ApiClient;
+using Application.Responses;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,13 +12,20 @@ namespace UIConsole.MatchDay
 {
     public class MatchDay4
     {
+        //public static FixtureResponse LatestFixture { get; set; }
+
         public static async Task ShowGameStats()
         {
+            var LatestFixture = await FixtureClient.GetNextFixture(false);
+
             var GameScore = MatchDay4.GameCalc();
 
             Console.Clear();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
+
+            //TODOHIGH Save score to DB
+
             Console.WriteLine($" {GameScore.Item1} - {GameScore.Item2}");
 
             var menuchoice = Console.ReadKey();
@@ -35,12 +44,31 @@ namespace UIConsole.MatchDay
 
             //TODOHIGH Calc match outcome
 
+
             //HomeTeamStats
 
             //AwayTeamStats
 
             //Time = 90 min
             //TODOHIGH Rnd no of possible scoring situations
+            Random ScoringRounds = new Random();
+            Random Goal = new();
+
+            int PossibleScoringRounds = ScoringRounds.Next(0, 10);
+            int GoalInNet = 0;
+            for (int i = 0; i < PossibleScoringRounds; i++)
+            {
+                GoalInNet = Goal.Next(0, 2);
+                HomeTeamScore += GoalInNet;
+            }
+
+            PossibleScoringRounds = ScoringRounds.Next(0, 10);
+            for (int i = 0; i < PossibleScoringRounds; i++)
+            {
+                GoalInNet = Goal.Next(0, 2);
+                AwayTeamScore += GoalInNet;
+            }
+
             //TODOHIGH Based on Team Stats randomize which team gets the goal chance
             //TODOHIGH Save scores to db
 
@@ -56,7 +84,7 @@ namespace UIConsole.MatchDay
 
             //1.0 TeamInPossession #True(Home) / #False(Away)
 
-            bool Posession = true;
+            //bool Posession = true;
 
             //1.1 RND passes before shot #Int
             //Loop

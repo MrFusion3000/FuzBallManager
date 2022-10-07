@@ -1,5 +1,6 @@
 ﻿using ApiClient;
 using Application.Responses;
+using Domain.Entities;
 using UIConsole.Manager;
 
 namespace UIConsole.MatchDay;
@@ -7,15 +8,16 @@ namespace UIConsole.MatchDay;
 public class MatchDay3
 {
     public static int screenlines { get; private set; }
+    public static FixtureResponse LatestFixture { get; set; }
 
     public static async Task PreGameTeamStats()
     {
-        var fixture = await FixtureClient.GetNextFixture(false);
+        LatestFixture = await FixtureClient.GetNextFixture(false);
 
         Console.Clear();
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine($" {fixture.HomeTeamId}");
+        Console.WriteLine($" {LatestFixture.HomeTeamId}");
         //Console.SetCursorPosition(31, 0);
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(" NAME\t\tNO.\tSKILL\tENERGY\tVALUE(£)");
