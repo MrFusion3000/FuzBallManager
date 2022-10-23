@@ -1,10 +1,12 @@
 ﻿using ApiClient;
+using Application.Commands;
 using Application.Responses;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,12 +15,29 @@ namespace UIConsole.MatchDay
     public class MatchDay4
     {
         //public static FixtureResponse LatestFixture { get; set; }
+        //TODO PopularScore for Attendance and Player offers
 
         public static async Task ShowGameStats()
-        {
+         {
             var LatestFixture = await FixtureClient.GetNextFixture(false);
 
             var GameScore = MatchDay4.GameCalc();
+            var Attendance = MatchDay4.Attendance();
+
+            //kod för Uppdatering av senaste matchresultat
+            var FixtureCmd = new UpdateFixtureCommand 
+            {
+                FixtureID = LatestFixture.FixtureID,
+                FixtureDate = LatestFixture.FixtureDate,
+                HomeTeamId = LatestFixture.HomeTeamId,
+                AwayTeamId = LatestFixture.AwayTeamId,
+                HomeTeamScore = GameScore.Item1,
+                AwayTeamScore = GameScore.Item2,
+                Attendance = Attendance,
+                Played = true 
+            };
+            
+            await FixtureClient.Update(LatestFixture.FixtureID, FixtureCmd );
 
             Console.Clear();
 
@@ -43,12 +62,8 @@ namespace UIConsole.MatchDay
             int AwayTeamScore = 0;
 
             //TODOHIGH Calc match outcome
-
-
             //HomeTeamStats
-
             //AwayTeamStats
-
             //Time = 90 min
             //TODOHIGH Rnd no of possible scoring situations
             Random ScoringRounds = new Random();
@@ -76,6 +91,14 @@ namespace UIConsole.MatchDay
 
             return Tuple.Create(HomeTeamScore, AwayTeamScore);
 
+        }
+
+        private static int Attendance()
+        {
+            Random People = new();
+
+            var Attendance = People.Next(0,50000);
+            return Attendance;
         }
 
         private static int CalcAGoal()
