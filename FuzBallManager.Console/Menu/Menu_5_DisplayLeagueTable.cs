@@ -4,7 +4,7 @@ namespace UIConsole.Menu;
 
 public class Menu_5_DisplayLeagueTable
 {
-    public static async Task DisplayLeagueTable()
+    public static void DisplayLeagueTable()
     {
         Console.Clear();
         ConsoleKeyInfo menuChoice;
@@ -18,7 +18,7 @@ public class Menu_5_DisplayLeagueTable
         {
             case ConsoleKey.Escape:
             case ConsoleKey.Spacebar:
-                await ShowMenu.ShowTopMenu();
+                //await ShowMenu.ShowTopMenu();
                 break;
         }
     }

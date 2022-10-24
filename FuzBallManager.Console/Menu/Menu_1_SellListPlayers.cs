@@ -27,7 +27,7 @@ public class Menu_1_SellListPlayers
             {
                 case ConsoleKey.Escape:
                 case ConsoleKey.Spacebar:
-                    await ShowMenu.ShowTopMenu();
+                    //ShowMenu.ShowTopMenu();
                     break;
             }
         }

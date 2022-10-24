@@ -24,7 +24,7 @@ namespace UIConsole.MatchDay
             var GameScore = MatchDay4.GameCalc();
             var Attendance = MatchDay4.Attendance();
 
-            //kod för Uppdatering av senaste matchresultat
+            //Update the latest  match results
             var FixtureCmd = new UpdateFixtureCommand 
             {
                 FixtureID = LatestFixture.FixtureID,
@@ -43,7 +43,7 @@ namespace UIConsole.MatchDay
 
             Console.ForegroundColor = ConsoleColor.Magenta;
 
-            //TODOHIGH Save score to DB
+            //TODOHIGH Save score to DB Teams, not only the Fixture 
 
             Console.WriteLine($" {GameScore.Item1} - {GameScore.Item2}");
 
@@ -51,8 +51,9 @@ namespace UIConsole.MatchDay
 
             if (menuchoice.Key == ConsoleKey.Spacebar)
             {
-                await ShowMenu.ShowTopMenu();
+                //await ShowMenu.ShowTopMenu();
                 //await MatchDay3.PreGameTeamStats();
+                
             }
         }
 

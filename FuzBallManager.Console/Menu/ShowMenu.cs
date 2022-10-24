@@ -5,12 +5,12 @@ namespace UIConsole;
 
 public class ShowMenu
 {
-    int screenlines = 0;
+    //int screenlines = 0;
 
-    public static async Task ShowTopMenu()
+    public static void ShowTopMenu()
     {
         Console.Clear();
-        ConsoleKeyInfo menuChoice;
+        //ConsoleKeyInfo menuChoice;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine(" TO -");
@@ -39,36 +39,7 @@ public class ShowMenu
         Console.BackgroundColor = ConsoleColor.Black;
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(" to continue");
-        Console.ForegroundColor = ConsoleColor.White;
-
-        while (true)
-        {
-            menuChoice = Console.ReadKey(true);
-
-            switch (menuChoice.Key)
-            {
-                case ConsoleKey.Escape:
-                    //Console.WriteLine("End");
-                    break;
-
-                case ConsoleKey.A:
-                    await Menu_1_SellListPlayers.SellListPlayers();
-                    break;
-                case ConsoleKey.S:
-                    await Menu_2_PrintScore.PrintScore();
-                    break;
-                case ConsoleKey.D:
-                    await Menu_5_DisplayLeagueTable.DisplayLeagueTable();
-                    break;
-                case ConsoleKey.Spacebar:
-                    // Press SPACE BAR to continue
-                    await MatchDay1.ShowPreMatch();
-                    break;
-
-                default:
-                    break;
-            }
-        }
+        Console.ForegroundColor = ConsoleColor.White;        
     }
 }
 //TODONTH 5.1 Obtain a loan
