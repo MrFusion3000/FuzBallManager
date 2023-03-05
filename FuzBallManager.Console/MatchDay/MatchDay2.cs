@@ -74,8 +74,8 @@ public class MatchDay2
 
         ConsoleKeyInfo menuChoice2;
 
-        while (true)
-        {
+        //while (true)
+        //{
             menuChoice2 = Console.ReadKey(true); //TODO Change to readline, restric to 2 char input?
 
             //TODO Function for assigning player no to menu switch
@@ -96,7 +96,7 @@ public class MatchDay2
                 default:
                     break;
             }
-        }
+        //}
 
         //var menuchoice = Console.ReadKey();
 

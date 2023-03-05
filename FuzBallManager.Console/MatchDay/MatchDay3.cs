@@ -7,7 +7,7 @@ namespace UIConsole.MatchDay;
 
 public class MatchDay3
 {
-    public static int screenlines { get; private set; }
+    public static int Screenlines { get; private set; }
     public static FixtureResponse LatestFixture { get; set; }
 
     public static async Task PreGameTeamStats()
@@ -29,7 +29,7 @@ public class MatchDay3
         Console.WriteLine("\nType player no. to add to team");
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.SetCursorPosition(7, screenlines + 2);
+        Console.SetCursorPosition(7, Screenlines + 2);
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("Press ");
         Console.BackgroundColor = ConsoleColor.Green;

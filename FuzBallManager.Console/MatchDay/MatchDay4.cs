@@ -18,14 +18,14 @@ namespace UIConsole.MatchDay
         //TODO PopularScore for Attendance and Player offers
 
         public static async Task ShowGameStats()
-         {
+        {
             var LatestFixture = await FixtureClient.GetNextFixture(false);
 
             var GameScore = MatchDay4.GameCalc();
             var Attendance = MatchDay4.Attendance();
 
             //Update the latest  match results
-            var FixtureCmd = new UpdateFixtureCommand 
+            var FixtureCmd = new UpdateFixtureCommand
             {
                 FixtureID = LatestFixture.FixtureID,
                 FixtureDate = LatestFixture.FixtureDate,
@@ -34,10 +34,10 @@ namespace UIConsole.MatchDay
                 HomeTeamScore = GameScore.Item1,
                 AwayTeamScore = GameScore.Item2,
                 Attendance = Attendance,
-                Played = true 
+                Played = true
             };
-            
-            await FixtureClient.Update(LatestFixture.FixtureID, FixtureCmd );
+
+            await FixtureClient.Update(LatestFixture.FixtureID, FixtureCmd);
 
             Console.Clear();
 
@@ -47,14 +47,23 @@ namespace UIConsole.MatchDay
 
             Console.WriteLine($" {GameScore.Item1} - {GameScore.Item2}");
 
-            var menuchoice = Console.ReadKey();
+            var menuChoice4 = Console.ReadKey(true);
 
-            if (menuchoice.Key == ConsoleKey.Spacebar)
+            //while (true) {
+            //int v = 0;
+            switch (menuChoice4.Key)
             {
-                //await ShowMenu.ShowTopMenu();
-                //await MatchDay3.PreGameTeamStats();
-                
+                case ConsoleKey.Spacebar:
+                    //await Task.Delay(5000);
+                    //v++;
+                    //Console.WriteLine("Count" + v);
+
+                    return;
+
+                    //await ShowMenu.ShowTopMenu();
+                    //await MatchDay3.PreGameTeamStats();
             }
+            //}
         }
 
         private static Tuple<int, int> GameCalc()

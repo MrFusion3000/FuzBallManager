@@ -28,42 +28,13 @@ class Program
 
         var gameOn = true;
 
+        //Show Top Menu
+        ShowMenu.ShowTopMenu();
+
+
+        Console.WriteLine("END");
         while (gameOn)
-        {
-            //Show Top Menu
-
-            while (true)
-            {
-                ShowMenu.ShowTopMenu();
-
-                ConsoleKeyInfo menuChoice;
-
-                menuChoice = Console.ReadKey(true);
-
-                switch (menuChoice.Key)
-                {
-                    case ConsoleKey.Escape:
-                        //Console.WriteLine("End");
-                        break;
-
-                    case ConsoleKey.A:
-                        await Menu_1_SellListPlayers.SellListPlayers();
-                        break;
-                    case ConsoleKey.S:
-                        Menu_2_PrintScore.PrintScore();
-                        break;
-                    case ConsoleKey.D:
-                        Menu_5_DisplayLeagueTable.DisplayLeagueTable();
-                        break;
-                    case ConsoleKey.Spacebar:
-                        // Press SPACE BAR to continue
-                        await MatchDay1.ShowPreMatch();
-                        break;
-
-                    default:
-                        break;
-                }
-            }
+        {         
 
         }
     }

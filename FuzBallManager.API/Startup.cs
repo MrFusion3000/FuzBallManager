@@ -14,8 +14,13 @@ using Mapster;
 
 namespace API
 {
+
+    //TODO - Make database InMemory
+
     public class Startup
     {
+        readonly string MyAllowedSpecificOrigins = "_myAllowedSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +32,20 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureCors();
+            services.AddCors(options => 
+            {
+                options.AddPolicy(name: MyAllowedSpecificOrigins,
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost",
+                            "http://localhost:5000",
+                            "https://localhost:5001",
+                            "https://localhost:44315");
+                        //.AllowAnyMethod()
+                        //.AllowAnyHeader();
+                    });
+            });
+
             services.AddControllers();
             services.AddDbContext<FBMContext>(m => m.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
             services.AddSwaggerGen(c =>
@@ -59,6 +78,7 @@ namespace API
         {
             if (env.IsDevelopment())
             {
+                app.UseCors("MyPolicy");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FBM.API v1"));
