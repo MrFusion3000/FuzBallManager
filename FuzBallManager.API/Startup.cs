@@ -11,6 +11,7 @@ using System.Reflection;
 using Application;
 using WebApi;
 using Mapster;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace API
 {
@@ -40,9 +41,9 @@ namespace API
                         policy.WithOrigins("http://localhost",
                             "http://localhost:5000",
                             "https://localhost:5001",
-                            "https://localhost:44315");
-                        //.AllowAnyMethod()
-                        //.AllowAnyHeader();
+                            "https://localhost:44397")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
                     });
             });
 
@@ -58,11 +59,12 @@ namespace API
 
             MapsterMapster.MapsterSetter();
             services.AddAutoMapper(typeof(Startup));
-            services.AddMediatR(
-                typeof(CreatePlayerHandler).GetTypeInfo().Assembly, 
-                typeof(CreateManagerHandler).GetTypeInfo().Assembly, 
-                typeof(CreateTeamHandler).GetTypeInfo().Assembly,
-                typeof(CreateFixtureHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreatePlayerHandler).Assembly));
+                //typeof(CreatePlayerHandler).GetTypeInfo().Assembly,
+                //typeof(CreateManagerHandler).GetTypeInfo().Assembly, 
+                //typeof(CreateTeamHandler).GetTypeInfo().Assembly,
+                //typeof(CreateFixtureHandler).GetTypeInfo().Assembly
+                //);
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPlayerRepository, PlayerRepository>();
