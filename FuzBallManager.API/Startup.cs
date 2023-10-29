@@ -38,13 +38,20 @@ namespace API
                 options.AddPolicy(name: MyAllowedSpecificOrigins,
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost",
-                            "http://localhost:5000",
-                            "https://localhost:5001",
-                            "https://localhost:44397")
+                        policy.WithOrigins("*")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });
+                //options.AddPolicy(name: MyAllowedSpecificOrigins,
+                //    policy =>
+                //    {
+                //        policy.WithOrigins("http://localhost",
+                //            "http://localhost:5000",
+                //            "https://localhost:5001",
+                //            "https://localhost:44397")
+                //        .AllowAnyMethod()
+                //        .AllowAnyHeader();
+                //    });
             });
 
             services.AddControllers();
